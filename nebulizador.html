@@ -939,7 +939,60 @@
 
     function setText(id, text) {
       const el = $(id);
-      if (el) el.textContent = text;
+      if (el) {
+        el.dataset.finalText = text;
+        el.textContent = text;
+      }
+    }
+
+    function parseCountText(text) {
+      const source = String(text).trim();
+      const match = source.match(/^([^0-9-]*)(-?[\d.,]+)(.*)$/);
+      if (!match || /-?[\d.,]+/.test(match[3])) return null;
+      const value = Number(match[2].replace(/[.,]/g, ""));
+      if (!Number.isFinite(value)) return null;
+      return { prefix: match[1], value, suffix: match[3] };
+    }
+
+    function formatCountText(parts, value) {
+      return `${parts.prefix}${Math.round(value).toLocaleString("es-BO")}${parts.suffix}`;
+    }
+
+    function animateNumber(el) {
+      const finalText = el.dataset.finalText || el.textContent;
+      el.dataset.finalText = finalText;
+      const parts = parseCountText(finalText);
+      if (!parts) {
+        el.textContent = finalText;
+        return;
+      }
+
+      if (prefersReducedMotion.matches) {
+        el.textContent = finalText;
+        return;
+      }
+
+      const duration = el.classList.contains("mega") ? 1200 : 850;
+      const startedAt = performance.now();
+      const token = String(startedAt);
+      el.dataset.countToken = token;
+      el.textContent = formatCountText(parts, 0);
+
+      function tick(now) {
+        if (el.dataset.countToken !== token) return;
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = progress >= 1
+          ? finalText
+          : formatCountText(parts, parts.value * eased);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    function animateSlideNumbers(slide) {
+      slide.querySelectorAll(".mega, .kpi b, .row b, .option-card b").forEach(animateNumber);
     }
 
     setText("capitalBsHero", money(capitalBs));
@@ -988,6 +1041,7 @@
       dotButtons.forEach((dot, i) => dot.classList.toggle("active", i === active));
       progress.style.width = `${((active + 1) / slides.length) * 100}%`;
       counter.textContent = `${active + 1} / ${slides.length}`;
+      requestAnimationFrame(() => animateSlideNumbers(slides[active]));
     }
 
     $("prev").addEventListener("click", () => go(active - 1));
