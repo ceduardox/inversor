@@ -918,12 +918,13 @@
     };
 
     const capitalCtx = $("capitalChart").getContext("2d");
-    new Chart(capitalCtx, {
+    const capitalValues = [capitalBs, investorProfit, operatorProfit].map(Math.round);
+    const capitalChart = new Chart(capitalCtx, {
       type: "bar",
       data: {
         labels: ["Capital", "Gana inversionista", "Gana operador"],
         datasets: [{
-          data: [capitalBs, investorProfit, operatorProfit].map(Math.round),
+          data: capitalValues,
           backgroundColor: ["#667085", gradient(capitalCtx, "#12a594", "#4f7cff"), gradient(capitalCtx, "#8a5cf6", "#e0569f")],
           borderRadius: 18,
           borderSkipped: false,
@@ -934,13 +935,14 @@
     });
 
     const timelineCtx = $("timelineChart").getContext("2d");
-    new Chart(timelineCtx, {
+    const timelineValues = [-capitalBs, -capitalBs, 0, investorProfit].map(Math.round);
+    const timelineChart = new Chart(timelineCtx, {
       type: "line",
       data: {
         labels: ["Dia 0", "Dia 60", `Dia ${recoverFromStart}`, `Dia ${totalDays}`],
         datasets: [{
           label: "Flujo inversionista",
-          data: [-capitalBs, -capitalBs, 0, investorProfit].map(Math.round),
+          data: timelineValues,
           borderColor: "#4f7cff",
           backgroundColor: "rgba(79,124,255,.14)",
           fill: true,
@@ -971,7 +973,44 @@
       }
     });
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const replayDelay = 3600;
+    let replayTimer;
+
+    function animateChart(chart, values, resetValues) {
+      chart.data.datasets[0].data = resetValues;
+      chart.update("none");
+      requestAnimationFrame(() => {
+        chart.data.datasets[0].data = values;
+        chart.update();
+      });
+    }
+
+    function replayCharts() {
+      if (document.hidden || prefersReducedMotion.matches) return;
+      animateChart(capitalChart, capitalValues, capitalValues.map(() => 0));
+      animateChart(timelineChart, timelineValues, timelineValues.map(() => 0));
+    }
+
+    function startChartLoop() {
+      if (replayTimer) clearInterval(replayTimer);
+      if (prefersReducedMotion.matches) return;
+      replayTimer = setInterval(replayCharts, replayDelay);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && replayTimer) {
+        clearInterval(replayTimer);
+        replayTimer = null;
+      } else {
+        startChartLoop();
+      }
+    });
+
+    prefersReducedMotion.addEventListener("change", startChartLoop);
+
     go(0);
+    startChartLoop();
   </script>
 </body>
 </html>
