@@ -695,13 +695,13 @@
           <div class="panel">
             <span class="eyebrow">Ganancia proyectada</span>
             <h2>Cuanto gana el lote completo</h2>
-            <p>Si el lote se vende con la mezcla propuesta, la utilidad neta total estimada supera el capital inicial. El inversionista participa de esa utilidad despues de recuperar capital.</p>
+            <p>Si el lote se vende con la mezcla propuesta, la oferta principal es 35% de utilidad neta. Tambien quedan dos alternativas simples: 10% de venta bruta cobrada o 20% de utilidad por cada venta.</p>
             <div class="list">
               <div class="row"><span>Unidades estimadas</span><b id="units2">1,163</b></div>
               <div class="row"><span>Utilidad neta total del lote</span><b class="good" id="lotProfit">Bs 148,443</b></div>
-              <div class="row"><span>Reparto inversionista</span><b>40%</b></div>
-              <div class="row"><span>Ganancia inversionista</span><b class="good" id="investorProfit">Bs 59,377</b></div>
-              <div class="row"><span>Ganancia operador</span><b id="operatorProfit">Bs 89,066</b></div>
+              <div class="row"><span>Opcion A: 35% utilidad neta</span><b class="good" id="investorProfit">Bs 51,955</b></div>
+              <div class="row"><span>Opcion B: 10% venta bruta</span><b id="grossProfitOption">Bs 32,564</b></div>
+              <div class="row"><span>Opcion C: 20% utilidad por venta</span><b id="perSaleProfitOption">Bs 29,689</b></div>
             </div>
           </div>
           <div class="panel">
@@ -767,13 +767,13 @@
           <div class="panel">
             <span class="eyebrow">Cierre</span>
             <h2>Propuesta concreta</h2>
-            <p>El inversionista financia USD 10.000. Primero recupera el 100% de su capital. Luego recibe 40% de la utilidad neta del lote.</p>
+            <p>El inversionista financia USD 10.000. Primero recupera el 100% de su capital. Luego elige una modalidad de ganancia: 35% utilidad neta, 10% venta bruta cobrada o 20% utilidad por venta.</p>
             <div class="mega" id="finalRoi">61%</div>
             <div class="list">
               <div class="row"><span>Invierte</span><b>USD 10.000</b></div>
               <div class="row"><span>Recupera capital aprox.</span><b id="finalRecover">Dia 75</b></div>
               <div class="row"><span>Capital + ganancia aprox.</span><b id="finalTotalDays">Dia 99</b></div>
-              <div class="row"><span>Ganancia estimada</span><b class="good" id="finalProfit">Bs 59,377</b></div>
+              <div class="row"><span>Opcion recomendada</span><b class="good" id="finalProfit">35% utilidad neta</b></div>
             </div>
           </div>
           <div class="panel visual">
@@ -807,7 +807,9 @@
       adCost: 40,
       callCommission: 50,
       organicCommission: 80,
-      investorShare: .40,
+      investorShare: .35,
+      grossShare: .10,
+      perSaleShare: .20,
       arrivalDays: 60,
       dailySales: 30
     };
@@ -824,8 +826,12 @@
     const wholesaleNet = cfg.wholesalePrice - landedCost;
     const avgNet = callNet * .5 + organicNet * .3 + wholesaleNet * .2;
     const avgCashIn = (cfg.salePrice - cfg.adCost - cfg.callCommission) * .5 + (cfg.salePrice - cfg.organicCommission) * .3 + cfg.wholesalePrice * .2;
+    const avgGrossSale = cfg.salePrice * .5 + cfg.salePrice * .3 + cfg.wholesalePrice * .2;
     const lotProfit = avgNet * units;
+    const grossSales = avgGrossSale * units;
     const investorProfit = lotProfit * cfg.investorShare;
+    const grossInvestorProfit = grossSales * cfg.grossShare;
+    const perSaleInvestorProfit = lotProfit * cfg.perSaleShare;
     const operatorProfit = lotProfit - investorProfit;
     const totalBack = capitalBs + investorProfit;
     const roi = investorProfit / capitalBs * 100;
@@ -851,6 +857,8 @@
     setText("units2", units.toLocaleString("es-BO"));
     setText("lotProfit", money(lotProfit));
     setText("investorProfit", money(investorProfit));
+    setText("grossProfitOption", money(grossInvestorProfit));
+    setText("perSaleProfitOption", money(perSaleInvestorProfit));
     setText("operatorProfit", money(operatorProfit));
     setText("breakUnits", `${breakUnits.toLocaleString("es-BO")} unidades`);
     setText("recoverAfterArrival", `${recoverAfterArrival} dias`);
@@ -863,7 +871,7 @@
     setText("finalRoi", pct(roi));
     setText("finalRecover", `Dia ${recoverFromStart}`);
     setText("finalTotalDays", `Dia ${totalDays}`);
-    setText("finalProfit", money(investorProfit));
+    setText("finalProfit", `35% utilidad neta (${money(investorProfit)})`);
 
     const track = $("track");
     const slides = Array.from(track.children);
