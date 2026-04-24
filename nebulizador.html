@@ -708,9 +708,9 @@
             <div class="mega">$10.000</div>
             <div class="kpis">
               <div class="kpi"><span>Capital en Bs</span><b id="capitalBsHero">Bs 97,000</b></div>
-              <div class="kpi"><span>Retorno estimado</span><b id="roiHero">61%</b></div>
-              <div class="kpi"><span>Ganancia inversionista</span><b id="investorProfitHero">Bs 59,326</b></div>
-              <div class="kpi"><span>Recibe total</span><b id="totalBackHero">Bs 156,326</b></div>
+              <div class="kpi"><span>Retorno estimado</span><b id="roiHero">54%</b></div>
+              <div class="kpi"><span>Ganancia inversionista</span><b id="investorProfitHero">Bs 51,955</b></div>
+              <div class="kpi"><span>Recibe total</span><b id="totalBackHero">Bs 148,955</b></div>
             </div>
           </div>
           <div class="panel visual">
@@ -780,7 +780,7 @@
               <div class="option-card recommended">
                 <span>Opcion A recomendada</span>
                 <strong>35%</strong>
-                <p>De la utilidad neta total del lote, despues de recuperar capital.</p>
+                <p>De la utilidad neta total. Se liquida al cierre del lote, despues de recuperar capital.</p>
                 <b class="good" id="investorProfit">Bs 51,955</b>
               </div>
               <div class="option-card">
@@ -792,7 +792,7 @@
               <div class="option-card">
                 <span>Opcion C por avance</span>
                 <strong>20%</strong>
-                <p>De la utilidad neta de cada unidad vendida, conforme rote el inventario.</p>
+                <p>De la utilidad neta de cada unidad. Se paga venta por venta mientras rota el inventario.</p>
                 <b id="perSaleProfitOption">Bs 29,689</b>
               </div>
             </div>
@@ -810,13 +810,13 @@
           <div class="panel">
             <span class="eyebrow">Recuperacion</span>
             <h2>Cuando recupera capital</h2>
-            <p id="recoverText">La recuperacion depende de la velocidad de venta. Con un escenario conservador, el capital vuelve despues de recibir inventario.</p>
+            <p id="recoverText">La recuperacion depende de la velocidad de venta. Con un escenario conservador, el capital vuelve en unos 2 meses despues de recibir inventario.</p>
             <div class="list">
               <div class="row"><span>Llegada + aduana estimada</span><b>60 dias</b></div>
-              <div class="row"><span>Venta diaria supuesta</span><b id="dailySalesText">15 unidades / dia</b></div>
+              <div class="row"><span>Venta diaria supuesta</span><b id="dailySalesText">8 unidades / dia</b></div>
               <div class="row"><span>Unidades para recuperar capital</span><b id="breakUnits">460 unidades</b></div>
-              <div class="row"><span>Recupera capital despues de llegada</span><b id="recoverAfterArrival">31 dias</b></div>
-              <div class="row"><span>Recupera capital desde inversion</span><b class="amber" id="recoverFromStart">91 dias</b></div>
+              <div class="row"><span>Recupera capital despues de llegada</span><b id="recoverAfterArrival">58 dias</b></div>
+              <div class="row"><span>Recupera capital desde inversion</span><b class="amber" id="recoverFromStart">118 dias</b></div>
             </div>
             <div class="formula">
               Recuperacion = capital / efectivo promedio que entra por unidad
@@ -840,8 +840,8 @@
             <h2>Cuando recibe todo</h2>
             <p id="selloutText">Con un ritmo conservador de ventas, el lote completo se vende en mas jornadas comerciales. En ese punto el inversionista ya recupero capital y cobra su utilidad estimada.</p>
             <div class="list">
-              <div class="row"><span>Dias para vender lote</span><b id="daysToSell">78 dias</b></div>
-              <div class="row"><span>Tiempo total estimado</span><b id="totalDays">138 dias</b></div>
+              <div class="row"><span>Dias para vender lote</span><b id="daysToSell">146 dias</b></div>
+              <div class="row"><span>Tiempo total estimado</span><b id="totalDays">206 dias</b></div>
               <div class="row"><span>Capital devuelto</span><b id="capitalBack">Bs 97,000</b></div>
               <div class="row"><span>Total opcion A: 35% utilidad neta</span><b class="good" id="totalBack">Bs 148,955</b></div>
               <div class="row"><span>Total opcion B: 10% venta bruta</span><b id="totalBackGross">Bs 129,564</b></div>
@@ -861,14 +861,14 @@
           <div class="panel">
             <span class="eyebrow">Cierre</span>
             <h2>Propuesta concreta</h2>
-            <p>El inversionista financia USD 10.000. Primero recupera el 100% de su capital. Luego elige una modalidad de ganancia: 35% utilidad neta, 10% venta bruta cobrada o 20% utilidad por venta.</p>
-            <div class="mega" id="finalRoi">61%</div>
+            <p>El inversionista financia USD 10.000. Primero recupera el 100% de su capital. Luego elige: 35% utilidad neta al cierre, 10% venta bruta cobrada o 20% utilidad pagada venta por venta.</p>
+            <div class="mega" id="finalRoi">54%</div>
             <div class="list">
               <div class="row"><span>Invierte</span><b>USD 10.000</b></div>
-              <div class="row"><span>Recupera capital aprox.</span><b id="finalRecover">Dia 91</b></div>
-              <div class="row"><span>Cierre del lote aprox.</span><b id="finalTotalDays">Dia 138</b></div>
+              <div class="row"><span>Recupera capital aprox.</span><b id="finalRecover">Dia 118</b></div>
+              <div class="row"><span>Cierre del lote aprox.</span><b id="finalTotalDays">Dia 206</b></div>
               <div class="row"><span>Opcion recomendada</span><b class="good" id="finalProfit">35% utilidad neta</b></div>
-              <div class="row"><span>Alternativas</span><b>10% bruto o 20% por venta</b></div>
+              <div class="row"><span>Alternativas</span><b>10% bruto o 20% venta por venta</b></div>
             </div>
           </div>
           <div class="panel visual">
@@ -906,7 +906,7 @@
       grossShare: .10,
       perSaleShare: .20,
       arrivalDays: 60,
-      dailySales: 15
+      dailySales: 8
     };
 
     const $ = (id) => document.getElementById(id);
@@ -957,7 +957,7 @@
     setText("perSaleProfitOption", money(perSaleInvestorProfit));
     setText("breakUnits", `${breakUnits.toLocaleString("es-BO")} unidades`);
     setText("dailySalesText", `${cfg.dailySales} unidades / dia`);
-    setText("recoverText", `La recuperacion depende de la velocidad de venta. Con ${cfg.dailySales} unidades vendidas por dia, el capital se recupera alrededor de ${recoverAfterArrival} dias despues de recibir inventario.`);
+    setText("recoverText", `La recuperacion depende de la velocidad de venta. Con ${cfg.dailySales} unidades vendidas por dia, el capital se recupera alrededor de ${recoverAfterArrival} dias despues de recibir inventario, casi 2 meses.`);
     setText("recoverAfterArrival", `${recoverAfterArrival} dias`);
     setText("recoverFromStart", `${recoverFromStart} dias`);
     setText("daysToSell", `${daysToSell} dias`);
