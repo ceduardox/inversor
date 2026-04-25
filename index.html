@@ -1781,17 +1781,260 @@
         bottom: 3px;
       }
     }
+
+    @media (max-width: 920px) and (orientation: portrait) {
+      html, body {
+        overflow: hidden;
+      }
+
+      .orientation-gate {
+        display: none !important;
+      }
+
+      .shell {
+        height: 100dvh;
+        display: grid !important;
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        inset: 8px 12px auto;
+        height: 42px;
+        border-radius: 18px;
+        padding: 0 10px;
+      }
+
+      .vertical {
+        max-width: 50vw;
+        font-size: 11px;
+        letter-spacing: .16em;
+      }
+
+      .counter {
+        font-size: 12px;
+      }
+
+      .swiper {
+        width: 100vw;
+        height: 100dvh;
+      }
+
+      .swiper-slide {
+        align-items: start;
+        height: 100dvh;
+        padding: 62px 12px 42px;
+        overflow: hidden;
+      }
+
+      .scene,
+      .profit-slide .scene,
+      .video-slide .scene,
+      .filter-slide .scene {
+        width: calc(100vw - 24px);
+        height: calc(100dvh - 104px);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0 0 12px;
+        scrollbar-width: thin;
+      }
+
+      .copy {
+        width: 100%;
+        max-height: none;
+        align-self: stretch;
+        order: 2;
+      }
+
+      .detail-media,
+      .product-stage,
+      .video-shell,
+      .filter-strip {
+        order: 1;
+      }
+
+      .detail-media,
+      .profit-slide .detail-media {
+        width: 100%;
+        height: min(34dvh, 245px);
+        min-height: 185px;
+        padding: 8px;
+        border-radius: 20px;
+      }
+
+      .detail-media img,
+      .profit-slide .detail-media img {
+        object-fit: contain;
+        border-radius: 14px;
+      }
+
+      .product-stage {
+        width: 100%;
+        height: min(36dvh, 255px);
+        min-height: 210px;
+        padding: 8px 32px;
+      }
+
+      .product {
+        width: 100%;
+        height: 100%;
+        max-width: 260px;
+        max-height: 100%;
+      }
+
+      h1,
+      h2,
+      .quote,
+      .detail-slide .copy h2,
+      .filter-slide .copy h2 {
+        max-width: 100%;
+        font-size: clamp(34px, 12vw, 48px);
+        line-height: .9;
+        margin: 9px 0 8px;
+      }
+
+      p,
+      .detail-slide .copy p {
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.38;
+      }
+
+      .eyebrow {
+        min-height: 30px;
+        font-size: 10px;
+      }
+
+      .power {
+        margin-top: 12px;
+      }
+
+      .metrics,
+      .profit-slide .metrics {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .metric,
+      .profit-slide .metric {
+        padding: 12px 14px;
+        border-radius: 16px;
+      }
+
+      .metric b,
+      .profit-slide .metric b,
+      .investor-slide .metric b,
+      .cost-slide .metric b {
+        font-size: clamp(24px, 8vw, 34px);
+        line-height: 1;
+        overflow-wrap: anywhere;
+      }
+
+      .metric span,
+      .profit-slide .metric span {
+        font-size: 11px;
+        line-height: 1.2;
+      }
+
+      .benefit-grid,
+      .detail-slide .benefit-grid,
+      .profit-slide .benefit-grid {
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .benefit-card,
+      .detail-slide .benefit-card {
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 9px;
+        padding: 10px;
+        border-radius: 14px;
+      }
+
+      .benefit-card i,
+      .detail-slide .benefit-card i {
+        width: 34px;
+        height: 34px;
+      }
+
+      .benefit-card b,
+      .detail-slide .benefit-card b {
+        font-size: 14px;
+      }
+
+      .benefit-card span,
+      .detail-slide .benefit-card span {
+        font-size: 11px;
+        line-height: 1.2;
+      }
+
+      .callout {
+        min-width: 84px;
+        padding: 6px;
+        border-radius: 13px;
+      }
+
+      .callout span { font-size: 7px; }
+      .callout b { font-size: 10px; }
+      .callout.one { top: 2%; right: 4%; }
+      .callout.two { left: 4%; top: 38%; }
+      .callout.three { right: 4%; bottom: 8%; }
+      .callout.four { left: 4%; bottom: 8%; }
+      .callout.five { right: 38%; bottom: 2%; }
+
+      .video-shell {
+        width: min(62vw, 230px);
+        height: auto;
+        max-height: none;
+        aspect-ratio: 9 / 16;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .filter-strip {
+        width: 100%;
+        min-height: 210px;
+        padding: 2px 0;
+      }
+
+      .filter-card {
+        width: 148px;
+        min-width: 148px;
+      }
+
+      .filter-card img {
+        height: 118px;
+        min-height: 118px;
+      }
+
+      .slide-arrow {
+        width: 40px;
+        height: 40px;
+        top: auto;
+        bottom: 18px;
+        transform: none;
+      }
+
+      .slide-arrow.prev { left: 14px; }
+      .slide-arrow.next { right: 14px; }
+
+      .pagination {
+        bottom: 16px;
+        max-width: calc(100vw - 120px);
+        overflow: hidden;
+      }
+
+      .mobile-note {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="orientation-gate" aria-label="Girar pantalla">
-    <div class="orientation-card">
-      <div class="orientation-icon"><i data-lucide="smartphone"></i></div>
-      <h2>Gira la pantalla</h2>
-      <p>Esta presentacion esta diseñada para verse en horizontal. Coloca tu celular de lado para continuar.</p>
-    </div>
-  </div>
-
   <main class="shell">
     <aside class="rail">
       <div class="logo">RO</div>
