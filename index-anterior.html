@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto Nebulizador Portatil | Analisis para Inversionista</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --ink: #18212f;
+      --muted: #667085;
+      --line: #dbe3ee;
+      --paper: #eef3f8;
+      --blue: #4f7cff;
+      --teal: #12a594;
+      --violet: #8a5cf6;
+      --rose: #e0569f;
+      --green: #168a53;
+      --amber: #c98212;
+      --red: #c24136;
+      --white: #ffffff;
+      --soft: rgba(255, 255, 255, .72);
+      --shadow: 0 20px 70px rgba(55, 69, 92, .14);
+      --gemini: linear-gradient(100deg, #4f7cff 0%, #8a5cf6 38%, #e0569f 67%, #12a594 100%);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(79, 124, 255, .18), transparent 30%),
+        radial-gradient(circle at 90% 12%, rgba(224, 86, 159, .16), transparent 28%),
+        linear-gradient(180deg, #f6f9fd, var(--paper) 420px);
+      line-height: 1.45;
+    }
+
+    .hero {
+      min-height: 86vh;
+      color: var(--ink);
+      display: grid;
+      align-items: end;
+      background:
+        linear-gradient(120deg, rgba(246, 249, 253, .96), rgba(246, 249, 253, .76) 48%, rgba(246, 249, 253, .30)),
+        url("https://source.unsplash.com/1800x1100/?medical-device,nebulizer") center / cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -16% 12% 38%;
+      height: 240px;
+      background: var(--gemini);
+      filter: blur(42px);
+      opacity: .42;
+      transform: rotate(-8deg);
+      animation: floatGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatGlow {
+      from { transform: translateX(-24px) rotate(-8deg); }
+      to { transform: translateX(34px) rotate(-4deg); }
+    }
+
+    .hero-inner,
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      padding: 36px 0 42px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(79, 124, 255, .24);
+      background: rgba(255,255,255,.62);
+      backdrop-filter: blur(16px);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(55, 69, 92, .08);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 6vw, 74px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(17px, 2vw, 22px);
+      color: #475467;
+    }
+
+    .hero-strip {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .hero-stat {
+      min-height: 104px;
+      padding: 18px;
+      background: rgba(255, 255, 255, .76);
+      border: 1px solid rgba(255, 255, 255, .88);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-stat::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: var(--gemini);
+    }
+
+    .hero-stat b {
+      display: block;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section { padding: 48px 0; }
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(27px, 3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(255, 255, 255, .92);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      border-radius: 28px;
+      backdrop-filter: blur(18px);
+    }
+
+    .kpi { grid-column: span 3; min-height: 136px; }
+    .wide { grid-column: span 8; }
+    .side { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .full { grid-column: 1 / -1; }
+
+    .label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .value {
+      margin-top: 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1;
+      font-weight: 850;
+      background: linear-gradient(90deg, #1f2937, #4f7cff 58%, #12a594);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .note {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .control {
+      border: 1px solid rgba(219, 227, 238, .86);
+      padding: 14px;
+      background: rgba(255,255,255,.72);
+      border-radius: 22px;
+    }
+
+    .control label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--blue);
+      cursor: pointer;
+    }
+
+    .prompt-box {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 14px;
+      border: 1px solid rgba(79, 124, 255, .22);
+      border-radius: 28px;
+      background: rgba(255,255,255,.78);
+    }
+
+    .spark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--gemini);
+      box-shadow: 0 14px 30px rgba(79, 124, 255, .25);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+    }
+
+    .prompt-box b { display: block; }
+    .prompt-box span { color: var(--muted); font-size: 14px; }
+
+    .table-wrap { overflow-x: visible; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 13px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    th:first-child, td:first-child { text-align: left; }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .report-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .report-row {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.66);
+      overflow: hidden;
+    }
+
+    .report-row.reparto {
+      grid-template-columns: 1fr;
+    }
+
+    .report-main {
+      font-size: 16px;
+      font-weight: 850;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .report-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .report-item span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .report-item b {
+      font-size: 16px;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .report-note {
+      display: grid;
+      gap: 5px;
+      padding-top: 4px;
+    }
+
+    .report-note span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .report-note b {
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .metric-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.66);
+      font-weight: 800;
+    }
+
+    .metric-row span { color: var(--muted); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border: 1px solid var(--line);
+      background: #eef5ff;
+      color: #214f9c;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .story-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .step {
+      padding: 16px;
+      border: 1px solid rgba(219, 227, 238, .9);
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+    }
+
+    .step strong {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 12px;
+      color: white;
+      background: var(--gemini);
+      margin-bottom: 12px;
+    }
+
+    .step b { display: block; margin-bottom: 5px; }
+    .step span { color: var(--muted); font-size: 14px; }
+
+    .product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .mock-device {
+      min-height: 420px;
+      background:
+        radial-gradient(circle at 55% 22%, rgba(79,124,255,.24), transparent 24%),
+        radial-gradient(circle at 70% 58%, rgba(18,165,148,.20), transparent 30%),
+        #e9eef3;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      border-radius: 32px;
+    }
+
+    .device-body {
+      width: min(270px, 70%);
+      aspect-ratio: 7 / 11;
+      background: linear-gradient(180deg, #ffffff, #dfe6ef);
+      border: 1px solid #c6d0dc;
+      border-radius: 26px;
+      box-shadow: 0 24px 55px rgba(24,33,47,.25);
+      position: relative;
+    }
+
+    .cup {
+      position: absolute;
+      left: 50%;
+      top: -70px;
+      transform: translateX(-50%);
+      width: 48%;
+      height: 98px;
+      border-radius: 18px 18px 8px 8px;
+      background: rgba(126, 202, 222, .58);
+      border: 1px solid #9ec0cd;
+    }
+
+    .mist {
+      position: absolute;
+      left: 54%;
+      top: -112px;
+      width: 170px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(47,111,237,.30), rgba(47,111,237,0) 68%);
+      filter: blur(2px);
+    }
+
+    .screen {
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      top: 30%;
+      height: 72px;
+      border-radius: 14px;
+      background: #102033;
+      color: #8ee8dd;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      font-weight: 850;
+    }
+
+    .button {
+      position: absolute;
+      left: 50%;
+      bottom: 21%;
+      transform: translateX(-50%);
+      width: 72px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 8px solid #d8f2ee;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: #e9eef3;
+    }
+
+    .visual-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,.92);
+      background: rgba(255,255,255,.76);
+      box-shadow: var(--shadow);
+    }
+
+    .slide-track {
+      display: flex;
+      transition: transform .7s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-rows: minmax(340px, 52vh) auto;
+      background: #dfe7f1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-copy {
+      padding: 18px;
+      background: rgba(255,255,255,.92);
+      border-top: 1px solid var(--line);
+    }
+
+    .slide-copy b {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .slide-copy span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .slider-controls {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: 16px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .slider-btn {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 16px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 12px 26px rgba(24,33,47,.14);
+      color: var(--ink);
+      font-size: 22px;
+      font-weight: 900;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .slide-dots {
+      display: flex;
+      gap: 8px;
+      padding: 14px 18px 18px;
+      background: rgba(255,255,255,.92);
+    }
+
+    .slide-dot {
+      flex: 1;
+      height: 6px;
+      border: 0;
+      border-radius: 999px;
+      background: #d6deea;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      background: var(--gemini);
+    }
+
+    .visual-source {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .strategy-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .strategy-list li {
+      border-left: 5px solid var(--blue);
+      background: rgba(246, 249, 253, .78);
+      padding: 13px 14px;
+      border-radius: 0 18px 18px 0;
+    }
+
+    .risk {
+      border-left-color: var(--amber) !important;
+    }
+
+    .good {
+      color: var(--green);
+      font-weight: 850;
+    }
+
+    .bad {
+      color: var(--red);
+      font-weight: 850;
+    }
+
+    canvas { max-height: 380px; }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 6px;
+    }
+
+    .chart-head small {
+      color: var(--muted);
+      max-width: 260px;
+      text-align: right;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-strip, .controls, .product, .story-steps { grid-template-columns: 1fr 1fr; }
+      .kpi, .wide, .side, .half { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { min-height: 92vh; }
+      .hero-strip, .controls, .product, .photo-grid, .story-steps { grid-template-columns: 1fr; }
+      .hero-stat { min-height: 88px; }
+      section { padding: 34px 0; }
+      .panel { padding: 16px; }
+      .mock-device { min-height: 340px; }
+      .report-item { align-items: flex-start; }
+      .metric-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Proyecto importacion Bolivia</span>
+      <h1>Cuanto invierte y cuanto gana</h1>
+      <p>Una propuesta directa para inversionista: capital requerido, retorno estimado, ganancia por lote y reparto de utilidad. Sin tecnicismos.</p>
+      <div class="hero-strip">
+        <div class="hero-stat"><b id="heroCapital">Bs 41,710</b><span>Capital estimado para el lote</span></div>
+        <div class="hero-stat"><b id="heroInvestorProfit">Bs 26,783</b><span>Ganancia estimada del inversionista</span></div>
+        <div class="hero-stat"><b id="heroRoi">64%</b><span>Retorno sobre su capital</span></div>
+        <div class="hero-stat"><b>60 dias</b><span>Tiempo estimado de llegada</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>Numeros que convencen</h2>
+        <p class="lead">El inversionista no necesita escuchar toda la parte tecnica. Necesita ver tres cosas: cuanto pone, cuanto recupera y cuanto gana.</p>
+        <div class="panel">
+          <div class="prompt-box">
+            <div class="spark">*</div>
+            <div>
+              <b>Pregunta clave: "Si pongo capital, que retorno recibo?"</b>
+              <span>Mueve los supuestos y la ganancia del inversionista se actualiza en toda la propuesta.</span>
+            </div>
+          </div>
+          <div class="controls">
+            <div class="control">
+              <label>Compra USD <b id="purchaseUsdVal">$4.30</b></label>
+              <input id="purchaseUsd" type="range" min="3" max="12" step="0.1" value="4.3">
+            </div>
+            <div class="control">
+              <label>Dolar Bs <b id="exchangeVal">9.70</b></label>
+              <input id="exchange" type="range" min="6.9" max="12.5" step="0.1" value="9.7">
+            </div>
+            <div class="control">
+              <label>Factor puesto aqui <b id="landedFactorVal">2.0x</b></label>
+              <input id="landedFactor" type="range" min="1.4" max="3" step="0.1" value="2">
+            </div>
+            <div class="control">
+              <label>Precio venta Bs <b id="salePriceVal">300</b></label>
+              <input id="salePrice" type="range" min="180" max="420" step="5" value="300">
+            </div>
+            <div class="control">
+              <label>Publicidad por venta <b id="adCostVal">40</b></label>
+              <input id="adCost" type="range" min="0" max="120" step="5" value="40">
+            </div>
+            <div class="control">
+              <label>Comision call center <b id="callCommissionVal">50</b></label>
+              <input id="callCommission" type="range" min="20" max="100" step="5" value="50">
+            </div>
+            <div class="control">
+              <label>Comision organica <b id="organicCommissionVal">80</b></label>
+              <input id="organicCommission" type="range" min="30" max="130" step="5" value="80">
+            </div>
+            <div class="control">
+              <label>Venta mayorista Bs <b id="wholesalePriceVal">200</b></label>
+              <input id="wholesalePrice" type="range" min="140" max="280" step="5" value="200">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="grid">
+          <div class="panel kpi">
+            <div class="label">Capital por unidad</div>
+            <div class="value" id="purchaseBs">Bs 42</div>
+            <div class="note">Compra base convertida a bolivianos</div>
+          </div>
+          <div class="panel kpi">
+            <div class="label">Costo real estimado</div>
+            <div class="value" id="landedCost">Bs 83</div>
+            <div class="note">Unidad lista para vender</div>
+          </div>
+          <div class="panel kpi">
+            <div class="label">Margen antes de venta</div>
+            <div class="value" id="grossProfit">Bs 217</div>
+            <div class="note" id="grossMargin">72.2% del precio</div>
+          </div>
+          <div class="panel kpi">
+            <div class="label">Precio de venta</div>
+            <div class="value" id="breakEven">28%</div>
+            <div class="note">Objetivo comercial por unidad</div>
+          </div>
+
+          <div class="panel wide">
+            <h2>Resultado por canal</h2>
+            <p class="lead">Esto muestra donde se gana mas dinero por unidad y que canal conviene empujar primero.</p>
+            <div class="report-list" id="scenarioRows"></div>
+          </div>
+
+          <div class="panel side">
+            <h2>En simple</h2>
+            <ul class="strategy-list">
+              <li><b>Mejor argumento:</b> aun pagando publicidad y comision, el modelo deja utilidad positiva.</li>
+              <li><b>Mayor retorno:</b> venta sin publicidad deja mas ganancia por unidad.</li>
+              <li><b>Mas velocidad:</b> mayoristas ayudan a recuperar capital mas rapido.</li>
+            </ul>
+          </div>
+
+          <div class="panel half">
+            <div class="chart-head">
+              <h2>Utilidad por unidad</h2>
+              <small>Mientras mas alta la barra, mas fuerte el canal.</small>
+            </div>
+            <canvas id="profitChart"></canvas>
+          </div>
+          <div class="panel half">
+            <div class="chart-head">
+              <h2>Precio explicado</h2>
+              <small>Asi se divide una venta de call center.</small>
+            </div>
+            <canvas id="priceChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap product">
+        <div>
+          <h2>Por que se puede vender</h2>
+          <p class="lead">Es un producto de compra facil de entender: familiar, portatil, de precio accesible y con venta directa por llamada, WhatsApp o mayoristas.</p>
+          <ul class="strategy-list">
+            <li><b>Precio objetivo:</b> Bs 300 al cliente final.</li>
+            <li><b>Mayorista rentable:</b> Bs 190 a Bs 220 segun volumen.</li>
+            <li><b>Gancho comercial:</b> entrega local, pago contra entrega, demostracion por video y atencion por WhatsApp.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="visual-slider" aria-label="Presentacion visual del negocio">
+            <div class="slide-track" id="slideTrack">
+              <article class="slide">
+                <img src="https://source.unsplash.com/1200x900/?portable-nebulizer,medical-device" alt="Nebulizador portatil referencial">
+                <div class="slide-copy">
+                  <b>Producto visible</b>
+                  <span>Nebulizador portatil: se entiende rapido, se muestra facil por video y se vende por necesidad familiar.</span>
+                </div>
+              </article>
+              <article class="slide">
+                <img src="https://source.unsplash.com/1200x900/?call-center,headset,operator" alt="Operador de call center">
+                <div class="slide-copy">
+                  <b>Venta por call center</b>
+                  <span>El canal permite explicar el producto, cerrar por telefono y medir costo por venta.</span>
+                </div>
+              </article>
+              <article class="slide">
+                <img src="https://source.unsplash.com/1200x900/?delivery,warehouse,medical-supplies" alt="Entrega y logistica">
+                <div class="slide-copy">
+                  <b>Entrega y mayoristas</b>
+                  <span>Una parte del lote puede rotar por mayoristas para recuperar capital con mas velocidad.</span>
+                </div>
+              </article>
+              <article class="slide">
+                <img src="https://source.unsplash.com/1200x900/?investor,financial-growth,meeting" alt="Retorno para inversionista">
+                <div class="slide-copy">
+                  <b>Retorno claro</b>
+                  <span>El inversionista ve capital, ganancia estimada y ROI sin entrar en detalles tecnicos.</span>
+                </div>
+              </article>
+            </div>
+            <div class="slider-controls">
+              <button class="slider-btn" type="button" id="prevSlide" aria-label="Anterior">&lt;</button>
+              <button class="slider-btn" type="button" id="nextSlide" aria-label="Siguiente">&gt;</button>
+            </div>
+            <div class="slide-dots" id="slideDots" aria-label="Selector de laminas"></div>
+          </div>
+          <div class="visual-source">Imagenes externas referenciales. Producto base enlazado al final desde Alibaba; tambien se uso referencia visual de nebulizadores portatiles tipo Rossmax/mesh.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Ganancia del inversionista</h2>
+        <p class="lead">Propuesta clara: el inversionista financia el lote, recupera su capital y despues recibe un porcentaje de la utilidad neta.</p>
+        <div class="story-steps">
+          <div class="step"><strong>1</strong><b>Pone capital</b><span>Financia el inventario inicial.</span></div>
+          <div class="step"><strong>2</strong><b>Se vende</b><span>Por call center, vendedores y mayoristas.</span></div>
+          <div class="step"><strong>3</strong><b>Recupera</b><span>Primero vuelve su dinero invertido.</span></div>
+          <div class="step"><strong>4</strong><b>Gana</b><span>Recibe su porcentaje de utilidad.</span></div>
+        </div>
+        <br>
+        <div class="grid">
+          <div class="panel half">
+            <h2>Reparto recomendado</h2>
+            <div class="report-list">
+              <div class="report-row reparto">
+                <div class="report-main"><span class="pill">Conservador</span></div>
+                <div class="report-item"><span>Inversionista</span><b>35%</b></div>
+                <div class="report-item"><span>Operador</span><b>65%</b></div>
+                <div class="report-note"><span>Cuando usarlo</span><b>Si tu pones ventas, aduana y operacion</b></div>
+              </div>
+              <div class="report-row reparto">
+                <div class="report-main"><span class="pill">Balanceado</span></div>
+                <div class="report-item"><span>Inversionista</span><b>40%</b></div>
+                <div class="report-item"><span>Operador</span><b>60%</b></div>
+                <div class="report-note"><span>Cuando usarlo</span><b>Si el inversionista financia todo el lote</b></div>
+              </div>
+              <div class="report-row reparto">
+                <div class="report-main"><span class="pill">Agresivo</span></div>
+                <div class="report-item"><span>Inversionista</span><b>50%</b></div>
+                <div class="report-item"><span>Operador</span><b>50%</b></div>
+                <div class="report-note"><span>Cuando usarlo</span><b>Solo si tambien cubre publicidad y reposicion</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel half">
+            <h2>Lote y retorno</h2>
+            <div class="controls">
+              <div class="control">
+                <label>Unidades lote <b id="unitsVal">500</b></label>
+                <input id="units" type="range" min="50" max="3000" step="50" value="500">
+              </div>
+              <div class="control">
+                <label>% inversionista <b id="investorShareVal">40%</b></label>
+                <input id="investorShare" type="range" min="20" max="60" step="5" value="40">
+              </div>
+            </div>
+            <div class="metric-list">
+              <div class="metric-row"><span>Capital estimado para inventario</span><b id="lotCapital">Bs 41,710</b></div>
+              <div class="metric-row"><span>Utilidad neta lote mixto</span><b id="lotProfit">Bs 66,958</b></div>
+              <div class="metric-row"><span>Ganancia inversionista</span><b id="investorProfit">Bs 26,783</b></div>
+              <div class="metric-row"><span>Ganancia operador</span><b id="operatorProfit">Bs 40,175</b></div>
+              <div class="metric-row"><span>ROI inversionista</span><b id="investorRoi">64.2%</b></div>
+            </div>
+            <div style="margin-top:18px">
+              <canvas id="investorChart"></canvas>
+            </div>
+          </div>
+          <div class="panel full">
+            <h2>Mensaje para cerrar inversion</h2>
+            <ul class="strategy-list">
+              <li><b>El inversionista pone capital:</b> con 500 unidades, el capital estimado es Bs 41,710.</li>
+              <li><b>El negocio vende el lote:</b> usando 50% call center, 30% vendedores y 20% mayoristas.</li>
+              <li><b>El inversionista recupera capital:</b> primero vuelve su inversion inicial.</li>
+              <li><b>Despues gana:</b> con 40% de utilidad, su ganancia estimada es Bs 26,783 y su ROI aproximado es 64.2%.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Producto base:
+      <a href="https://spanish.alibaba.com/product-detail/Handheld-Medical-Nebulizer-for-Oxygen-Therapy-1601571861965.html" target="_blank" rel="noreferrer">Alibaba - Handheld Medical Nebulizer</a>.
+      Los calculos son referenciales y se ajustan desde los controles de la pagina.
+    </div>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const money = (value) => `Bs ${Math.round(value).toLocaleString("es-BO")}`;
+    const pct = (value) => `${value.toFixed(1)}%`;
+
+    const inputs = [
+      "purchaseUsd", "exchange", "landedFactor", "salePrice", "adCost",
+      "callCommission", "organicCommission", "wholesalePrice", "units", "investorShare"
+    ];
+
+    let profitChart;
+    let priceChart;
+    let investorChart;
+
+    function chartGradient(ctx, colors) {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 320);
+      colors.forEach(([stop, color]) => gradient.addColorStop(stop, color));
+      return gradient;
+    }
+
+    function commonChartOptions() {
+      return {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: {
+          duration: 950,
+          easing: "easeOutQuart"
+        },
+        interaction: {
+          intersect: false,
+          mode: "index"
+        },
+        plugins: {
+          legend: {
+            labels: {
+              usePointStyle: true,
+              boxWidth: 8,
+              boxHeight: 8,
+              color: "#475467",
+              font: { weight: "700" }
+            }
+          },
+          tooltip: {
+            backgroundColor: "rgba(24, 33, 47, .92)",
+            padding: 12,
+            cornerRadius: 14,
+            titleFont: { weight: "800" },
+            bodyFont: { weight: "700" }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: "#667085", font: { weight: "700" } }
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: "rgba(102, 112, 133, .14)" },
+            ticks: { color: "#667085", font: { weight: "700" } }
+          }
+        }
+      };
+    }
+
+    function read() {
+      return {
+        purchaseUsd: Number($("purchaseUsd").value),
+        exchange: Number($("exchange").value),
+        landedFactor: Number($("landedFactor").value),
+        salePrice: Number($("salePrice").value),
+        adCost: Number($("adCost").value),
+        callCommission: Number($("callCommission").value),
+        organicCommission: Number($("organicCommission").value),
+        wholesalePrice: Number($("wholesalePrice").value),
+        units: Number($("units").value),
+        investorShare: Number($("investorShare").value)
+      };
+    }
+
+    function channelRows(data) {
+      const purchaseBs = data.purchaseUsd * data.exchange;
+      const landed = purchaseBs * data.landedFactor;
+      return [
+        {
+          name: "Call center + publicidad",
+          income: data.salePrice,
+          product: landed,
+          ads: data.adCost,
+          commission: data.callCommission
+        },
+        {
+          name: "Vendedor sin publicidad",
+          income: data.salePrice,
+          product: landed,
+          ads: 0,
+          commission: data.organicCommission
+        },
+        {
+          name: "Mayorista",
+          income: data.wholesalePrice,
+          product: landed,
+          ads: 0,
+          commission: 0
+        }
+      ].map((row) => {
+        row.net = row.income - row.product - row.ads - row.commission;
+        row.margin = row.net / row.income * 100;
+        return row;
+      });
+    }
+
+    function update() {
+      const data = read();
+      const purchaseBs = data.purchaseUsd * data.exchange;
+      const landed = purchaseBs * data.landedFactor;
+      const gross = data.salePrice - landed;
+      const grossMargin = gross / data.salePrice * 100;
+      const rows = channelRows(data);
+      const avgNet = rows[0].net * .5 + rows[1].net * .3 + rows[2].net * .2;
+      const lotProfit = avgNet * data.units;
+      const investorProfit = lotProfit * data.investorShare / 100;
+      const operatorProfit = lotProfit - investorProfit;
+
+      $("purchaseUsdVal").textContent = `$${data.purchaseUsd.toFixed(2)}`;
+      $("exchangeVal").textContent = data.exchange.toFixed(2);
+      $("landedFactorVal").textContent = `${data.landedFactor.toFixed(1)}x`;
+      $("salePriceVal").textContent = data.salePrice;
+      $("adCostVal").textContent = data.adCost;
+      $("callCommissionVal").textContent = data.callCommission;
+      $("organicCommissionVal").textContent = data.organicCommission;
+      $("wholesalePriceVal").textContent = data.wholesalePrice;
+      $("unitsVal").textContent = data.units.toLocaleString("es-BO");
+      $("investorShareVal").textContent = `${data.investorShare}%`;
+
+      const roi = investorProfit / (landed * data.units) * 100;
+
+      $("heroCapital").textContent = money(landed * data.units);
+      $("heroInvestorProfit").textContent = money(investorProfit);
+      $("heroRoi").textContent = `${Math.round(roi)}%`;
+      $("purchaseBs").textContent = money(purchaseBs);
+      $("landedCost").textContent = money(landed);
+      $("grossProfit").textContent = money(gross);
+      $("grossMargin").textContent = `${pct(grossMargin)} sobre venta`;
+      $("breakEven").textContent = money(data.salePrice);
+
+      $("scenarioRows").innerHTML = rows.map((row) => `
+        <div class="report-row">
+          <div class="report-main">${row.name}</div>
+          <div class="report-item"><span>Ingreso</span><b>${money(row.income)}</b></div>
+          <div class="report-item"><span>Costo</span><b>${money(row.product)}</b></div>
+          <div class="report-item"><span>Publicidad</span><b>${money(row.ads)}</b></div>
+          <div class="report-item"><span>Comision</span><b>${money(row.commission)}</b></div>
+          <div class="report-item"><span>Utilidad</span><b class="${row.net >= 0 ? "good" : "bad"}">${money(row.net)} / ${pct(row.margin)}</b></div>
+        </div>
+      `).join("");
+
+      $("lotCapital").textContent = money(landed * data.units);
+      $("lotProfit").textContent = money(lotProfit);
+      $("investorProfit").textContent = money(investorProfit);
+      $("operatorProfit").textContent = money(operatorProfit);
+      $("investorRoi").textContent = pct(roi);
+
+      const labels = rows.map((row) => row.name);
+      const netData = rows.map((row) => Math.round(row.net));
+      const call = rows[0];
+
+      const profitCtx = $("profitChart").getContext("2d");
+      const profitGradient = chartGradient(profitCtx, [
+        [0, "rgba(79, 124, 255, .95)"],
+        [.48, "rgba(138, 92, 246, .82)"],
+        [1, "rgba(18, 165, 148, .70)"]
+      ]);
+      if (!profitChart) {
+        profitChart = new Chart($("profitChart"), {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [{
+              label: "Utilidad neta Bs",
+              data: netData,
+              backgroundColor: profitGradient,
+              borderRadius: 18,
+              borderSkipped: false,
+              maxBarThickness: 54
+            }]
+          },
+          options: {
+            ...commonChartOptions(),
+            indexAxis: "y",
+            scales: {
+              x: {
+                beginAtZero: true,
+                grid: { color: "rgba(102, 112, 133, .14)" },
+                ticks: { color: "#667085", font: { weight: "700" } }
+              },
+              y: {
+                grid: { display: false },
+                ticks: { color: "#667085", font: { weight: "700" } }
+              }
+            }
+          }
+        });
+      } else {
+        profitChart.data.labels = labels;
+        profitChart.data.datasets[0].data = netData;
+        profitChart.data.datasets[0].backgroundColor = profitGradient;
+        profitChart.update();
+      }
+
+      const priceData = [
+        Math.round(call.product),
+        Math.round(call.ads),
+        Math.round(call.commission),
+        Math.round(call.net)
+      ];
+
+      if (!priceChart) {
+        priceChart = new Chart($("priceChart"), {
+          type: "doughnut",
+          data: {
+            labels: ["Producto puesto aqui", "Publicidad", "Comision", "Utilidad neta"],
+            datasets: [{
+              data: priceData,
+              backgroundColor: ["#667085", "#f0a63b", "#4f7cff", "#12a594"],
+              borderColor: "rgba(255,255,255,.9)",
+              borderWidth: 5,
+              hoverOffset: 14,
+              spacing: 3
+            }]
+          },
+          options: {
+            responsive: true,
+            cutout: "66%",
+            animation: {
+              animateRotate: true,
+              animateScale: true,
+              duration: 1050,
+              easing: "easeOutQuart"
+            },
+            plugins: {
+              legend: {
+                position: "bottom",
+                labels: {
+                  usePointStyle: true,
+                  boxWidth: 8,
+                  color: "#475467",
+                  font: { weight: "700" }
+                }
+              },
+              tooltip: {
+                backgroundColor: "rgba(24, 33, 47, .92)",
+                padding: 12,
+                cornerRadius: 14,
+                callbacks: {
+                  label: (context) => `${context.label}: ${money(context.raw)}`
+                }
+              }
+            }
+          }
+        });
+      } else {
+        priceChart.data.datasets[0].data = priceData;
+        priceChart.update();
+      }
+
+      const investorCtx = $("investorChart").getContext("2d");
+      const investorGradient = chartGradient(investorCtx, [
+        [0, "rgba(18, 165, 148, .92)"],
+        [1, "rgba(79, 124, 255, .68)"]
+      ]);
+      const operatorGradient = chartGradient(investorCtx, [
+        [0, "rgba(138, 92, 246, .88)"],
+        [1, "rgba(224, 86, 159, .62)"]
+      ]);
+
+      if (!investorChart) {
+        investorChart = new Chart($("investorChart"), {
+          type: "bar",
+          data: {
+            labels: ["Capital", "Gana inversionista", "Gana operador"],
+            datasets: [{
+              label: "Bolivianos",
+              data: [Math.round(landed * data.units), Math.round(investorProfit), Math.round(operatorProfit)],
+              backgroundColor: ["#667085", investorGradient, operatorGradient],
+              borderRadius: 18,
+              borderSkipped: false,
+              maxBarThickness: 86
+            }]
+          },
+          options: {
+            ...commonChartOptions(),
+            indexAxis: "y",
+            plugins: {
+              ...commonChartOptions().plugins,
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: "rgba(24, 33, 47, .92)",
+                padding: 12,
+                cornerRadius: 14,
+                callbacks: {
+                  label: (context) => money(context.raw)
+                }
+              }
+            },
+            scales: {
+              x: {
+                beginAtZero: true,
+                grid: { color: "rgba(102, 112, 133, .14)" },
+                ticks: { color: "#667085", font: { weight: "700" } }
+              },
+              y: {
+                grid: { display: false },
+                ticks: { color: "#667085", font: { weight: "700" } }
+              }
+            }
+          }
+        });
+      } else {
+        investorChart.data.datasets[0].data = [
+          Math.round(landed * data.units),
+          Math.round(investorProfit),
+          Math.round(operatorProfit)
+        ];
+        investorChart.data.datasets[0].backgroundColor = ["#667085", investorGradient, operatorGradient];
+        investorChart.update();
+      }
+    }
+
+    function initVisualSlider() {
+      const track = $("slideTrack");
+      const dotsWrap = $("slideDots");
+      if (!track || !dotsWrap) return;
+
+      const slides = Array.from(track.children);
+      let active = 0;
+
+      dotsWrap.innerHTML = slides.map((_, index) => `
+        <button class="slide-dot${index === 0 ? " active" : ""}" type="button" aria-label="Ver lamina ${index + 1}"></button>
+      `).join("");
+
+      const dots = Array.from(dotsWrap.children);
+
+      function showSlide(index) {
+        active = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${active * 100}%)`;
+        dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === active));
+      }
+
+      $("prevSlide").addEventListener("click", () => showSlide(active - 1));
+      $("nextSlide").addEventListener("click", () => showSlide(active + 1));
+      dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+      setInterval(() => showSlide(active + 1), 6500);
+    }
+
+    inputs.forEach((id) => $(id).addEventListener("input", update));
+    initVisualSlider();
+    update();
+  </script>
+</body>
+</html>

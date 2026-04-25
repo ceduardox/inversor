@@ -3,1288 +3,2298 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Proyecto Nebulizador Portatil | Analisis para Inversionista</title>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://images.unsplash.com">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <title>RYZTOR 100GPD | Purificador RO</title>
+  <meta name="description" content="Propuesta de inversion para importar y comercializar purificadores de agua RO RYZTOR 100GPD con margen, postventa y recompra de cartuchos.">
+  <link rel="canonical" href="https://proyecto.neraversestudio.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_BO">
+  <meta property="og:site_name" content="Proyecto RYZTOR 100GPD">
+  <meta property="og:title" content="RYZTOR 100GPD | Propuesta de inversion">
+  <meta property="og:description" content="Purificador RO de encimera con margen comercial, postventa y proyeccion de retorno para inversionista.">
+  <meta property="og:url" content="https://proyecto.neraversestudio.com/">
+  <meta property="og:image" content="https://proyecto.neraversestudio.com/ganancia.png">
+  <meta property="og:image:secure_url" content="https://proyecto.neraversestudio.com/ganancia.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="Ganancia bruta proyectada por unidad del purificador RYZTOR 100GPD">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RYZTOR 100GPD | Propuesta de inversion">
+  <meta name="twitter:description" content="Purificador RO de encimera con margen comercial, postventa y proyeccion de retorno para inversionista.">
+  <meta name="twitter:image" content="https://proyecto.neraversestudio.com/ganancia.png">
+  <meta name="twitter:image:alt" content="Ganancia bruta proyectada por unidad del purificador RYZTOR 100GPD">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     :root {
-      --ink: #18212f;
-      --muted: #667085;
-      --line: #dbe3ee;
-      --paper: #eef3f8;
-      --blue: #4f7cff;
-      --teal: #12a594;
-      --violet: #8a5cf6;
-      --rose: #e0569f;
-      --green: #168a53;
-      --amber: #c98212;
-      --red: #c24136;
-      --white: #ffffff;
-      --soft: rgba(255, 255, 255, .72);
-      --shadow: 0 20px 70px rgba(55, 69, 92, .14);
-      --gemini: linear-gradient(100deg, #4f7cff 0%, #8a5cf6 38%, #e0569f 67%, #12a594 100%);
+      --bg: #05070a;
+      --ink: #f7fbff;
+      --muted: #a8b3c2;
+      --line: rgba(255, 255, 255, .14);
+      --panel: rgba(255, 255, 255, .07);
+      --panel-strong: rgba(255, 255, 255, .12);
+      --aqua: #53f4ff;
+      --green: #77ffb7;
+      --steel: #d7e3f2;
+      --gold: #f1c46b;
+      --shadow: 0 34px 90px rgba(0, 0, 0, .46);
     }
 
     * { box-sizing: border-box; }
-    body {
+
+    html, body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       color: var(--ink);
       background:
-        radial-gradient(circle at 18% 8%, rgba(79, 124, 255, .18), transparent 30%),
-        radial-gradient(circle at 90% 12%, rgba(224, 86, 159, .16), transparent 28%),
-        linear-gradient(180deg, #f6f9fd, var(--paper) 420px);
-      line-height: 1.45;
+        radial-gradient(circle at 62% 30%, rgba(83, 244, 255, .18), transparent 34%),
+        radial-gradient(circle at 26% 74%, rgba(119, 255, 183, .13), transparent 28%),
+        linear-gradient(140deg, #05070a 0%, #10151d 48%, #05070a 100%);
+      font-family: "Instrument Sans", Arial, sans-serif;
     }
 
-    .hero {
-      min-height: 86vh;
-      color: var(--ink);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: radial-gradient(circle at 50% 45%, black, transparent 78%);
+    }
+
+    .shell {
+      height: 100dvh;
       display: grid;
-      align-items: end;
-      background:
-        linear-gradient(120deg, rgba(246, 249, 253, .96), rgba(246, 249, 253, .76) 48%, rgba(246, 249, 253, .30)),
-        url("https://source.unsplash.com/1800x1100/?medical-device,nebulizer") center / cover;
+      grid-template-columns: 86px 1fr;
       position: relative;
+    }
+
+    .rail {
+      position: relative;
+      z-index: 5;
+      height: 100dvh;
+      border-right: 1px solid var(--line);
+      background: rgba(5, 7, 10, .52);
+      backdrop-filter: blur(20px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      align-items: center;
+      justify-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #051014;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      font-weight: 950;
+      box-shadow: 0 18px 44px rgba(83, 244, 255, .22);
+    }
+
+    .vertical {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .swiper {
+      width: calc(100vw - 86px);
+      height: 100dvh;
+    }
+
+    .swiper-slide {
+      height: 100dvh;
+      display: grid;
+      align-items: center;
+      padding: 28px;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: auto -16% 12% 38%;
-      height: 240px;
-      background: var(--gemini);
-      filter: blur(42px);
-      opacity: .42;
-      transform: rotate(-8deg);
-      animation: floatGlow 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatGlow {
-      from { transform: translateX(-24px) rotate(-8deg); }
-      to { transform: translateX(34px) rotate(-4deg); }
-    }
-
-    .hero-inner,
-    .wrap {
-      width: min(1180px, calc(100% - 32px));
+    .scene {
+      width: min(1240px, calc(100vw - 142px));
+      height: min(760px, calc(100dvh - 56px));
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+      gap: 26px;
+      align-items: center;
+      position: relative;
     }
 
-    .hero-inner {
-      padding: 36px 0 42px;
+    .copy {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      min-width: 0;
+      align-self: center;
+      max-height: 100%;
+      overflow: visible;
     }
 
     .eyebrow {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      padding: 8px 12px;
-      border: 1px solid rgba(79, 124, 255, .24);
-      background: rgba(255,255,255,.62);
-      backdrop-filter: blur(16px);
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(83, 244, 255, .26);
       border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(55, 69, 92, .08);
-      font-size: 13px;
-      font-weight: 700;
+      color: var(--aqua);
+      background: rgba(83, 244, 255, .08);
+      font-size: 12px;
+      font-weight: 950;
       text-transform: uppercase;
     }
 
-    h1 {
-      max-width: 900px;
-      margin: 18px 0 14px;
-      font-size: clamp(38px, 6vw, 74px);
-      line-height: .98;
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 22px var(--green);
+    }
+
+    h1, h2 {
+      margin: 18px 0 16px;
+      max-width: 780px;
+      font-size: clamp(54px, 7.2vw, 112px);
+      line-height: .88;
       letter-spacing: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 800;
     }
 
-    .hero p {
-      max-width: 760px;
+    h2 { font-size: clamp(46px, 6vw, 92px); }
+
+    p {
       margin: 0;
-      font-size: clamp(17px, 2vw, 22px);
-      color: #475467;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.7vw, 23px);
+      line-height: 1.5;
+      font-weight: 700;
     }
 
-    .hero-strip {
+    .power {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .chip {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--steel);
+      font-weight: 900;
+      backdrop-filter: blur(18px);
+    }
+
+    .cta {
       margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
     }
 
-    .hero-stat {
-      min-height: 104px;
-      padding: 18px;
-      background: rgba(255, 255, 255, .76);
-      border: 1px solid rgba(255, 255, 255, .88);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
+    .btn {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      color: #061016;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 20px 54px rgba(83, 244, 255, .18);
+    }
+
+    .btn.dark {
+      color: var(--ink);
+      background: var(--panel-strong);
+      border-color: var(--line);
+      box-shadow: none;
       backdrop-filter: blur(18px);
+    }
+
+    .product-stage {
       position: relative;
-      overflow: hidden;
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      padding: 18px;
+      overflow: visible;
     }
 
-    .hero-stat::before {
-      content: "";
+    .halo {
       position: absolute;
-      inset: 0 0 auto;
-      height: 4px;
-      background: var(--gemini);
+      width: min(72vmin, 610px);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle, rgba(83, 244, 255, .18), transparent 62%),
+        conic-gradient(from 180deg, rgba(83,244,255,.0), rgba(83,244,255,.32), rgba(119,255,183,.24), rgba(83,244,255,.0));
+      filter: blur(.2px);
+      animation: spin 12s linear infinite;
+      z-index: -1;
     }
 
-    .hero-stat b {
+    .product {
+      width: 100%;
+      height: 100%;
+      max-width: 560px;
+      max-height: 680px;
+      object-fit: contain;
+      filter: drop-shadow(0 44px 52px rgba(0, 0, 0, .52));
+      transform-origin: center bottom;
+      z-index: 1;
+    }
+
+    .callout {
+      position: absolute;
+      display: grid;
+      gap: 4px;
+      z-index: 4;
+      min-width: 126px;
+      padding: 10px 11px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      background: rgba(10, 15, 22, .72);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+      cursor: pointer;
+      animation: calloutPulse 1.9s ease-in-out infinite;
+    }
+
+    .callout:hover {
+      border-color: rgba(83, 244, 255, .46);
+      background: rgba(14, 24, 34, .88);
+    }
+
+    .callout span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .callout b {
+      font-size: 18px;
+      line-height: 1.05;
+    }
+
+    .callout.one { top: 7%; right: 2%; }
+    .callout.two { left: 0; top: 30%; }
+    .callout.three { right: 3%; bottom: 24%; }
+    .callout.four { left: 2%; bottom: 10%; }
+    .callout.five { right: 35%; bottom: 4%; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 760px;
+    }
+
+    .metric {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+    }
+
+    .metric b {
       display: block;
-      font-size: 26px;
+      font-size: clamp(30px, 3.7vw, 54px);
       line-height: 1;
+      color: var(--ink);
     }
 
-    .hero-stat span {
+    .metric span {
       display: block;
       margin-top: 8px;
       color: var(--muted);
       font-size: 13px;
+      font-weight: 850;
     }
 
-    section { padding: 48px 0; }
-    h2 {
-      margin: 0 0 18px;
-      font-size: clamp(27px, 3vw, 42px);
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    .lead {
-      max-width: 850px;
-      color: var(--muted);
-      font-size: 18px;
-      margin: 0 0 24px;
-    }
-
-    .grid {
+    .script {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+      gap: 12px;
+      margin-top: 26px;
+      max-width: 720px;
     }
 
-    .panel {
-      background: rgba(255, 255, 255, .82);
-      border: 1px solid rgba(255, 255, 255, .92);
-      box-shadow: var(--shadow);
-      padding: 20px;
+    .line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      font-weight: 900;
+    }
+
+    .line span { color: var(--muted); }
+    .line b { text-align: right; }
+
+    .quote {
+      max-width: 940px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 6.8vw, 104px);
+      line-height: .93;
+      font-weight: 800;
+    }
+
+    .detail-media {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .14);
       border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(83, 244, 255, .12), transparent 44%),
+        rgba(255, 255, 255, .055);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .detail-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 700px;
+    }
+
+    .benefit-card {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 13px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .07);
       backdrop-filter: blur(18px);
     }
 
-    .kpi { grid-column: span 3; min-height: 136px; }
-    .wide { grid-column: span 8; }
-    .side { grid-column: span 4; }
-    .half { grid-column: span 6; }
-    .full { grid-column: 1 / -1; }
-
-    .label {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .value {
-      margin-top: 10px;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1;
-      font-weight: 850;
-      background: linear-gradient(90deg, #1f2937, #4f7cff 58%, #12a594);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .note {
-      margin-top: 9px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .controls {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .control {
-      border: 1px solid rgba(219, 227, 238, .86);
-      padding: 14px;
-      background: rgba(255,255,255,.72);
-      border-radius: 22px;
-    }
-
-    .control label {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      accent-color: var(--blue);
-      cursor: pointer;
-    }
-
-    .prompt-box {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 18px;
-      padding: 14px;
-      border: 1px solid rgba(79, 124, 255, .22);
-      border-radius: 28px;
-      background: rgba(255,255,255,.78);
-    }
-
-    .spark {
+    .benefit-card i {
       width: 48px;
       height: 48px;
-      border-radius: 16px;
-      background: var(--gemini);
-      box-shadow: 0 14px 30px rgba(79, 124, 255, .25);
       display: grid;
       place-items: center;
+      border: 1px solid rgba(83, 244, 255, .7);
+      border-radius: 999px;
+      color: #53f4ff;
+      background: rgba(83, 244, 255, .08);
+      box-shadow: 0 0 20px rgba(83, 244, 255, .14);
+    }
+
+    .benefit-card i svg {
+      color: #53f4ff;
+      stroke: currentColor;
+    }
+
+    .benefit-card .lucide,
+    .benefit-icon .lucide {
+      color: #53f4ff;
+      stroke: #53f4ff !important;
+      animation: iconGlow 2.4s ease-in-out infinite;
+    }
+
+    .benefit-card svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.2;
+    }
+
+    .benefit-card b {
+      display: block;
       color: white;
-      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.1;
     }
 
-    .prompt-box b { display: block; }
-    .prompt-box span { color: var(--muted); font-size: 14px; }
-
-    .table-wrap { overflow-x: visible; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 13px 12px;
-      border-bottom: 1px solid var(--line);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    th:first-child, td:first-child { text-align: left; }
-    th {
+    .benefit-card span {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
+      font-weight: 750;
+      line-height: 1.3;
     }
 
-    .report-list {
-      display: grid;
-      gap: 12px;
+    .detail-slide .copy h2 {
+      font-size: clamp(36px, 4.7vw, 74px);
+      line-height: .92;
+      margin-bottom: 10px;
     }
 
-    .report-row {
-      display: grid;
-      gap: 10px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255,255,255,.66);
-      overflow: hidden;
-    }
-
-    .report-row.reparto {
-      grid-template-columns: 1fr;
-    }
-
-    .report-main {
-      font-size: 16px;
-      font-weight: 850;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .report-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-      min-width: 0;
-    }
-
-    .report-item span {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 850;
-      text-transform: uppercase;
-    }
-
-    .report-item b {
-      font-size: 16px;
-      text-align: right;
-      overflow-wrap: anywhere;
-    }
-
-    .report-note {
-      display: grid;
-      gap: 5px;
-      padding-top: 4px;
-    }
-
-    .report-note span {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 850;
-      text-transform: uppercase;
-    }
-
-    .report-note b {
-      font-size: 15px;
+    .detail-slide .copy p {
+      font-size: clamp(15px, 1.3vw, 19px);
       line-height: 1.35;
     }
 
-    .metric-list {
+    .detail-slide .benefit-grid {
+      gap: 9px;
+      margin-top: 16px;
+      max-width: 620px;
+    }
+
+    .detail-slide .benefit-card {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 15px;
+    }
+
+    .detail-slide .benefit-card i {
+      width: 40px;
+      height: 40px;
+    }
+
+    .detail-slide .benefit-card svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .detail-slide .benefit-card b {
+      font-size: 16px;
+    }
+
+    .detail-slide .benefit-card span {
+      font-size: 13px;
+      line-height: 1.22;
+    }
+
+    .profit-slide .scene {
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    }
+
+    .profit-slide .detail-media {
+      padding: 8px;
+      background:
+        radial-gradient(circle at 70% 38%, rgba(83, 244, 255, .14), transparent 42%),
+        rgba(255, 255, 255, .045);
+    }
+
+    .profit-slide .detail-media img {
+      object-fit: contain;
+      border-radius: 22px;
+    }
+
+    .profit-slide .metrics {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 18px;
+      gap: 10px;
+    }
+
+    .profit-slide .metric {
+      padding: 13px;
+      border-radius: 18px;
+    }
+
+    .profit-slide .metric b {
+      color: var(--aqua);
+      font-size: clamp(26px, 3.2vw, 48px);
+    }
+
+    .investor-slide .metric b {
+      font-size: clamp(24px, 2.45vw, 38px);
+    }
+
+    .metric .fit-text {
+      font-size: .76em;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .profit-slide .benefit-grid {
+      margin-top: 14px;
+      gap: 8px;
+    }
+
+    .filter-slide .scene {
+      grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+    }
+
+    .filter-slide .copy h2 {
+      font-size: clamp(34px, 4.4vw, 70px);
+    }
+
+    .filter-strip {
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      padding: 10px 0;
+      mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    }
+
+    .filter-track {
+      display: flex;
+      width: max-content;
+      gap: 14px;
+      animation: filterLoop 28s linear infinite;
+    }
+
+    .filter-strip:hover .filter-track {
+      animation-play-state: paused;
+    }
+
+    .filter-card {
+      width: min(230px, 18vw);
+      min-width: 170px;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      padding: 14px;
+      border: 1px solid rgba(83, 244, 255, .18);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .06);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+    }
+
+    .filter-card img {
+      width: 100%;
+      height: min(230px, 30vh);
+      object-fit: contain;
+      cursor: zoom-in;
+      filter: drop-shadow(0 22px 34px rgba(0, 0, 0, .46));
+    }
+
+    .filter-card b {
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .filter-card small {
+      color: var(--aqua);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .filter-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.28;
+      font-weight: 760;
+    }
+
+    .pagination {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
       display: grid;
       gap: 10px;
-      margin-top: 16px;
     }
 
-    .metric-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.66);
-      font-weight: 800;
-    }
-
-    .metric-row span { color: var(--muted); }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 4px 9px;
-      border: 1px solid var(--line);
-      background: #eef5ff;
-      color: #214f9c;
-      font-weight: 800;
-      font-size: 12px;
-    }
-
-    .story-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .step {
-      padding: 16px;
-      border: 1px solid rgba(219, 227, 238, .9);
-      border-radius: 24px;
-      background: rgba(255,255,255,.72);
-    }
-
-    .step strong {
-      display: inline-grid;
-      place-items: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 12px;
-      color: white;
-      background: var(--gemini);
-      margin-bottom: 12px;
-    }
-
-    .step b { display: block; margin-bottom: 5px; }
-    .step span { color: var(--muted); font-size: 14px; }
-
-    .product {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .mock-device {
-      min-height: 420px;
-      background:
-        radial-gradient(circle at 55% 22%, rgba(79,124,255,.24), transparent 24%),
-        radial-gradient(circle at 70% 58%, rgba(18,165,148,.20), transparent 30%),
-        #e9eef3;
+    .slide-arrow {
+      position: fixed;
+      top: 50%;
+      z-index: 11;
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      overflow: hidden;
-      position: relative;
-      border-radius: 32px;
+      border: 1px solid rgba(83, 244, 255, .32);
+      border-radius: 999px;
+      color: #53f4ff;
+      background: rgba(5, 7, 10, .58);
+      box-shadow: 0 0 28px rgba(83, 244, 255, .12);
+      backdrop-filter: blur(14px);
+      cursor: pointer;
+      transform: translateY(-50%);
+      animation: arrowPulse 1.9s ease-in-out infinite;
     }
 
-    .device-body {
-      width: min(270px, 70%);
-      aspect-ratio: 7 / 11;
-      background: linear-gradient(180deg, #ffffff, #dfe6ef);
-      border: 1px solid #c6d0dc;
-      border-radius: 26px;
-      box-shadow: 0 24px 55px rgba(24,33,47,.25);
-      position: relative;
+    .slide-arrow svg {
+      width: 25px;
+      height: 25px;
+      stroke-width: 2.6;
     }
 
-    .cup {
-      position: absolute;
-      left: 50%;
-      top: -70px;
-      transform: translateX(-50%);
-      width: 48%;
-      height: 98px;
-      border-radius: 18px 18px 8px 8px;
-      background: rgba(126, 202, 222, .58);
-      border: 1px solid #9ec0cd;
+    .slide-arrow.prev { left: 104px; }
+    .slide-arrow.next { right: 20px; }
+
+    .pagination .swiper-pagination-bullet {
+      width: 9px;
+      height: 9px;
+      margin: 0 !important;
+      opacity: 1;
+      background: rgba(255, 255, 255, .34);
+      transition: .25s ease;
     }
 
-    .mist {
-      position: absolute;
-      left: 54%;
-      top: -112px;
-      width: 170px;
-      height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(47,111,237,.30), rgba(47,111,237,0) 68%);
-      filter: blur(2px);
+    .pagination .swiper-pagination-bullet-active {
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--aqua), var(--green));
     }
 
-    .screen {
-      position: absolute;
-      left: 18%;
-      right: 18%;
-      top: 30%;
-      height: 72px;
-      border-radius: 14px;
-      background: #102033;
-      color: #8ee8dd;
-      display: grid;
+    .mobile-note {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
       place-items: center;
-      font-size: 28px;
-      font-weight: 850;
-    }
-
-    .button {
-      position: absolute;
-      left: 50%;
-      bottom: 21%;
-      transform: translateX(-50%);
-      width: 72px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: var(--teal);
-      border: 8px solid #d8f2ee;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border: 1px solid var(--line);
-      background: #e9eef3;
-    }
-
-    .visual-slider {
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,.92);
-      background: rgba(255,255,255,.76);
-      box-shadow: var(--shadow);
-    }
-
-    .slide-track {
-      display: flex;
-      transition: transform .7s cubic-bezier(.2, .8, .2, 1);
-    }
-
-    .slide {
-      min-width: 100%;
-      display: grid;
-      grid-template-rows: minmax(340px, 52vh) auto;
-      background: #dfe7f1;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .slide-copy {
       padding: 18px;
-      background: rgba(255,255,255,.92);
-      border-top: 1px solid var(--line);
+      background: rgba(0, 0, 0, .62);
+      backdrop-filter: blur(16px);
     }
 
-    .slide-copy b {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 5px;
+    .modal.open {
+      display: grid;
     }
 
-    .slide-copy span {
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .slider-controls {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      top: 16px;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .slider-btn {
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 16px;
-      background: rgba(255,255,255,.86);
-      box-shadow: 0 12px 26px rgba(24,33,47,.14);
+    .modal-card {
+      position: relative;
+      z-index: 2;
+      width: min(640px, 100%);
+      max-height: calc(100dvh - 36px);
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(83, 244, 255, .18), transparent 38%),
+        rgba(8, 13, 20, .94);
+      box-shadow: 0 34px 110px rgba(0, 0, 0, .52);
+      padding: 14px;
+      padding-top: 46px;
       color: var(--ink);
-      font-size: 22px;
+      scrollbar-width: thin;
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .modal-copy {
+      min-width: 0;
+    }
+
+    .modal-x {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .1);
+      color: white;
+      font-size: 20px;
+      line-height: 1;
       font-weight: 900;
       cursor: pointer;
-      pointer-events: auto;
     }
 
-    .slide-dots {
-      display: flex;
-      gap: 8px;
-      padding: 14px 18px 18px;
-      background: rgba(255,255,255,.92);
-    }
-
-    .slide-dot {
-      flex: 1;
-      height: 6px;
-      border: 0;
+    .modal-card small {
+      display: inline-flex;
+      padding: 5px 8px;
       border-radius: 999px;
-      background: #d6deea;
-      cursor: pointer;
+      color: var(--aqua);
+      background: rgba(83, 244, 255, .1);
+      border: 1px solid rgba(83, 244, 255, .2);
+      font-size: 9px;
+      font-weight: 950;
+      text-transform: uppercase;
     }
 
-    .slide-dot.active {
-      background: var(--gemini);
+    .modal-card h3 {
+      margin: 7px 0 6px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(23px, 4vw, 34px);
+      line-height: .96;
     }
 
-    .visual-source {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
+    .modal-card p {
+      max-width: none;
+      font-size: 11px;
+      line-height: 1.28;
     }
 
-    .strategy-list {
-      display: grid;
-      gap: 12px;
+    .modal-image {
+      display: none;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 210px;
       margin: 0;
+      border-radius: 14px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .14);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .34);
+      cursor: zoom-in;
+    }
+
+    .modal-image.show {
+      display: block;
+    }
+
+    .modal-image.wide {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      max-height: 190px;
+    }
+
+    .modal-card.wide-content {
+      width: min(820px, 100%);
+    }
+
+    .modal-card.wide-content .modal-body {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    }
+
+    .modal-card.wide-content .modal-image.wide {
+      max-height: 250px;
+    }
+
+    .modal-list {
+      display: grid;
+      gap: 7px;
+      margin: 9px 0 0;
       padding: 0;
       list-style: none;
     }
 
-    .strategy-list li {
-      border-left: 5px solid var(--blue);
-      background: rgba(246, 249, 253, .78);
-      padding: 13px 14px;
-      border-radius: 0 18px 18px 0;
+    .modal-list li {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .07);
+      color: var(--steel);
+      font-size: 10px;
+      font-weight: 800;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 9px;
+      align-items: center;
     }
 
-    .risk {
-      border-left-color: var(--amber) !important;
+    .benefit-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(83, 244, 255, .7);
+      border-radius: 999px;
+      color: #53f4ff;
+      background: rgba(83, 244, 255, .08);
+      box-shadow: 0 0 20px rgba(83, 244, 255, .14);
     }
 
-    .good {
+    .benefit-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.3;
+      color: #53f4ff;
+      stroke: currentColor;
+    }
+
+    .benefit-text {
+      min-width: 0;
+      color: #eaf4ff;
+      line-height: 1.25;
+    }
+
+    .modal-close {
+      width: 100%;
+      min-height: 32px;
+      margin-top: 9px;
+      border: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      color: #061016;
+      font-weight: 950;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      place-items: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, .88);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .viewer.open {
+      display: grid;
+    }
+
+    .viewer img {
+      max-width: 94vw;
+      max-height: 82dvh;
+      object-fit: contain;
+      transform: translate(var(--pan-x, 0px), var(--pan-y, 0px)) scale(var(--zoom, 1));
+      transition: transform .18s ease;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .viewer img.dragging {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .expand-image {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(119, 255, 183, .5);
+      border-radius: 999px;
       color: var(--green);
-      font-weight: 850;
+      background: rgba(5, 7, 10, .58);
+      box-shadow: 0 0 24px rgba(119, 255, 183, .14);
+      backdrop-filter: blur(14px);
+      cursor: pointer;
     }
 
-    .bad {
-      color: var(--red);
-      font-weight: 850;
+    .expand-image svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.4;
     }
 
-    canvas { max-height: 380px; }
-
-    .chart-head {
+    .viewer-tools {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 121;
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: start;
-      margin-bottom: 6px;
+      gap: 8px;
     }
 
-    .chart-head small {
-      color: var(--muted);
-      max-width: 260px;
-      text-align: right;
+    .viewer-tools button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: white;
+      font-size: 22px;
+      font-weight: 950;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
     }
 
-    footer {
-      padding: 28px 0 44px;
-      color: var(--muted);
-      font-size: 13px;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    @media (max-width: 900px) {
-      .hero-strip, .controls, .product, .story-steps { grid-template-columns: 1fr 1fr; }
-      .kpi, .wide, .side, .half { grid-column: 1 / -1; }
+    @keyframes calloutPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, .38), 0 0 0 0 rgba(83, 244, 255, .28);
+      }
+      50% {
+        transform: scale(1.045);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, .44), 0 0 0 9px rgba(83, 244, 255, 0);
+      }
     }
 
-    @media (max-width: 560px) {
-      .hero { min-height: 92vh; }
-      .hero-strip, .controls, .product, .photo-grid, .story-steps { grid-template-columns: 1fr; }
-      .hero-stat { min-height: 88px; }
-      section { padding: 34px 0; }
-      .panel { padding: 16px; }
-      .mock-device { min-height: 340px; }
-      .report-item { align-items: flex-start; }
-      .metric-row {
+    @keyframes iconGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(83, 244, 255, 0));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 8px rgba(83, 244, 255, .62));
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes filterLoop {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 7px)); }
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% {
+        opacity: .72;
+        box-shadow: 0 0 20px rgba(83, 244, 255, .08);
+      }
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 34px rgba(83, 244, 255, .22);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        position: fixed;
+        inset: 6px 10px auto;
+        width: auto;
+        height: 40px;
+        border-right: 0;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 1fr;
+        padding: 0 10px;
+      }
+
+      .logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        font-size: 11px;
+      }
+
+      .vertical {
+        writing-mode: initial;
+        transform: none;
+        justify-self: start;
+        margin-left: 10px;
+        max-width: 52vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .swiper {
+        width: 100vw;
+        height: 100dvh;
+      }
+
+      .swiper-slide {
+        padding: 58px 12px 28px;
+      }
+
+      .scene {
+        width: calc(100vw - 24px);
+        height: calc(100dvh - 88px);
+        grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+        gap: 10px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 7vw, 58px);
+      }
+
+      h2, .quote {
+        font-size: clamp(32px, 6vw, 52px);
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      .eyebrow {
+        min-height: 30px;
+        font-size: 10px;
+      }
+
+      .product {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+      }
+
+      .callout {
+        min-width: 92px;
+        padding: 7px;
+        border-radius: 14px;
+      }
+
+      .callout span { font-size: 8px; }
+      .callout b { font-size: 11px; }
+      .callout.one { top: 2%; right: 0; }
+      .callout.two { left: 0; top: 42%; }
+      .callout.three { right: 2%; bottom: 3%; }
+      .callout.four { left: 0; bottom: 3%; }
+      .callout.five { right: 34%; bottom: 3%; }
+
+      .power, .cta {
+        margin-top: 16px;
+        gap: 8px;
+      }
+
+      .chip {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .btn {
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 13px;
+        font-size: 13px;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .metric {
+        padding: 12px;
+        border-radius: 16px;
+      }
+
+      .metric b {
+        font-size: 25px;
+      }
+
+      .metric span {
+        font-size: 11px;
+      }
+
+      .script {
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .line {
+        padding: 10px 11px;
+        border-radius: 14px;
+        font-size: 12px;
+      }
+
+      .detail-media {
+        padding: 10px;
+        border-radius: 20px;
+      }
+
+      .benefit-grid {
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .benefit-card {
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 9px;
+        padding: 9px;
+        border-radius: 14px;
+      }
+
+      .benefit-card i {
+        width: 36px;
+        height: 36px;
+      }
+
+      .benefit-card svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .benefit-card b {
+        font-size: 14px;
+      }
+
+      .benefit-card span {
+        font-size: 12px;
+      }
+
+      .detail-slide .copy h2 {
+        font-size: clamp(24px, 4.8vw, 38px);
+        margin: 8px 0 7px;
+      }
+
+      .detail-slide .copy p {
+        font-size: 12px;
+        line-height: 1.28;
+      }
+
+      .detail-slide .benefit-grid {
+        gap: 6px;
+        margin-top: 9px;
+      }
+
+      .detail-slide .benefit-card {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 7px;
+        padding: 7px 8px;
+        border-radius: 11px;
+      }
+
+      .detail-slide .benefit-card i {
+        width: 30px;
+        height: 30px;
+      }
+
+      .detail-slide .benefit-card svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .detail-slide .benefit-card b {
+        font-size: 12px;
+      }
+
+      .detail-slide .benefit-card span {
+        font-size: 10px;
+        line-height: 1.18;
+      }
+
+      .profit-slide .scene {
+        grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      }
+
+      .profit-slide .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .profit-slide .metric {
+        padding: 8px;
+        border-radius: 12px;
+      }
+
+      .profit-slide .metric b {
+        font-size: 22px;
+      }
+
+      .profit-slide .metric span {
+        font-size: 9px;
+      }
+
+      .profit-slide .benefit-grid {
+        margin-top: 8px;
+      }
+
+      .filter-slide .scene {
+        grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+      }
+
+      .filter-slide .copy h2 {
+        font-size: clamp(23px, 4.5vw, 36px);
+      }
+
+      .filter-card {
+        width: 138px;
+        min-width: 138px;
+        padding: 9px;
+        border-radius: 15px;
+        gap: 5px;
+      }
+
+      .filter-card img {
+        height: calc(100dvh - 255px);
+        min-height: 105px;
+      }
+
+      .filter-card b {
+        font-size: 10px;
+      }
+
+      .filter-card small {
+        font-size: 8px;
+      }
+
+      .filter-card span {
+        font-size: 8.8px;
+        line-height: 1.18;
+      }
+
+      .pagination {
+        right: auto;
+        top: auto;
+        left: 50%;
+        bottom: 8px;
+        transform: translateX(-50%);
+        display: flex;
+      }
+
+      .slide-arrow {
+        width: 38px;
+        height: 38px;
+      }
+
+      .slide-arrow svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .slide-arrow.prev { left: 12px; }
+      .slide-arrow.next { right: 12px; }
+
+      .pagination .swiper-pagination-bullet-active {
+        width: 34px;
+        height: 9px;
+      }
+    }
+
+    @media (max-width: 680px) and (orientation: portrait) {
+      body {
+        overflow: hidden;
+      }
+
+      .scene {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(210px, 36dvh) auto;
+        align-items: start;
+        height: calc(100dvh - 104px);
+        overflow-y: auto;
+        padding-bottom: 12px;
+        scrollbar-width: thin;
+      }
+
+      .copy {
+        align-self: start;
+        overflow: visible;
+      }
+
+      .product-stage {
+        padding: 10px 18px;
+        order: -1;
+        min-height: 210px;
+      }
+
+      .product {
+        width: min(58vw, 230px);
+        height: auto;
+        max-width: 230px;
+        max-height: 100%;
+      }
+
+      .halo {
+        width: min(84vw, 420px);
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .line {
         align-items: flex-start;
         flex-direction: column;
-        gap: 4px;
+      }
+
+      .line b {
+        text-align: left;
+      }
+
+      .mobile-note {
+        display: block;
+        position: fixed;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        z-index: 11;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .modal {
+        align-items: start;
+        padding: 12px;
+        padding-top: 18px;
+      }
+
+      .modal-card {
+        width: min(560px, 100%);
+        max-height: calc(100dvh - 24px);
+        border-radius: 16px;
+        padding: 10px;
+        padding-top: 40px;
+      }
+
+      .modal-body {
+        grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+        gap: 8px;
+      }
+
+      .modal-card h3 {
+        margin: 8px 0 6px;
+        font-size: 21px;
+      }
+
+      .modal-card p {
+        font-size: 10px;
+        line-height: 1.25;
+      }
+
+      .modal-card small {
+        font-size: 8px;
+        padding: 4px 7px;
+      }
+
+      .modal-image {
+        border-radius: 10px;
+        aspect-ratio: 1 / 1;
+        max-height: 150px;
+      }
+
+      .modal-image.wide {
+        aspect-ratio: 16 / 9;
+        max-height: 118px;
+      }
+
+      .modal-card.wide-content {
+        width: min(720px, 100%);
+      }
+
+      .modal-card.wide-content .modal-body {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      }
+
+      .modal-card.wide-content .modal-image.wide {
+        max-height: 170px;
+      }
+
+      .modal-list li {
+        padding: 6px 7px;
+        border-radius: 9px;
+        font-size: 9px;
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 7px;
+      }
+
+      .benefit-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      .benefit-icon svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .modal-list {
+        gap: 5px;
+        margin-top: 7px;
+      }
+
+      .modal-close {
+        min-height: 30px;
+        margin-top: 7px;
+        border-radius: 9px;
+        font-size: 10px;
+      }
+
+      .modal-x {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-image,
+      .modal-image.wide {
+        aspect-ratio: 16 / 7;
+        max-height: 110px;
+      }
+
+      .modal-card.wide-content .modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-height: 720px) {
+      .swiper-slide {
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+
+      .scene {
+        height: calc(100dvh - 36px);
+      }
+
+      h1, h2 {
+        margin: 12px 0 10px;
+        font-size: clamp(42px, 6.2vw, 82px);
+      }
+
+      h2, .quote {
+        font-size: clamp(38px, 5.4vw, 72px);
+      }
+
+      p {
+        font-size: clamp(15px, 1.35vw, 19px);
+        line-height: 1.38;
+      }
+
+      .power, .cta, .metrics, .script {
+        margin-top: 16px;
+      }
+
+      .chip {
+        min-height: 36px;
+        font-size: 13px;
+      }
+
+      .btn {
+        min-height: 44px;
+      }
+    }
+
+    @media (max-width: 920px) and (max-height: 520px) {
+      .rail {
+        inset: 6px 10px auto;
+        height: 38px;
+      }
+
+      .swiper-slide {
+        padding: 50px 10px 14px;
+      }
+
+      .scene {
+        width: calc(100vw - 20px);
+        height: calc(100dvh - 64px);
+        grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+        gap: 8px;
+        align-items: stretch;
+      }
+
+      .copy {
+        align-self: stretch;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 4px;
+        scrollbar-width: thin;
+      }
+
+      .eyebrow {
+        min-height: 26px;
+        padding: 0 9px;
+        font-size: 9px;
+      }
+
+      h1 {
+        margin: 6px 0 6px;
+        font-size: clamp(27px, 5vw, 38px);
+        line-height: .88;
+      }
+
+      h2, .quote {
+        margin: 8px 0 8px;
+        font-size: clamp(28px, 5vw, 38px);
+        line-height: .92;
+      }
+
+      p {
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .power, .cta {
+        margin-top: 8px;
+        gap: 6px;
+      }
+
+      .chip {
+        min-height: 25px;
+        padding: 0 7px;
+        font-size: 9px;
+      }
+
+      .btn {
+        min-height: 30px;
+        padding: 0 9px;
+        font-size: 10px;
+      }
+
+      .product {
+        width: min(38vw, 260px);
+        height: auto;
+        max-width: 260px;
+        max-height: 88%;
+      }
+
+      .product-stage {
+        padding: 14px 24px;
+      }
+
+      .halo {
+        width: min(56vmin, 340px);
+      }
+
+      .callout {
+        min-width: 82px;
+        padding: 6px;
+      }
+
+      .callout span { font-size: 8px; }
+      .callout b { font-size: 10px; }
+      .callout.one { top: 0; right: 0; }
+      .callout.two { left: 0; top: 44%; }
+      .callout.three { right: 3%; bottom: 0; }
+      .callout.four { left: 0; bottom: 0; }
+      .callout.five { right: 34%; bottom: 0; }
+
+      .metrics {
+        margin-top: 10px;
+        gap: 7px;
+      }
+
+      .metric {
+        padding: 9px;
+      }
+
+      .metric b {
+        font-size: 20px;
+      }
+
+      .metric span {
+        font-size: 9px;
+      }
+
+      .script {
+        margin-top: 10px;
+        gap: 6px;
+      }
+
+      .line {
+        padding: 8px 9px;
+        font-size: 10px;
+      }
+
+      .pagination {
+        bottom: 3px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-inner">
-      <span class="eyebrow">Proyecto importacion Bolivia</span>
-      <h1>Cuanto invierte y cuanto gana</h1>
-      <p>Una propuesta directa para inversionista: capital requerido, retorno estimado, ganancia por lote y reparto de utilidad. Sin tecnicismos.</p>
-      <div class="hero-strip">
-        <div class="hero-stat"><b id="heroCapital">Bs 41,710</b><span>Capital estimado para el lote</span></div>
-        <div class="hero-stat"><b id="heroInvestorProfit">Bs 26,783</b><span>Ganancia estimada del inversionista</span></div>
-        <div class="hero-stat"><b id="heroRoi">64%</b><span>Retorno sobre su capital</span></div>
-        <div class="hero-stat"><b>60 dias</b><span>Tiempo estimado de llegada</span></div>
+  <main class="shell">
+    <aside class="rail">
+      <div class="logo">RO</div>
+      <div class="vertical">Purificador RYZTOR 100GPD</div>
+      <div class="counter" id="counter">01/05</div>
+    </aside>
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Filtro RO de encimera</span>
+              <h1>Purificador de agua PRO HERO 10X</h1>
+              <p>Purificador de Agua de Osmosis Inversa de Encimera con produccion 100GPD para limpiar el agua, reducir olor y sabor a cloro, mejorar el sabor, alcalinizar y aportar minerales para una experiencia diaria mas fresca.</p>
+              <div class="power">
+                <span class="chip">100GPD produccion</span>
+                <span class="chip">5 etapas</span>
+                <span class="chip">Quita olor a cloro</span>
+                <span class="chip">Alcaliniza + minerales</span>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.webp" alt="Purificador de agua de osmosis inversa RYZTOR 100GPD">
+              <button class="callout one" type="button" data-image="cloro.webp" data-title="(0) cloro" data-kicker="Resultado" data-text="Ayuda a eliminar el olor y sabor a cloro para que el agua se sienta mas fresca desde el primer vaso." data-benefits="Mejor sabor para tomar agua todos los dias|Cafe y te sin sabor quimico|Compara el olor y sabor antes/despues"><span>Resultado</span><b>(0) cloro</b></button>
+              <button class="callout two" type="button" data-image="osmosis.webp" data-image-layout="wide" data-title="RO 5 etapas" data-kicker="Filtracion" data-text="Sistema de osmosis inversa de 5 etapas pensado para limpiar el agua y retener particulas no deseadas antes del consumo." data-benefits="Filtracion mas completa que una jarra comun|Agua mas confiable para tomar y cocinar|Mayor tranquilidad para familia, cocina y oficina"><span>Filtracion</span><b>RO 5 etapas</b></button>
+              <button class="callout three" type="button" data-image="mineral.webp" data-image-layout="wide" data-title="Agua mineralizada" data-kicker="Agua final" data-text="Despues de filtrar, el agua se vuelve mas agradable, alcalinizada y con minerales para una experiencia diaria premium." data-benefits="Sensacion de agua mas suave|Sabor mas agradable para tomar todos los dias|Producto de uso diario, no de compra impulsiva"><span>Agua final</span><b>Mineralizada</b></button>
+              <button class="callout four" type="button" data-image="bidon.webp" data-title="Menos gasto en bidones" data-kicker="Costo" data-text="En vez de comprar bidones una y otra vez, el hogar produce agua purificada en casa y reduce el gasto repetido." data-benefits="Ahorro mensual frente a compras constantes|Menos tiempo cargando y esperando bidones|Evita bidones calentados por el sol y almacenados en plastico"><span>Costo</span><b>Menos bidones</b></button>
+              <button class="callout five" type="button" data-image="alcalina.webp" data-title="Agua alcalina" data-kicker="pH+" data-text="Agua con pH mas alto, sabor mas suave y minerales añadidos despues de la filtracion." data-benefits="pH mas alto que el agua comun|Sabor mas suave y menos acidez percibida|Aporte de minerales como Ca, Mg, Na y K"><span>pH+</span><b>Alcalina</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="cloro.webp" alt="Agua con olor y sabor a cloro">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Resultado</span>
+              <h2>(0) cloro en el sabor diario.</h2>
+              <p>Ayuda a eliminar el olor y sabor a cloro para que el agua se sienta mas fresca desde el primer vaso.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="glass-water"></i><div><b>Mejor sabor</b><span>para tomar agua todos los dias.</span></div></div>
+                <div class="benefit-card"><i data-lucide="coffee"></i><div><b>Cafe y te</b><span>sin sabor quimico ni olor fuerte.</span></div></div>
+                <div class="benefit-card"><i data-lucide="wind"></i><div><b>Compara antes/despues</b><span>oler y probar hace que el beneficio sea evidente.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="osmosis.webp" alt="Sistema de osmosis inversa de 5 etapas">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Filtracion</span>
+              <h2>RO de 5 etapas para agua mas limpia.</h2>
+              <p>La osmosis inversa trabaja por etapas para retener sedimentos, reducir olores, sabores no deseados y particulas antes del consumo.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="filter"></i><div><b>Filtracion completa</b><span>mas avanzada que una jarra comun.</span></div></div>
+                <div class="benefit-card"><i data-lucide="utensils"></i><div><b>Para tomar y cocinar</b><span>agua mas confiable para el uso diario en casa.</span></div></div>
+                <div class="benefit-card"><i data-lucide="shield-check"></i><div><b>Mas tranquilidad</b><span>para familia, cocina y oficina.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="bidon.webp" alt="Bidones de agua expuestos al sol">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Costo</span>
+              <h2>Menos bidones, menos carga, menos gasto.</h2>
+              <p>En vez de comprar bidones una y otra vez, el hogar produce agua purificada en casa y reduce el gasto repetido.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="coins"></i><div><b>Ahorro mensual</b><span>frente a compras constantes de agua.</span></div></div>
+                <div class="benefit-card"><i data-lucide="clock"></i><div><b>Mas tiempo</b><span>sin pedir, esperar ni cargar bidones.</span></div></div>
+                <div class="benefit-card"><i data-lucide="recycle"></i><div><b>Menos plastico</b><span>evita bidones calentados por el sol y almacenados en casa.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="mineral.webp" alt="Agua mineralizada despues de filtrar">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Agua final</span>
+              <h2>Mineralizada, alcalinizada y mas agradable.</h2>
+              <p>Despues de filtrar, el agua se vuelve mas suave al paladar y suma minerales para una experiencia diaria premium.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="gem"></i><div><b>Con minerales</b><span>para una sensacion de agua mas completa.</span></div></div>
+                <div class="benefit-card"><i data-lucide="sparkles"></i><div><b>Sabor mas agradable</b><span>ideal para tomar todos los dias.</span></div></div>
+                <div class="benefit-card"><i data-lucide="calendar-check"></i><div><b>Uso diario</b><span>un beneficio que se repite vaso tras vaso.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="alcalina.webp" alt="Agua alcalinizada con minerales esenciales">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">pH+</span>
+              <h2>Agua alcalina con pH mas alto y minerales.</h2>
+              <p>La alcalinizacion eleva el pH del agua y puede darle un sabor mas suave, con minerales añadidos despues de la filtracion.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="activity"></i><div><b>pH mas alto</b><span>agua menos acida en comparacion con agua comun.</span></div></div>
+                <div class="benefit-card"><i data-lucide="gem"></i><div><b>Minerales añadidos</b><span>Ca, Mg, Na y K despues de filtrar.</span></div></div>
+                <div class="benefit-card"><i data-lucide="glass-water"></i><div><b>Sabor mas suave</b><span>menor acidez percibida al tomarla.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide profit-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Oportunidad de inversion</span>
+              <h2>Producto importable con margen alto y recompra.</h2>
+              <p>La oportunidad esta en traer un equipo con beneficio demostrable, precio premium y consumo recurrente en filtros. El inversionista entra en un producto tangible, medible y facil de presentar.</p>
+              <div class="metrics">
+                <div class="metric"><b>+300%</b><span>margen obtenido por unidad</span></div>
+                <div class="metric"><b>3x</b><span>venta, filtros y referidos</span></div>
+                <div class="metric"><b>1</b><span>demo para defender el precio</span></div>
+              </div>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="trending-up"></i><div><b>Demanda amplia</b><span>agua limpia para hogares, oficinas y negocios.</span></div></div>
+                <div class="benefit-card"><i data-lucide="refresh-cw"></i><div><b>Ingreso recurrente</b><span>filtros y mantenimiento despues de la primera venta.</span></div></div>
+                <div class="benefit-card"><i data-lucide="badge-dollar-sign"></i><div><b>Margen atractivo</b><span>espacio para publicidad, comisiones y utilidad.</span></div></div>
+              </div>
+            </div>
+            <div class="detail-media">
+              <img src="300.webp" alt="Ventas y ganancia del purificador RYZTOR">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide profit-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="ganancia.webp" alt="Calculo de ganancia bruta por unidad">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Caso unitario para inversionista</span>
+              <h2>Una venta puede dejar Bs 3.500 de ganancia bruta.</h2>
+              <p>Con costo estimado de Bs 1.500 por equipo y precio de venta recomendado de Bs 5.000, cada unidad deja una ganancia bruta de Bs 3.500 antes de publicidad, comisiones y logistica local.</p>
+              <div class="metrics">
+                <div class="metric"><b>Bs 1.500</b><span>costo del producto</span></div>
+                <div class="metric"><b>Bs 5.000</b><span>venta recomendada</span></div>
+                <div class="metric"><b>Bs 3.500</b><span>ganancia bruta</span></div>
+              </div>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="calculator"></i><div><b>Formula transparente</b><span>precio de venta menos costo de importacion.</span></div></div>
+                <div class="benefit-card"><i data-lucide="shield-check"></i><div><b>Margen para operar</b><span>permite cubrir marketing, comisiones y soporte.</span></div></div>
+                <div class="benefit-card"><i data-lucide="presentation"></i><div><b>Pitch defendible</b><span>el valor se demuestra con agua, filtros y pantalla TDS.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide filter-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Recompra del cartucho</span>
+              <h2>La utilidad no termina con la venta del equipo.</h2>
+              <p>Despues de instalar el purificador, el cliente necesita reemplazar el cartucho segun uso y calidad del agua. Las imagenes muestran las capas internas del mismo filtro, no repuestos separados.</p>
+              <div class="metrics">
+                <div class="metric"><b>5</b><span>capas dentro del cartucho</span></div>
+                <div class="metric"><b>1</b><span>repuesto facil de explicar</span></div>
+                <div class="metric"><b class="fit-text">Postventa</b><span>cartucho y soporte periodico</span></div>
+              </div>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="repeat-2"></i><div><b>Ingreso recurrente</b><span>cada cliente puede volver por el cartucho de reemplazo.</span></div></div>
+                <div class="benefit-card"><i data-lucide="layers"></i><div><b>Valor tecnico visible</b><span>las capas internas justifican el mantenimiento.</span></div></div>
+                <div class="benefit-card"><i data-lucide="users"></i><div><b>Relacion con el cliente</b><span>la reposicion abre nuevas ventas y referidos.</span></div></div>
+              </div>
+            </div>
+            <div class="filter-strip" aria-label="Capas internas del cartucho">
+              <div class="filter-track">
+                <article class="filter-card">
+                  <img src="1filtro.webp" alt="Primera capa del cartucho">
+                  <small>Capa 1</small>
+                  <b>Sedimentos 5 micras</b>
+                  <span>Retiene arena, oxido, tierra, suciedad y particulas grandes.</span>
+                </article>
+                <article class="filter-card">
+                  <img src="2filtro.webp" alt="Segunda capa del cartucho">
+                  <small>Capa 2</small>
+                  <b>Carbon activado block</b>
+                  <span>Reduce cloro, olor, sabor y compuestos organicos no deseados.</span>
+                </article>
+                <article class="filter-card">
+                  <img src="3filtro.webp" alt="Tercera capa del cartucho">
+                  <small>Capa 3</small>
+                  <b>Membrana interna</b>
+                  <span>Filtracion fina para reducir solidos disueltos y contaminantes.</span>
+                </article>
+                <article class="filter-card">
+                  <img src="4filtro.webp" alt="Cuarta capa del cartucho">
+                  <small>Capa 4</small>
+                  <b>Post carbon</b>
+                  <span>Mejora el sabor final y reduce olores residuales.</span>
+                </article>
+                <article class="filter-card">
+                  <img src="5filtro.webp" alt="Quinta capa del cartucho">
+                  <small>Capa 5</small>
+                  <b>Mineral alcalino</b>
+                  <span>Aporta minerales y ayuda a elevar el pH del agua final.</span>
+                </article>
+                <article class="filter-card" aria-hidden="true">
+                  <img src="1filtro.webp" alt="">
+                  <small>Capa 1</small>
+                  <b>Sedimentos 5 micras</b>
+                  <span>Retiene arena, oxido, tierra, suciedad y particulas grandes.</span>
+                </article>
+                <article class="filter-card" aria-hidden="true">
+                  <img src="2filtro.webp" alt="">
+                  <small>Capa 2</small>
+                  <b>Carbon activado block</b>
+                  <span>Reduce cloro, olor, sabor y compuestos organicos no deseados.</span>
+                </article>
+                <article class="filter-card" aria-hidden="true">
+                  <img src="3filtro.webp" alt="">
+                  <small>Capa 3</small>
+                  <b>Membrana interna</b>
+                  <span>Filtracion fina para reducir solidos disueltos y contaminantes.</span>
+                </article>
+                <article class="filter-card" aria-hidden="true">
+                  <img src="4filtro.webp" alt="">
+                  <small>Capa 4</small>
+                  <b>Post carbon</b>
+                  <span>Mejora el sabor final y reduce olores residuales.</span>
+                </article>
+                <article class="filter-card" aria-hidden="true">
+                  <img src="5filtro.webp" alt="">
+                  <small>Capa 5</small>
+                  <b>Mineral alcalino</b>
+                  <span>Aporta minerales y ayuda a elevar el pH del agua final.</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide profit-slide investor-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Propuesta para inversionista</span>
+              <h2>Bs 100.000 para ampliar el lote y proyectar Bs 170.000.</h2>
+              <p>La inversion no cubre todo el proyecto: se suma al capital que ya se esta moviendo para traer mas unidades. Ese aporte permite ampliar el lote, acelerar la importacion y aumentar el inventario disponible para venta.</p>
+              <div class="metrics">
+                <div class="metric"><b>Bs 100.000</b><span>capital de inversion</span></div>
+                <div class="metric"><b>Bs 70.000</b><span>ganancia bruta estimada</span></div>
+                <div class="metric"><b>Bs 170.000</b><span>capital + utilidad proyectada</span></div>
+              </div>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="calendar-days"></i><div><b>Plazo objetivo: 7 meses</b><span>tiempo estimado para importar, vender y cerrar el ciclo.</span></div></div>
+                <div class="benefit-card"><i data-lucide="package-check"></i><div><b>Aporte para ampliar lote</b><span>el capital se convierte en mas producto fisico vendible.</span></div></div>
+                <div class="benefit-card"><i data-lucide="file-check-2"></i><div><b>Control por lote</b><span>compra, venta, gastos y utilidad se pueden medir por unidad.</span></div></div>
+              </div>
+            </div>
+            <div class="detail-media">
+              <img src="purificador.webp" alt="Purificador como inventario de inversion">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide is-hidden-slide" id="demo">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">La demostracion vende</span>
+              <h2>La venta empieza cuando prueban agua sin sabor a cloro.</h2>
+              <p>En MLM gana el producto que la persona siente en la boca. Sirves un vaso, comparas olor, comparas sabor y explicas: filtra, limpia, alcaliniza y remineraliza. Es una demostracion simple y poderosa.</p>
+              <div class="metrics">
+                <div class="metric"><b>60s</b><span>para captar atencion</span></div>
+                <div class="metric"><b>1</b><span>vaso para abrir conversacion</span></div>
+                <div class="metric"><b>5</b><span>argumentos faciles</span></div>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.webp" alt="Pantalla digital del purificador de agua RYZTOR">
+              <button class="callout one" type="button" data-image="cloro.webp" data-title="Sin olor fuerte" data-kicker="Prueba" data-text="El olor a cloro es una de las objeciones mas faciles de demostrar: acercas el vaso, comparas y dejas que la persona note la diferencia." data-benefits="Impacto inmediato en demostracion|No requiere explicacion larga|Perfecto para reuniones en casa"><span>Prueba</span><b>Sin olor fuerte</b></button>
+              <button class="callout two" type="button" data-image="cloro.webp" data-title="Sabor mas suave" data-kicker="Sabor" data-text="Cuando el agua sabe mejor, la familia toma mas agua y usa el purificador para cocinar, cafe, te y visitas." data-benefits="Mas agradable para ninos y adultos|Mejor base para cafe y te|Beneficio que se siente en la boca"><span>Sabor</span><b>Mas suave</b></button>
+              <button class="callout three" type="button" data-title="Agua diaria" data-kicker="Cierre" data-text="No es un lujo que se usa una vez: es agua para todos los dias, para tomar, cocinar, preparar cafe, te y servir a la familia." data-benefits="Uso constante en casa|Agua disponible sin cargar bidones|Menos compras repetidas de agua"><span>Cierre</span><b>Agua diaria</b></button>
+              <button class="callout four" type="button" data-image="bidon.webp" data-title="Adios bidones al sol" data-kicker="Costo" data-text="El bidon se compra, se carga, se almacena y muchas veces pasa horas al sol. El purificador cambia ese gasto por produccion diaria en casa." data-benefits="Menos dependencia del delivery de agua|Menos plastico entrando a la casa|Historia potente: ahorro + tiempo + confianza"><span>Costo</span><b>Sin bidones</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide is-hidden-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Guion primera hora</span>
+              <h2>La reunion debe oler, saborear y demostrar limpieza.</h2>
+              <p>La primera hora no es teoria. Es agua de grifo contra agua purificada: olor a cloro, sabor a cloro, filtracion RO, alcalinizacion y minerales. La gente entiende el beneficio en el primer vaso.</p>
+              <div class="script">
+                <div class="line"><span>Minuto 0-10</span><b>Oler agua del grifo vs purificada</b></div>
+                <div class="line"><span>Minuto 10-25</span><b>Probar sabor: menos cloro, mas frescura</b></div>
+                <div class="line"><span>Minuto 25-40</span><b>Explicar RO, alcalinizacion y minerales</b></div>
+                <div class="line"><span>Minuto 40-60</span><b>Cerrar: hogar limpio o negocio duplicable</b></div>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.webp" alt="Purificador RYZTOR con panel tactil">
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide is-hidden-slide" id="red">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">MLM exagerado</span>
+              <h2>Una familia siente la diferencia. Una red la multiplica.</h2>
+              <p>El mensaje es facil de duplicar: agua limpia, sin olor a cloro, sin sabor pesado, alcalinizada y con minerales. Sirve para hijos, cafe, te, cocina, visitas, oficina y cada recomendacion abre otra demostracion.</p>
+              <div class="script">
+                <div class="line"><span>Cliente</span><b>Quiere quitar cloro, olor y mal sabor</b></div>
+                <div class="line"><span>Anfitrion</span><b>Invita a probar agua mas fresca</b></div>
+                <div class="line"><span>Socio</span><b>Duplica la prueba vaso contra vaso</b></div>
+                <div class="line"><span>Lider</span><b>Entrena beneficios y cierres semanales</b></div>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.webp" alt="Purificador RO para venta en red">
+              <button class="callout one" type="button" data-image="cloro.webp" data-title="Menos cloro" data-kicker="Beneficio" data-text="El beneficio se entiende en segundos: menos olor, menos sabor pesado y agua mas agradable para el consumo familiar." data-benefits="Mensaje facil de duplicar|Beneficio familiar y cotidiano|Comparacion simple vaso contra vaso"><span>Beneficio</span><b>Menos cloro</b></button>
+              <button class="callout two" type="button" data-title="Prueba simple" data-kicker="Replica" data-text="Cada socio puede repetir la misma demostracion sin ser experto: agua de grifo, agua filtrada, olor, sabor y cierre." data-benefits="Ideal para nuevos vendedores|Guion corto y repetible|Menos dependencia del lider"><span>Replica</span><b>Prueba simple</b></button>
+              <button class="callout three" type="button" data-title="Agua + referido" data-kicker="Movimiento" data-text="El producto abre conversacion natural: quien prueba agua mejor puede recomendar a otra familia, oficina o negocio." data-benefits="Referidos por experiencia real|Producto demostrable en reuniones|Puerta de entrada para construir red"><span>Movimiento</span><b>Agua + referido</b></button>
+              <button class="callout four" type="button" data-image="bidon.webp" data-title="Ahorro que se repite" data-kicker="Costo" data-text="El costo de los bidones vuelve cada semana y cada mes. Con un purificador en casa, el agua diaria deja de depender de compras constantes." data-benefits="Ahorro acumulado mes tras mes|Menos tiempo perdido pidiendo, esperando y cargando agua|Menos espacio ocupado por bidones en la casa"><span>Costo</span><b>Ahorro mensual</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide is-hidden-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Cierre</span>
+              <div class="quote">“No vendas un filtro. Vende agua limpia, sin olor a cloro, con mejor sabor y minerales.”</div>
+              <div class="cta">
+                <a class="btn" href="https://wa.me/" target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
+                <a class="btn dark" href="#demo">Repetir guion</a>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.webp" alt="Purificador de agua RYZTOR para cierre comercial">
+              <button class="callout one" type="button" data-title="Agua limpia" data-kicker="Promesa" data-text="La promesa central es simple: agua purificada para tomar, cocinar y servir con mas confianza todos los dias." data-benefits="Beneficio emocional para la familia|Uso diario y visible|Mas valor percibido en la cocina"><span>Promesa</span><b>Agua limpia</b></button>
+              <button class="callout two" type="button" data-image="cloro.webp" data-title="Mejor sabor" data-kicker="Prueba" data-text="El sabor no se discute: el agua se prueba. Menos olor a cloro, menos sabor pesado y una experiencia mas suave en cada vaso." data-benefits="Agua mas agradable para toda la familia|Mejor base para cafe, te y cocina|Beneficio inmediato desde el primer vaso"><span>Prueba</span><b>Mejor sabor</b></button>
+              <button class="callout three" type="button" data-title="Agua para la casa" data-kicker="Oferta" data-text="Agua limpia en casa para tomar, cocinar, preparar bebidas y servir a visitas sin depender de bidones almacenados." data-benefits="Agua disponible para tomar y cocinar|Menos compras repetidas de agua|Mas control sobre el agua que consume la familia"><span>Oferta</span><b>Para tu casa</b></button>
+              <button class="callout four" type="button" data-image="bidon.webp" data-title="Costo inteligente" data-kicker="Costo" data-text="Deja de pagar por agua en bidones expuestos al calor, al transporte y al plastico. Cambia ese gasto repetido por agua purificada en casa." data-benefits="Ahorro masivo en compras repetidas|Menos esfuerzo cargando bidones pesados|Menos plastico y menos agua expuesta al sol"><span>Costo</span><b>No mas bidones</b></button>
+            </div>
+          </div>
+        </section>
       </div>
+      <div class="pagination"></div>
     </div>
-  </header>
-
-  <main>
-    <section>
-      <div class="wrap">
-        <h2>Numeros que convencen</h2>
-        <p class="lead">El inversionista no necesita escuchar toda la parte tecnica. Necesita ver tres cosas: cuanto pone, cuanto recupera y cuanto gana.</p>
-        <div class="panel">
-          <div class="prompt-box">
-            <div class="spark">*</div>
-            <div>
-              <b>Pregunta clave: "Si pongo capital, que retorno recibo?"</b>
-              <span>Mueve los supuestos y la ganancia del inversionista se actualiza en toda la propuesta.</span>
-            </div>
-          </div>
-          <div class="controls">
-            <div class="control">
-              <label>Compra USD <b id="purchaseUsdVal">$4.30</b></label>
-              <input id="purchaseUsd" type="range" min="3" max="12" step="0.1" value="4.3">
-            </div>
-            <div class="control">
-              <label>Dolar Bs <b id="exchangeVal">9.70</b></label>
-              <input id="exchange" type="range" min="6.9" max="12.5" step="0.1" value="9.7">
-            </div>
-            <div class="control">
-              <label>Factor puesto aqui <b id="landedFactorVal">2.0x</b></label>
-              <input id="landedFactor" type="range" min="1.4" max="3" step="0.1" value="2">
-            </div>
-            <div class="control">
-              <label>Precio venta Bs <b id="salePriceVal">300</b></label>
-              <input id="salePrice" type="range" min="180" max="420" step="5" value="300">
-            </div>
-            <div class="control">
-              <label>Publicidad por venta <b id="adCostVal">40</b></label>
-              <input id="adCost" type="range" min="0" max="120" step="5" value="40">
-            </div>
-            <div class="control">
-              <label>Comision call center <b id="callCommissionVal">50</b></label>
-              <input id="callCommission" type="range" min="20" max="100" step="5" value="50">
-            </div>
-            <div class="control">
-              <label>Comision organica <b id="organicCommissionVal">80</b></label>
-              <input id="organicCommission" type="range" min="30" max="130" step="5" value="80">
-            </div>
-            <div class="control">
-              <label>Venta mayorista Bs <b id="wholesalePriceVal">200</b></label>
-              <input id="wholesalePrice" type="range" min="140" max="280" step="5" value="200">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="grid">
-          <div class="panel kpi">
-            <div class="label">Capital por unidad</div>
-            <div class="value" id="purchaseBs">Bs 42</div>
-            <div class="note">Compra base convertida a bolivianos</div>
-          </div>
-          <div class="panel kpi">
-            <div class="label">Costo real estimado</div>
-            <div class="value" id="landedCost">Bs 83</div>
-            <div class="note">Unidad lista para vender</div>
-          </div>
-          <div class="panel kpi">
-            <div class="label">Margen antes de venta</div>
-            <div class="value" id="grossProfit">Bs 217</div>
-            <div class="note" id="grossMargin">72.2% del precio</div>
-          </div>
-          <div class="panel kpi">
-            <div class="label">Precio de venta</div>
-            <div class="value" id="breakEven">28%</div>
-            <div class="note">Objetivo comercial por unidad</div>
-          </div>
-
-          <div class="panel wide">
-            <h2>Resultado por canal</h2>
-            <p class="lead">Esto muestra donde se gana mas dinero por unidad y que canal conviene empujar primero.</p>
-            <div class="report-list" id="scenarioRows"></div>
-          </div>
-
-          <div class="panel side">
-            <h2>En simple</h2>
-            <ul class="strategy-list">
-              <li><b>Mejor argumento:</b> aun pagando publicidad y comision, el modelo deja utilidad positiva.</li>
-              <li><b>Mayor retorno:</b> venta sin publicidad deja mas ganancia por unidad.</li>
-              <li><b>Mas velocidad:</b> mayoristas ayudan a recuperar capital mas rapido.</li>
-            </ul>
-          </div>
-
-          <div class="panel half">
-            <div class="chart-head">
-              <h2>Utilidad por unidad</h2>
-              <small>Mientras mas alta la barra, mas fuerte el canal.</small>
-            </div>
-            <canvas id="profitChart"></canvas>
-          </div>
-          <div class="panel half">
-            <div class="chart-head">
-              <h2>Precio explicado</h2>
-              <small>Asi se divide una venta de call center.</small>
-            </div>
-            <canvas id="priceChart"></canvas>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap product">
-        <div>
-          <h2>Por que se puede vender</h2>
-          <p class="lead">Es un producto de compra facil de entender: familiar, portatil, de precio accesible y con venta directa por llamada, WhatsApp o mayoristas.</p>
-          <ul class="strategy-list">
-            <li><b>Precio objetivo:</b> Bs 300 al cliente final.</li>
-            <li><b>Mayorista rentable:</b> Bs 190 a Bs 220 segun volumen.</li>
-            <li><b>Gancho comercial:</b> entrega local, pago contra entrega, demostracion por video y atencion por WhatsApp.</li>
-          </ul>
-        </div>
-        <div>
-          <div class="visual-slider" aria-label="Presentacion visual del negocio">
-            <div class="slide-track" id="slideTrack">
-              <article class="slide">
-                <img src="https://source.unsplash.com/1200x900/?portable-nebulizer,medical-device" alt="Nebulizador portatil referencial">
-                <div class="slide-copy">
-                  <b>Producto visible</b>
-                  <span>Nebulizador portatil: se entiende rapido, se muestra facil por video y se vende por necesidad familiar.</span>
-                </div>
-              </article>
-              <article class="slide">
-                <img src="https://source.unsplash.com/1200x900/?call-center,headset,operator" alt="Operador de call center">
-                <div class="slide-copy">
-                  <b>Venta por call center</b>
-                  <span>El canal permite explicar el producto, cerrar por telefono y medir costo por venta.</span>
-                </div>
-              </article>
-              <article class="slide">
-                <img src="https://source.unsplash.com/1200x900/?delivery,warehouse,medical-supplies" alt="Entrega y logistica">
-                <div class="slide-copy">
-                  <b>Entrega y mayoristas</b>
-                  <span>Una parte del lote puede rotar por mayoristas para recuperar capital con mas velocidad.</span>
-                </div>
-              </article>
-              <article class="slide">
-                <img src="https://source.unsplash.com/1200x900/?investor,financial-growth,meeting" alt="Retorno para inversionista">
-                <div class="slide-copy">
-                  <b>Retorno claro</b>
-                  <span>El inversionista ve capital, ganancia estimada y ROI sin entrar en detalles tecnicos.</span>
-                </div>
-              </article>
-            </div>
-            <div class="slider-controls">
-              <button class="slider-btn" type="button" id="prevSlide" aria-label="Anterior">&lt;</button>
-              <button class="slider-btn" type="button" id="nextSlide" aria-label="Siguiente">&gt;</button>
-            </div>
-            <div class="slide-dots" id="slideDots" aria-label="Selector de laminas"></div>
-          </div>
-          <div class="visual-source">Imagenes externas referenciales. Producto base enlazado al final desde Alibaba; tambien se uso referencia visual de nebulizadores portatiles tipo Rossmax/mesh.</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <h2>Ganancia del inversionista</h2>
-        <p class="lead">Propuesta clara: el inversionista financia el lote, recupera su capital y despues recibe un porcentaje de la utilidad neta.</p>
-        <div class="story-steps">
-          <div class="step"><strong>1</strong><b>Pone capital</b><span>Financia el inventario inicial.</span></div>
-          <div class="step"><strong>2</strong><b>Se vende</b><span>Por call center, vendedores y mayoristas.</span></div>
-          <div class="step"><strong>3</strong><b>Recupera</b><span>Primero vuelve su dinero invertido.</span></div>
-          <div class="step"><strong>4</strong><b>Gana</b><span>Recibe su porcentaje de utilidad.</span></div>
-        </div>
-        <br>
-        <div class="grid">
-          <div class="panel half">
-            <h2>Reparto recomendado</h2>
-            <div class="report-list">
-              <div class="report-row reparto">
-                <div class="report-main"><span class="pill">Conservador</span></div>
-                <div class="report-item"><span>Inversionista</span><b>35%</b></div>
-                <div class="report-item"><span>Operador</span><b>65%</b></div>
-                <div class="report-note"><span>Cuando usarlo</span><b>Si tu pones ventas, aduana y operacion</b></div>
-              </div>
-              <div class="report-row reparto">
-                <div class="report-main"><span class="pill">Balanceado</span></div>
-                <div class="report-item"><span>Inversionista</span><b>40%</b></div>
-                <div class="report-item"><span>Operador</span><b>60%</b></div>
-                <div class="report-note"><span>Cuando usarlo</span><b>Si el inversionista financia todo el lote</b></div>
-              </div>
-              <div class="report-row reparto">
-                <div class="report-main"><span class="pill">Agresivo</span></div>
-                <div class="report-item"><span>Inversionista</span><b>50%</b></div>
-                <div class="report-item"><span>Operador</span><b>50%</b></div>
-                <div class="report-note"><span>Cuando usarlo</span><b>Solo si tambien cubre publicidad y reposicion</b></div>
-              </div>
-            </div>
-          </div>
-          <div class="panel half">
-            <h2>Lote y retorno</h2>
-            <div class="controls">
-              <div class="control">
-                <label>Unidades lote <b id="unitsVal">500</b></label>
-                <input id="units" type="range" min="50" max="3000" step="50" value="500">
-              </div>
-              <div class="control">
-                <label>% inversionista <b id="investorShareVal">40%</b></label>
-                <input id="investorShare" type="range" min="20" max="60" step="5" value="40">
-              </div>
-            </div>
-            <div class="metric-list">
-              <div class="metric-row"><span>Capital estimado para inventario</span><b id="lotCapital">Bs 41,710</b></div>
-              <div class="metric-row"><span>Utilidad neta lote mixto</span><b id="lotProfit">Bs 66,958</b></div>
-              <div class="metric-row"><span>Ganancia inversionista</span><b id="investorProfit">Bs 26,783</b></div>
-              <div class="metric-row"><span>Ganancia operador</span><b id="operatorProfit">Bs 40,175</b></div>
-              <div class="metric-row"><span>ROI inversionista</span><b id="investorRoi">64.2%</b></div>
-            </div>
-            <div style="margin-top:18px">
-              <canvas id="investorChart"></canvas>
-            </div>
-          </div>
-          <div class="panel full">
-            <h2>Mensaje para cerrar inversion</h2>
-            <ul class="strategy-list">
-              <li><b>El inversionista pone capital:</b> con 500 unidades, el capital estimado es Bs 41,710.</li>
-              <li><b>El negocio vende el lote:</b> usando 50% call center, 30% vendedores y 20% mayoristas.</li>
-              <li><b>El inversionista recupera capital:</b> primero vuelve su inversion inicial.</li>
-              <li><b>Despues gana:</b> con 40% de utilidad, su ganancia estimada es Bs 26,783 y su ROI aproximado es 64.2%.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <button class="slide-arrow prev" type="button" id="prevSlide" aria-label="Diapositiva anterior"><i data-lucide="chevron-left"></i></button>
+    <button class="slide-arrow next" type="button" id="nextSlide" aria-label="Diapositiva siguiente"><i data-lucide="chevron-right"></i></button>
+    <div class="mobile-note">Desliza horizontal</div>
   </main>
 
-  <footer>
-    <div class="wrap">
-      Producto base:
-      <a href="https://spanish.alibaba.com/product-detail/Handheld-Medical-Nebulizer-for-Oxygen-Therapy-1601571861965.html" target="_blank" rel="noreferrer">Alibaba - Handheld Medical Nebulizer</a>.
-      Los calculos son referenciales y se ajustan desde los controles de la pagina.
+  <div class="modal" id="benefitModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-x" type="button" id="modalX" aria-label="Cerrar">×</button>
+      <div class="modal-body">
+        <img class="modal-image" id="modalImage" src="" alt="">
+        <div class="modal-copy">
+          <small id="modalKicker">Beneficio</small>
+          <h3 id="modalTitle">Agua limpia</h3>
+          <p id="modalText">Beneficio del purificador.</p>
+          <ul class="modal-list" id="modalList"></ul>
+          <button class="modal-close" type="button" id="modalClose">Entendido</button>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+
+  <div class="viewer" id="imageViewer" aria-hidden="true">
+    <div class="viewer-tools">
+      <button type="button" id="zoomOut" aria-label="Alejar">−</button>
+      <button type="button" id="zoomIn" aria-label="Acercar">+</button>
+      <button type="button" id="viewerClose" aria-label="Cerrar">×</button>
+    </div>
+    <img id="viewerImage" src="" alt="">
+  </div>
 
   <script>
-    const $ = (id) => document.getElementById(id);
-    const money = (value) => `Bs ${Math.round(value).toLocaleString("es-BO")}`;
-    const pct = (value) => `${value.toFixed(1)}%`;
+    const counter = document.getElementById("counter");
+    const modal = document.getElementById("benefitModal");
+    const modalKicker = document.getElementById("modalKicker");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const modalImage = document.getElementById("modalImage");
+    const modalList = document.getElementById("modalList");
+    const modalClose = document.getElementById("modalClose");
+    const modalX = document.getElementById("modalX");
+    const imageViewer = document.getElementById("imageViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerClose = document.getElementById("viewerClose");
+    const zoomIn = document.getElementById("zoomIn");
+    const zoomOut = document.getElementById("zoomOut");
+    const prevSlide = document.getElementById("prevSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    let imageZoom = 1;
+    let panX = 0;
+    let panY = 0;
+    let dragStart = null;
+    let pinchStart = null;
 
-    const inputs = [
-      "purchaseUsd", "exchange", "landedFactor", "salePrice", "adCost",
-      "callCommission", "organicCommission", "wholesalePrice", "units", "investorShare"
-    ];
+    document.querySelectorAll(".is-hidden-slide").forEach((slide) => slide.remove());
 
-    let profitChart;
-    let priceChart;
-    let investorChart;
+    const swiper = new Swiper(".swiper", {
+      speed: 820,
+      grabCursor: true,
+      keyboard: { enabled: true },
+      mousewheel: { forceToAxis: true },
+      pagination: { el: ".pagination", clickable: true },
+      touchRatio: 1.15
+    });
 
-    function chartGradient(ctx, colors) {
-      const gradient = ctx.createLinearGradient(0, 0, 0, 320);
-      colors.forEach(([stop, color]) => gradient.addColorStop(stop, color));
-      return gradient;
+    function pad(value) {
+      return String(value).padStart(2, "0");
     }
 
-    function commonChartOptions() {
-      return {
-        responsive: true,
-        maintainAspectRatio: true,
-        animation: {
-          duration: 950,
-          easing: "easeOutQuart"
-        },
-        interaction: {
-          intersect: false,
-          mode: "index"
-        },
-        plugins: {
-          legend: {
-            labels: {
-              usePointStyle: true,
-              boxWidth: 8,
-              boxHeight: 8,
-              color: "#475467",
-              font: { weight: "700" }
-            }
-          },
-          tooltip: {
-            backgroundColor: "rgba(24, 33, 47, .92)",
-            padding: 12,
-            cornerRadius: 14,
-            titleFont: { weight: "800" },
-            bodyFont: { weight: "700" }
-          }
-        },
-        scales: {
-          x: {
-            grid: { display: false },
-            ticks: { color: "#667085", font: { weight: "700" } }
-          },
-          y: {
-            beginAtZero: true,
-            grid: { color: "rgba(102, 112, 133, .14)" },
-            ticks: { color: "#667085", font: { weight: "700" } }
-          }
-        }
-      };
+    function updateCounter() {
+      counter.textContent = `${pad(swiper.activeIndex + 1)}/${pad(swiper.slides.length)}`;
     }
 
-    function read() {
-      return {
-        purchaseUsd: Number($("purchaseUsd").value),
-        exchange: Number($("exchange").value),
-        landedFactor: Number($("landedFactor").value),
-        salePrice: Number($("salePrice").value),
-        adCost: Number($("adCost").value),
-        callCommission: Number($("callCommission").value),
-        organicCommission: Number($("organicCommission").value),
-        wholesalePrice: Number($("wholesalePrice").value),
-        units: Number($("units").value),
-        investorShare: Number($("investorShare").value)
-      };
-    }
+    function animateActive() {
+      const slide = swiper.slides[swiper.activeIndex];
+      const copy = slide.querySelectorAll(".eyebrow, h1, h2, .quote, p, .chip, .metric, .line, .btn");
+      const product = slide.querySelector(".product");
+      const callouts = slide.querySelectorAll(".callout");
 
-    function channelRows(data) {
-      const purchaseBs = data.purchaseUsd * data.exchange;
-      const landed = purchaseBs * data.landedFactor;
-      return [
-        {
-          name: "Call center + publicidad",
-          income: data.salePrice,
-          product: landed,
-          ads: data.adCost,
-          commission: data.callCommission
-        },
-        {
-          name: "Vendedor sin publicidad",
-          income: data.salePrice,
-          product: landed,
-          ads: 0,
-          commission: data.organicCommission
-        },
-        {
-          name: "Mayorista",
-          income: data.wholesalePrice,
-          product: landed,
-          ads: 0,
-          commission: 0
-        }
-      ].map((row) => {
-        row.net = row.income - row.product - row.ads - row.commission;
-        row.margin = row.net / row.income * 100;
-        return row;
+      gsap.fromTo(copy, { y: 30, opacity: 0 }, {
+        y: 0,
+        opacity: 1,
+        duration: .75,
+        ease: "power3.out",
+        stagger: .045
+      });
+
+      if (product) {
+        gsap.fromTo(product, { y: 36, scale: .94, opacity: .2 }, {
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          duration: .95,
+          ease: "power3.out"
+        });
+      }
+
+      gsap.fromTo(callouts, { x: 24, opacity: 0 }, {
+        x: 0,
+        opacity: 1,
+        duration: .65,
+        delay: .22,
+        ease: "power3.out",
+        stagger: .08
       });
     }
 
-    function update() {
-      const data = read();
-      const purchaseBs = data.purchaseUsd * data.exchange;
-      const landed = purchaseBs * data.landedFactor;
-      const gross = data.salePrice - landed;
-      const grossMargin = gross / data.salePrice * 100;
-      const rows = channelRows(data);
-      const avgNet = rows[0].net * .5 + rows[1].net * .3 + rows[2].net * .2;
-      const lotProfit = avgNet * data.units;
-      const investorProfit = lotProfit * data.investorShare / 100;
-      const operatorProfit = lotProfit - investorProfit;
-
-      $("purchaseUsdVal").textContent = `$${data.purchaseUsd.toFixed(2)}`;
-      $("exchangeVal").textContent = data.exchange.toFixed(2);
-      $("landedFactorVal").textContent = `${data.landedFactor.toFixed(1)}x`;
-      $("salePriceVal").textContent = data.salePrice;
-      $("adCostVal").textContent = data.adCost;
-      $("callCommissionVal").textContent = data.callCommission;
-      $("organicCommissionVal").textContent = data.organicCommission;
-      $("wholesalePriceVal").textContent = data.wholesalePrice;
-      $("unitsVal").textContent = data.units.toLocaleString("es-BO");
-      $("investorShareVal").textContent = `${data.investorShare}%`;
-
-      const roi = investorProfit / (landed * data.units) * 100;
-
-      $("heroCapital").textContent = money(landed * data.units);
-      $("heroInvestorProfit").textContent = money(investorProfit);
-      $("heroRoi").textContent = `${Math.round(roi)}%`;
-      $("purchaseBs").textContent = money(purchaseBs);
-      $("landedCost").textContent = money(landed);
-      $("grossProfit").textContent = money(gross);
-      $("grossMargin").textContent = `${pct(grossMargin)} sobre venta`;
-      $("breakEven").textContent = money(data.salePrice);
-
-      $("scenarioRows").innerHTML = rows.map((row) => `
-        <div class="report-row">
-          <div class="report-main">${row.name}</div>
-          <div class="report-item"><span>Ingreso</span><b>${money(row.income)}</b></div>
-          <div class="report-item"><span>Costo</span><b>${money(row.product)}</b></div>
-          <div class="report-item"><span>Publicidad</span><b>${money(row.ads)}</b></div>
-          <div class="report-item"><span>Comision</span><b>${money(row.commission)}</b></div>
-          <div class="report-item"><span>Utilidad</span><b class="${row.net >= 0 ? "good" : "bad"}">${money(row.net)} / ${pct(row.margin)}</b></div>
-        </div>
-      `).join("");
-
-      $("lotCapital").textContent = money(landed * data.units);
-      $("lotProfit").textContent = money(lotProfit);
-      $("investorProfit").textContent = money(investorProfit);
-      $("operatorProfit").textContent = money(operatorProfit);
-      $("investorRoi").textContent = pct(roi);
-
-      const labels = rows.map((row) => row.name);
-      const netData = rows.map((row) => Math.round(row.net));
-      const call = rows[0];
-
-      const profitCtx = $("profitChart").getContext("2d");
-      const profitGradient = chartGradient(profitCtx, [
-        [0, "rgba(79, 124, 255, .95)"],
-        [.48, "rgba(138, 92, 246, .82)"],
-        [1, "rgba(18, 165, 148, .70)"]
-      ]);
-      if (!profitChart) {
-        profitChart = new Chart($("profitChart"), {
-          type: "bar",
-          data: {
-            labels,
-            datasets: [{
-              label: "Utilidad neta Bs",
-              data: netData,
-              backgroundColor: profitGradient,
-              borderRadius: 18,
-              borderSkipped: false,
-              maxBarThickness: 54
-            }]
-          },
-          options: {
-            ...commonChartOptions(),
-            indexAxis: "y",
-            scales: {
-              x: {
-                beginAtZero: true,
-                grid: { color: "rgba(102, 112, 133, .14)" },
-                ticks: { color: "#667085", font: { weight: "700" } }
-              },
-              y: {
-                grid: { display: false },
-                ticks: { color: "#667085", font: { weight: "700" } }
-              }
-            }
-          }
-        });
-      } else {
-        profitChart.data.labels = labels;
-        profitChart.data.datasets[0].data = netData;
-        profitChart.data.datasets[0].backgroundColor = profitGradient;
-        profitChart.update();
+    function openBenefitModal(button) {
+      function benefitIcon(text) {
+        const value = text.toLowerCase();
+        if (value.includes("ahorro") || value.includes("compras") || value.includes("gasto")) return "coins";
+        if (value.includes("tiempo") || value.includes("esperando")) return "clock";
+        if (value.includes("cargando") || value.includes("carga") || value.includes("pesados")) return "package";
+        if (value.includes("plastico") || value.includes("sol") || value.includes("bidon")) return "recycle";
+        if (value.includes("cafe") || value.includes("te")) return "coffee";
+        if (value.includes("familia") || value.includes("ninos") || value.includes("adultos")) return "users";
+        if (value.includes("cocinar") || value.includes("cocina")) return "utensils";
+        if (value.includes("sabor") || value.includes("suave") || value.includes("agradable")) return "glass-water";
+        if (value.includes("olor") || value.includes("oler") || value.includes("cloro") || value.includes("quimico")) return "wind";
+        if (value.includes("filtracion") || value.includes("particulas") || value.includes("jarra")) return "filter";
+        if (value.includes("confianza") || value.includes("tranquilidad")) return "shield-check";
+        if (value.includes("ph") || value.includes("acidez") || value.includes("acida")) return "activity";
+        if (value.includes("minerales") || value.includes("mineral")) return "gem";
+        if (value.includes("diario") || value.includes("dias") || value.includes("constante")) return "calendar-check";
+        return "sparkles";
       }
-
-      const priceData = [
-        Math.round(call.product),
-        Math.round(call.ads),
-        Math.round(call.commission),
-        Math.round(call.net)
-      ];
-
-      if (!priceChart) {
-        priceChart = new Chart($("priceChart"), {
-          type: "doughnut",
-          data: {
-            labels: ["Producto puesto aqui", "Publicidad", "Comision", "Utilidad neta"],
-            datasets: [{
-              data: priceData,
-              backgroundColor: ["#667085", "#f0a63b", "#4f7cff", "#12a594"],
-              borderColor: "rgba(255,255,255,.9)",
-              borderWidth: 5,
-              hoverOffset: 14,
-              spacing: 3
-            }]
-          },
-          options: {
-            responsive: true,
-            cutout: "66%",
-            animation: {
-              animateRotate: true,
-              animateScale: true,
-              duration: 1050,
-              easing: "easeOutQuart"
-            },
-            plugins: {
-              legend: {
-                position: "bottom",
-                labels: {
-                  usePointStyle: true,
-                  boxWidth: 8,
-                  color: "#475467",
-                  font: { weight: "700" }
-                }
-              },
-              tooltip: {
-                backgroundColor: "rgba(24, 33, 47, .92)",
-                padding: 12,
-                cornerRadius: 14,
-                callbacks: {
-                  label: (context) => `${context.label}: ${money(context.raw)}`
-                }
-              }
-            }
-          }
-        });
+      modalKicker.textContent = button.dataset.kicker || "Beneficio";
+      modalTitle.textContent = button.dataset.title || "Beneficio";
+      modalText.textContent = button.dataset.text || "";
+      if (button.dataset.image) {
+        modalImage.src = button.dataset.image;
+        modalImage.alt = button.dataset.title || "Imagen del beneficio";
+        modalImage.classList.add("show");
+        modalImage.classList.toggle("wide", button.dataset.imageLayout === "wide");
+        modal.querySelector(".modal-card").classList.toggle("wide-content", button.dataset.imageLayout === "wide");
       } else {
-        priceChart.data.datasets[0].data = priceData;
-        priceChart.update();
+        modalImage.removeAttribute("src");
+        modalImage.alt = "";
+        modalImage.classList.remove("show", "wide");
+        modal.querySelector(".modal-card").classList.remove("wide-content");
       }
+      modalList.innerHTML = (button.dataset.benefits || "")
+        .split("|")
+        .filter(Boolean)
+        .map((item, index) => `
+          <li>
+            <span class="benefit-icon"><i data-lucide="${benefitIcon(item)}"></i></span>
+            <span class="benefit-text">${item}</span>
+          </li>
+        `)
+        .join("");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      if (window.lucide) lucide.createIcons();
+      gsap.fromTo(".modal-card", { y: 24, scale: .96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: .35, ease: "power3.out" });
+    }
 
-      const investorCtx = $("investorChart").getContext("2d");
-      const investorGradient = chartGradient(investorCtx, [
-        [0, "rgba(18, 165, 148, .92)"],
-        [1, "rgba(79, 124, 255, .68)"]
-      ]);
-      const operatorGradient = chartGradient(investorCtx, [
-        [0, "rgba(138, 92, 246, .88)"],
-        [1, "rgba(224, 86, 159, .62)"]
-      ]);
+    function closeBenefitModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
 
-      if (!investorChart) {
-        investorChart = new Chart($("investorChart"), {
-          type: "bar",
-          data: {
-            labels: ["Capital", "Gana inversionista", "Gana operador"],
-            datasets: [{
-              label: "Bolivianos",
-              data: [Math.round(landed * data.units), Math.round(investorProfit), Math.round(operatorProfit)],
-              backgroundColor: ["#667085", investorGradient, operatorGradient],
-              borderRadius: 18,
-              borderSkipped: false,
-              maxBarThickness: 86
-            }]
-          },
-          options: {
-            ...commonChartOptions(),
-            indexAxis: "y",
-            plugins: {
-              ...commonChartOptions().plugins,
-              legend: { display: false },
-              tooltip: {
-                backgroundColor: "rgba(24, 33, 47, .92)",
-                padding: 12,
-                cornerRadius: 14,
-                callbacks: {
-                  label: (context) => money(context.raw)
-                }
-              }
-            },
-            scales: {
-              x: {
-                beginAtZero: true,
-                grid: { color: "rgba(102, 112, 133, .14)" },
-                ticks: { color: "#667085", font: { weight: "700" } }
-              },
-              y: {
-                grid: { display: false },
-                ticks: { color: "#667085", font: { weight: "700" } }
-              }
-            }
-          }
-        });
-      } else {
-        investorChart.data.datasets[0].data = [
-          Math.round(landed * data.units),
-          Math.round(investorProfit),
-          Math.round(operatorProfit)
-        ];
-        investorChart.data.datasets[0].backgroundColor = ["#667085", investorGradient, operatorGradient];
-        investorChart.update();
+    function setViewerZoom(value) {
+      imageZoom = Math.min(Math.max(value, 1), 3.5);
+      viewerImage.style.setProperty("--zoom", imageZoom);
+      if (imageZoom === 1) {
+        panX = 0;
+        panY = 0;
+        viewerImage.style.setProperty("--pan-x", "0px");
+        viewerImage.style.setProperty("--pan-y", "0px");
       }
     }
 
-    function initVisualSlider() {
-      const track = $("slideTrack");
-      const dotsWrap = $("slideDots");
-      if (!track || !dotsWrap) return;
-
-      const slides = Array.from(track.children);
-      let active = 0;
-
-      dotsWrap.innerHTML = slides.map((_, index) => `
-        <button class="slide-dot${index === 0 ? " active" : ""}" type="button" aria-label="Ver lamina ${index + 1}"></button>
-      `).join("");
-
-      const dots = Array.from(dotsWrap.children);
-
-      function showSlide(index) {
-        active = (index + slides.length) % slides.length;
-        track.style.transform = `translateX(-${active * 100}%)`;
-        dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === active));
-      }
-
-      $("prevSlide").addEventListener("click", () => showSlide(active - 1));
-      $("nextSlide").addEventListener("click", () => showSlide(active + 1));
-      dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
-      setInterval(() => showSlide(active + 1), 6500);
+    function openImageViewerFrom(src, alt) {
+      if (!src) return;
+      viewerImage.src = src;
+      viewerImage.alt = alt || "Imagen ampliada";
+      panX = 0;
+      panY = 0;
+      viewerImage.style.setProperty("--pan-x", "0px");
+      viewerImage.style.setProperty("--pan-y", "0px");
+      setViewerZoom(1);
+      imageViewer.classList.add("open");
+      imageViewer.setAttribute("aria-hidden", "false");
     }
 
-    inputs.forEach((id) => $(id).addEventListener("input", update));
-    initVisualSlider();
-    update();
+    function openImageViewer() {
+      openImageViewerFrom(modalImage.src, modalImage.alt);
+    }
+
+    function closeImageViewer() {
+      imageViewer.classList.remove("open");
+      imageViewer.setAttribute("aria-hidden", "true");
+      viewerImage.removeAttribute("src");
+    }
+
+    document.querySelectorAll(".callout").forEach((button) => {
+      button.addEventListener("click", () => openBenefitModal(button));
+    });
+
+    document.querySelectorAll(".expand-image").forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.parentElement.querySelector("img");
+        openImageViewerFrom(image.src, image.alt);
+      });
+    });
+    document.querySelectorAll(".detail-media img").forEach((image) => {
+      image.addEventListener("click", () => openImageViewerFrom(image.src, image.alt));
+    });
+
+    document.querySelectorAll(".filter-card img").forEach((image) => {
+      image.addEventListener("click", () => openImageViewerFrom(image.src, image.alt));
+    });
+
+    modalClose.addEventListener("click", closeBenefitModal);
+    modalX.addEventListener("click", closeBenefitModal);
+    modalImage.addEventListener("click", openImageViewer);
+    zoomIn.addEventListener("click", () => setViewerZoom(imageZoom + .35));
+    zoomOut.addEventListener("click", () => setViewerZoom(imageZoom - .35));
+    viewerClose.addEventListener("click", closeImageViewer);
+    imageViewer.addEventListener("click", (event) => {
+      if (event.target === imageViewer) closeImageViewer();
+    });
+    imageViewer.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      setViewerZoom(imageZoom + (event.deltaY < 0 ? .18 : -.18));
+    }, { passive: false });
+    viewerImage.addEventListener("pointerdown", (event) => {
+      if (imageZoom <= 1) return;
+      dragStart = { x: event.clientX, y: event.clientY, panX, panY };
+      viewerImage.classList.add("dragging");
+      viewerImage.setPointerCapture(event.pointerId);
+    });
+    viewerImage.addEventListener("pointermove", (event) => {
+      if (!dragStart) return;
+      panX = dragStart.panX + event.clientX - dragStart.x;
+      panY = dragStart.panY + event.clientY - dragStart.y;
+      viewerImage.style.setProperty("--pan-x", `${panX}px`);
+      viewerImage.style.setProperty("--pan-y", `${panY}px`);
+    });
+    viewerImage.addEventListener("pointerup", () => {
+      dragStart = null;
+      viewerImage.classList.remove("dragging");
+    });
+    viewerImage.addEventListener("pointercancel", () => {
+      dragStart = null;
+      viewerImage.classList.remove("dragging");
+    });
+    imageViewer.addEventListener("touchstart", (event) => {
+      if (event.touches.length !== 2) return;
+      const [a, b] = event.touches;
+      const distance = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      pinchStart = { distance, zoom: imageZoom };
+      dragStart = null;
+      viewerImage.classList.remove("dragging");
+    }, { passive: true });
+    imageViewer.addEventListener("touchmove", (event) => {
+      if (!pinchStart || event.touches.length !== 2) return;
+      event.preventDefault();
+      const [a, b] = event.touches;
+      const distance = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      setViewerZoom(pinchStart.zoom * (distance / pinchStart.distance));
+    }, { passive: false });
+    imageViewer.addEventListener("touchend", (event) => {
+      if (event.touches.length < 2) pinchStart = null;
+    });
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeBenefitModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && imageViewer.classList.contains("open")) {
+        closeImageViewer();
+        return;
+      }
+      if (event.key === "Escape") closeBenefitModal();
+    });
+
+    swiper.on("slideChangeTransitionStart", () => {
+      updateCounter();
+      animateActive();
+    });
+
+    prevSlide.addEventListener("click", () => swiper.slidePrev());
+    nextSlide.addEventListener("click", () => swiper.slideNext());
+
+    updateCounter();
+    if (window.lucide) lucide.createIcons();
+    animateActive();
   </script>
 </body>
 </html>
