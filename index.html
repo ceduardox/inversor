@@ -2737,6 +2737,28 @@
       } catch {}
     });
 
+    function fitPortraitVideo() {
+      const shell = document.querySelector(".video-slide .video-shell");
+      if (!shell) return;
+      const portrait = window.matchMedia("(max-width: 920px) and (orientation: portrait)").matches;
+      if (!portrait) {
+        shell.style.removeProperty("width");
+        shell.style.removeProperty("height");
+        shell.style.removeProperty("max-width");
+        shell.style.removeProperty("max-height");
+        return;
+      }
+      const size = Math.round(Math.min(window.innerWidth * .76, 300));
+      shell.style.width = `${size}px`;
+      shell.style.height = `${size}px`;
+      shell.style.maxWidth = `${size}px`;
+      shell.style.maxHeight = `${size}px`;
+    }
+
+    window.addEventListener("resize", fitPortraitVideo);
+    window.addEventListener("orientationchange", () => setTimeout(fitPortraitVideo, 180));
+    fitPortraitVideo();
+
     modalClose.addEventListener("click", closeBenefitModal);
     modalX.addEventListener("click", closeBenefitModal);
     modalImage.addEventListener("click", openImageViewer);
