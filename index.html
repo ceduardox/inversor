@@ -747,6 +747,10 @@
       display: none;
     }
 
+    .orientation-gate {
+      display: none;
+    }
+
     .modal {
       position: fixed;
       inset: 0;
@@ -1047,6 +1051,11 @@
         opacity: 1;
         box-shadow: 0 0 34px rgba(83, 244, 255, .22);
       }
+    }
+
+    @keyframes turnPhone {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(90deg); }
     }
 
     @media (max-width: 920px) {
@@ -1375,9 +1384,70 @@
       }
     }
 
-    @media (max-width: 680px) and (orientation: portrait) {
+    @media (max-width: 920px) and (orientation: portrait) {
       body {
         overflow: hidden;
+      }
+
+      .shell {
+        display: none;
+      }
+
+      .orientation-gate {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 22px;
+        position: relative;
+        z-index: 20;
+      }
+
+      .orientation-card {
+        width: min(420px, 100%);
+        display: grid;
+        gap: 14px;
+        justify-items: center;
+        text-align: center;
+        padding: 28px 22px;
+        border: 1px solid rgba(83, 244, 255, .24);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(83, 244, 255, .15), transparent 48%),
+          rgba(255, 255, 255, .07);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(22px);
+      }
+
+      .orientation-icon {
+        width: 74px;
+        height: 74px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(83, 244, 255, .38);
+        border-radius: 24px;
+        color: #061016;
+        background: linear-gradient(135deg, var(--aqua), var(--green));
+        box-shadow: 0 20px 54px rgba(83, 244, 255, .22);
+        animation: turnPhone 1.9s ease-in-out infinite;
+      }
+
+      .orientation-icon svg {
+        width: 38px;
+        height: 38px;
+        stroke-width: 2.6;
+      }
+
+      .orientation-card h2 {
+        margin: 4px 0 0;
+        font-family: "Instrument Sans", Arial, sans-serif;
+        font-size: clamp(30px, 9vw, 42px);
+        line-height: 1;
+      }
+
+      .orientation-card p {
+        max-width: 330px;
+        font-size: 15px;
+        line-height: 1.35;
       }
 
       .scene {
@@ -1714,6 +1784,14 @@
   </style>
 </head>
 <body>
+  <div class="orientation-gate" aria-label="Girar pantalla">
+    <div class="orientation-card">
+      <div class="orientation-icon"><i data-lucide="smartphone"></i></div>
+      <h2>Gira la pantalla</h2>
+      <p>Esta presentacion esta diseñada para verse en horizontal. Coloca tu celular de lado para continuar.</p>
+    </div>
+  </div>
+
   <main class="shell">
     <aside class="rail">
       <div class="logo">RO</div>
