@@ -551,6 +551,10 @@
       font-size: clamp(24px, 2.45vw, 38px);
     }
 
+    .cost-slide .metric b {
+      font-size: clamp(24px, 2.7vw, 42px);
+    }
+
     .metric .fit-text {
       font-size: .76em;
       line-height: 1;
@@ -560,6 +564,60 @@
     .profit-slide .benefit-grid {
       margin-top: 14px;
       gap: 8px;
+    }
+
+    .video-slide .scene {
+      grid-template-columns: minmax(0, .82fr) minmax(280px, .78fr);
+    }
+
+    .video-shell {
+      position: relative;
+      height: min(720px, calc(100dvh - 86px));
+      aspect-ratio: 9 / 16;
+      justify-self: center;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      border: 1px solid rgba(83, 244, 255, .24);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(83, 244, 255, .16), transparent 48%),
+        rgba(255, 255, 255, .07);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .video-shell video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      background: #000;
+    }
+
+    .video-action {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      z-index: 3;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      border: 1px solid rgba(83, 244, 255, .42);
+      border-radius: 999px;
+      color: #061016;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 18px 42px rgba(83, 244, 255, .16);
+    }
+
+    .video-action svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 2.7;
     }
 
     .filter-slide .scene {
@@ -1232,6 +1290,29 @@
         margin-top: 8px;
       }
 
+      .video-slide .scene {
+        grid-template-columns: minmax(0, .9fr) minmax(0, .72fr);
+      }
+
+      .video-shell {
+        height: calc(100dvh - 92px);
+        max-height: 430px;
+        padding: 7px;
+        border-radius: 24px;
+      }
+
+      .video-shell video {
+        border-radius: 18px;
+      }
+
+      .video-action {
+        min-height: 32px;
+        right: 11px;
+        top: 11px;
+        padding: 0 9px;
+        font-size: 10px;
+      }
+
       .filter-slide .scene {
         grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
       }
@@ -1724,6 +1805,30 @@
           </div>
         </section>
 
+        <section class="swiper-slide detail-slide profit-slide cost-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Ahorro familiar</span>
+              <h2>Una familia compra 8 a 12 bidones al mes.</h2>
+              <p>Si cada recarga cuesta Bs 20, el gasto mensual queda entre Bs 160 y Bs 240. Ademas, la primera vez normalmente se paga el bidon retornable: Bs 50 por envase, antes de empezar a recargar.</p>
+              <div class="metrics">
+                <div class="metric"><b>Bs 160-240</b><span>recargas mensuales</span></div>
+                <div class="metric"><b>Bs 400-600</b><span>costo inicial por 8 a 12 bidones</span></div>
+                <div class="metric"><b>Bs 1.920-2.880</b><span>recargas al año</span></div>
+              </div>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="calculator"></i><div><b>Primer mes pesado</b><span>bidon retornable + recarga puede subir el desembolso inicial.</span></div></div>
+                <div class="benefit-card"><i data-lucide="coins"></i><div><b>Gasto que se repite</b><span>cada mes vuelve la compra de agua, aunque ya se tenga el envase.</span></div></div>
+                <div class="benefit-card"><i data-lucide="home"></i><div><b>Argumento de venta</b><span>el purificador convierte ese gasto repetido en agua producida en casa.</span></div></div>
+              </div>
+            </div>
+            <div class="detail-media">
+              <img src="bidon2.webp" alt="Calculo de gasto mensual en bidones de agua">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+          </div>
+        </section>
+
         <section class="swiper-slide detail-slide">
           <div class="scene">
             <div class="detail-media">
@@ -1758,6 +1863,25 @@
                 <div class="benefit-card"><i data-lucide="gem"></i><div><b>Minerales añadidos</b><span>Ca, Mg, Na y K despues de filtrar.</span></div></div>
                 <div class="benefit-card"><i data-lucide="glass-water"></i><div><b>Sabor mas suave</b><span>menor acidez percibida al tomarla.</span></div></div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide video-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Demo real</span>
+              <h2>El video muestra el poder visual de la filtracion.</h2>
+              <p>La demostracion es directa: se coloca una bebida oscura tipo cola y el sistema la procesa hasta mostrar agua mucho mas clara. Para vender e invertir, una prueba visual vale mas que una explicacion larga.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="play-circle"></i><div><b>Demostracion inmediata</b><span>el inversionista y el cliente ven el cambio en segundos.</span></div></div>
+                <div class="benefit-card"><i data-lucide="eye"></i><div><b>Impacto visual</b><span>convierte una explicacion tecnica en evidencia facil de entender.</span></div></div>
+                <div class="benefit-card"><i data-lucide="message-circle"></i><div><b>Argumento de venta</b><span>ideal para redes, llamadas, demostraciones y cierres uno a uno.</span></div></div>
+              </div>
+            </div>
+            <div class="video-shell">
+              <video id="purifierVideo" src="purificador.mp4" controls playsinline preload="metadata"></video>
+              <button class="video-action" type="button" id="videoFullscreen"><i data-lucide="maximize"></i><span>Ampliar</span></button>
             </div>
           </div>
         </section>
@@ -2103,6 +2227,8 @@
     const zoomOut = document.getElementById("zoomOut");
     const prevSlide = document.getElementById("prevSlide");
     const nextSlide = document.getElementById("nextSlide");
+    const purifierVideo = document.getElementById("purifierVideo");
+    const videoFullscreen = document.getElementById("videoFullscreen");
     let imageZoom = 1;
     let panX = 0;
     let panY = 0;
@@ -2269,6 +2395,14 @@
       image.addEventListener("click", () => openImageViewerFrom(image.src, image.alt));
     });
 
+    videoFullscreen?.addEventListener("click", async () => {
+      if (!purifierVideo) return;
+      try {
+        if (purifierVideo.requestFullscreen) await purifierVideo.requestFullscreen();
+        await purifierVideo.play();
+      } catch {}
+    });
+
     modalClose.addEventListener("click", closeBenefitModal);
     modalX.addEventListener("click", closeBenefitModal);
     modalImage.addEventListener("click", openImageViewer);
@@ -2333,6 +2467,7 @@
     });
 
     swiper.on("slideChangeTransitionStart", () => {
+      document.querySelectorAll("video").forEach((video) => video.pause());
       updateCounter();
       animateActive();
     });
