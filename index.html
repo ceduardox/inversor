@@ -1986,19 +1986,24 @@
       .callout.four { left: 4%; bottom: 8%; }
       .callout.five { right: 38%; bottom: 2%; }
 
-      .video-shell {
-        width: min(78vw, 300px);
-        height: min(78vw, 300px);
-        max-height: none;
-        aspect-ratio: 1;
+      .video-slide .video-shell {
+        width: 280px !important;
+        height: 280px !important;
+        max-width: 76vw !important;
+        max-height: 76vw !important;
+        min-height: 220px !important;
+        aspect-ratio: 1 / 1 !important;
+        flex: 0 0 auto !important;
         justify-self: center;
         align-self: center;
         padding: 8px;
       }
 
-      .video-shell video {
-        width: 100%;
-        height: 100%;
+      .video-slide .video-shell video {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100%;
         object-fit: cover;
         object-position: center;
       }
