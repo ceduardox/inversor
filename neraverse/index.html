@@ -254,6 +254,32 @@
       text-transform: uppercase;
     }
 
+    .video-progress {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 74px;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 999px;
+      background: rgba(7, 9, 18, .72);
+      backdrop-filter: blur(14px);
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .video-progress input {
+      width: 100%;
+      accent-color: var(--yellow);
+      cursor: pointer;
+    }
+
     .video-tools {
       position: absolute;
       top: 14px;
@@ -948,6 +974,16 @@
         font-size: 11px;
       }
 
+      .video-progress {
+        left: 10px;
+        right: 10px;
+        bottom: 58px;
+        grid-template-columns: 36px minmax(0, 1fr) 36px;
+        gap: 7px;
+        padding: 8px 10px;
+        font-size: 10px;
+      }
+
       .video-tools {
         top: 10px;
         right: 10px;
@@ -1208,6 +1244,11 @@
               <button class="video-btn" type="button" id="heroPlay" aria-label="Pausar video">Ⅱ</button>
               <button class="video-btn" type="button" id="heroExpand" aria-label="Expandir video">⛶</button>
             </div>
+            <div class="video-progress" aria-label="Progreso del video">
+              <span id="videoCurrent">0:00</span>
+              <input id="videoSeek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Adelantar o retroceder video">
+              <span id="videoDuration">0:00</span>
+            </div>
             <div class="video-label"><b>Demo visual</b><span>Estilo, personajes, karts y atmosfera del juego</span></div>
           </div>
         </div>
@@ -1355,6 +1396,9 @@
     const heroPlay = document.getElementById("heroPlay");
     const heroExpand = document.getElementById("heroExpand");
     const soundCta = document.getElementById("soundCta");
+    const videoSeek = document.getElementById("videoSeek");
+    const videoCurrent = document.getElementById("videoCurrent");
+    const videoDuration = document.getElementById("videoDuration");
     const videoModal = document.getElementById("videoModal");
     const expandedVideo = document.getElementById("expandedVideo");
     const expandedPlay = document.getElementById("expandedPlay");
@@ -1416,6 +1460,32 @@
       soundCta.textContent = enabled ? "🔊 Sonido activo" : "🔊 Activar sonido";
       soundCta.setAttribute("aria-label", enabled ? "Sonido activo" : "Activar sonido del video");
     }
+
+    function formatTime(seconds) {
+      if (!Number.isFinite(seconds)) return "0:00";
+      const minutes = Math.floor(seconds / 60);
+      const rest = Math.floor(seconds % 60);
+      return `${minutes}:${String(rest).padStart(2, "0")}`;
+    }
+
+    function updateVideoProgress() {
+      const duration = heroVideo.duration || 0;
+      const current = heroVideo.currentTime || 0;
+      videoSeek.value = duration ? String((current / duration) * 100) : "0";
+      videoCurrent.textContent = formatTime(current);
+      videoDuration.textContent = formatTime(duration);
+    }
+
+    videoSeek.addEventListener("input", () => {
+      const duration = heroVideo.duration || 0;
+      if (!duration) return;
+      heroVideo.currentTime = (Number(videoSeek.value) / 100) * duration;
+      updateVideoProgress();
+    });
+
+    heroVideo.addEventListener("loadedmetadata", updateVideoProgress);
+    heroVideo.addEventListener("timeupdate", updateVideoProgress);
+    heroVideo.addEventListener("durationchange", updateVideoProgress);
 
     soundCta.addEventListener("click", () => {
       heroVideo.loop = true;
