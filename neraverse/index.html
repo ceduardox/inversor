@@ -263,6 +263,45 @@
       gap: 8px;
     }
 
+    .sound-cta {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      z-index: 5;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      border: 1px solid rgba(255, 216, 63, .5);
+      border-radius: 999px;
+      color: #120b02;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      font-size: 13px;
+      font-weight: 1000;
+      cursor: pointer;
+      box-shadow: 0 0 0 0 rgba(255, 216, 63, .38), 0 18px 40px rgba(255, 122, 26, .26);
+      animation: soundPulse 1.55s ease-in-out infinite;
+    }
+
+    .sound-cta.active {
+      color: var(--yellow);
+      background: rgba(7, 9, 18, .72);
+      backdrop-filter: blur(14px);
+      animation: none;
+    }
+
+    @keyframes soundPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 216, 63, .38), 0 18px 40px rgba(255, 122, 26, .26);
+      }
+      50% {
+        transform: scale(1.045);
+        box-shadow: 0 0 0 12px rgba(255, 216, 63, 0), 0 24px 52px rgba(255, 122, 26, .34);
+      }
+    }
+
     .video-btn,
     .modal-video-btn {
       min-width: 42px;
@@ -914,6 +953,14 @@
         right: 10px;
       }
 
+      .sound-cta {
+        left: 10px;
+        top: 10px;
+        min-height: 38px;
+        padding: 0 10px;
+        font-size: 11px;
+      }
+
       .video-btn,
       .modal-video-btn {
         min-width: 38px;
@@ -1156,6 +1203,7 @@
           </div>
           <div class="media">
             <video id="heroVideo" src="PRESENTATION NERAVERSE.mp4" autoplay muted loop playsinline poster="5.jpeg"></video>
+            <button class="sound-cta" type="button" id="soundCta" aria-label="Activar sonido del video">🔊 Activar sonido</button>
             <div class="video-tools" aria-label="Controles de video">
               <button class="video-btn" type="button" id="heroPlay" aria-label="Pausar video">Ⅱ</button>
               <button class="video-btn" type="button" id="heroExpand" aria-label="Expandir video">⛶</button>
@@ -1306,6 +1354,7 @@
     const heroVideo = document.getElementById("heroVideo");
     const heroPlay = document.getElementById("heroPlay");
     const heroExpand = document.getElementById("heroExpand");
+    const soundCta = document.getElementById("soundCta");
     const videoModal = document.getElementById("videoModal");
     const expandedVideo = document.getElementById("expandedVideo");
     const expandedPlay = document.getElementById("expandedPlay");
@@ -1360,6 +1409,25 @@
     heroPlay.addEventListener("click", () => toggleVideo(heroVideo, heroPlay));
     heroVideo.addEventListener("play", () => syncVideoButton(heroVideo, heroPlay));
     heroVideo.addEventListener("pause", () => syncVideoButton(heroVideo, heroPlay));
+
+    function updateSoundCta() {
+      const enabled = !heroVideo.muted && heroVideo.volume > 0;
+      soundCta.classList.toggle("active", enabled);
+      soundCta.textContent = enabled ? "🔊 Sonido activo" : "🔊 Activar sonido";
+      soundCta.setAttribute("aria-label", enabled ? "Sonido activo" : "Activar sonido del video");
+    }
+
+    soundCta.addEventListener("click", () => {
+      heroVideo.loop = true;
+      heroVideo.muted = false;
+      heroVideo.volume = 1;
+      heroVideo.play();
+      syncVideoButton(heroVideo, heroPlay);
+      updateSoundCta();
+    });
+
+    heroVideo.addEventListener("volumechange", updateSoundCta);
+    updateSoundCta();
 
     heroExpand.addEventListener("click", () => {
       expandedVideo.currentTime = heroVideo.currentTime || 0;
