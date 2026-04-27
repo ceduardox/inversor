@@ -272,6 +272,16 @@
       color: var(--text);
       font-size: 11px;
       font-weight: 900;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: .22s ease;
+    }
+
+    .media.video-active .video-progress {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     .video-progress input {
@@ -1237,7 +1247,7 @@
               <button class="btn secondary" type="button" data-go="6">Ver lanzamiento</button>
             </div>
           </div>
-          <div class="media">
+          <div class="media video-media" id="heroVideoMedia">
             <video id="heroVideo" src="PRESENTATION NERAVERSE.mp4" autoplay muted loop playsinline poster="5.jpeg"></video>
             <button class="sound-cta" type="button" id="soundCta" aria-label="Activar sonido del video">🔊 Activar sonido</button>
             <div class="video-tools" aria-label="Controles de video">
@@ -1392,6 +1402,7 @@
     const prev = document.getElementById("prev");
     const next = document.getElementById("next");
     const root = document.documentElement;
+    const heroVideoMedia = document.getElementById("heroVideoMedia");
     const heroVideo = document.getElementById("heroVideo");
     const heroPlay = document.getElementById("heroPlay");
     const heroExpand = document.getElementById("heroExpand");
@@ -1421,6 +1432,7 @@
       [...nav.children].forEach((dot, index) => dot.classList.toggle("active", index === active));
       prev.disabled = active === 0;
       next.disabled = active === slideItems.length - 1;
+      if (active !== 0) deactivateHeroVideo();
     }
 
     slideItems.forEach((_, index) => {
@@ -1487,7 +1499,28 @@
     heroVideo.addEventListener("timeupdate", updateVideoProgress);
     heroVideo.addEventListener("durationchange", updateVideoProgress);
 
+    function showVideoProgress() {
+      heroVideoMedia.classList.add("video-active");
+    }
+
+    function deactivateHeroVideo() {
+      heroVideo.pause();
+      heroVideo.muted = true;
+      heroVideoMedia.classList.remove("video-active");
+      syncVideoButton(heroVideo, heroPlay);
+      updateSoundCta();
+    }
+
+    heroVideo.addEventListener("click", showVideoProgress);
+    heroVideoMedia.addEventListener("mouseenter", showVideoProgress);
+    heroVideoMedia.addEventListener("touchstart", showVideoProgress, { passive: true });
+    heroPlay.addEventListener("click", showVideoProgress);
+    heroExpand.addEventListener("click", showVideoProgress);
+    videoSeek.addEventListener("focus", showVideoProgress);
+    videoSeek.addEventListener("input", showVideoProgress);
+
     soundCta.addEventListener("click", () => {
+      showVideoProgress();
       heroVideo.loop = true;
       heroVideo.muted = false;
       heroVideo.volume = 1;
