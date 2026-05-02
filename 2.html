@@ -1,0 +1,2026 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RYZTOR 100GPD | Purificador RO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --bg: #05070a;
+      --ink: #f7fbff;
+      --muted: #a8b3c2;
+      --line: rgba(255, 255, 255, .14);
+      --panel: rgba(255, 255, 255, .07);
+      --panel-strong: rgba(255, 255, 255, .12);
+      --aqua: #53f4ff;
+      --green: #77ffb7;
+      --steel: #d7e3f2;
+      --gold: #f1c46b;
+      --shadow: 0 34px 90px rgba(0, 0, 0, .46);
+    }/*  */
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 62% 30%, rgba(83, 244, 255, .18), transparent 34%),
+        radial-gradient(circle at 26% 74%, rgba(119, 255, 183, .13), transparent 28%),
+        linear-gradient(140deg, #05070a 0%, #10151d 48%, #05070a 100%);
+      font-family: "Instrument Sans", Arial, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: radial-gradient(circle at 50% 45%, black, transparent 78%);
+    }
+
+    .shell {
+      height: 100dvh;
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      position: relative;
+    }
+
+    .rail {
+      position: relative;
+      z-index: 5;
+      height: 100dvh;
+      border-right: 1px solid var(--line);
+      background: rgba(5, 7, 10, .52);
+      backdrop-filter: blur(20px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      align-items: center;
+      justify-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #051014;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      font-weight: 950;
+      box-shadow: 0 18px 44px rgba(83, 244, 255, .22);
+    }
+
+    .vertical {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .swiper {
+      width: calc(100vw - 86px);
+      height: 100dvh;
+    }
+
+    .swiper-slide {
+      height: 100dvh;
+      display: grid;
+      align-items: center;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .scene {
+      width: min(1240px, calc(100vw - 142px));
+      height: min(760px, calc(100dvh - 56px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+      gap: 26px;
+      align-items: center;
+      position: relative;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+      align-self: center;
+      max-height: 100%;
+      overflow: visible;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(83, 244, 255, .26);
+      border-radius: 999px;
+      color: var(--aqua);
+      background: rgba(83, 244, 255, .08);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 22px var(--green);
+    }
+
+    h1, h2 {
+      margin: 18px 0 16px;
+      max-width: 780px;
+      font-size: clamp(54px, 7.2vw, 112px);
+      line-height: .88;
+      letter-spacing: 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 800;
+    }
+
+    h2 { font-size: clamp(46px, 6vw, 92px); }
+
+    p {
+      margin: 0;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: clamp(18px, 1.7vw, 23px);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .power {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .chip {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--steel);
+      font-weight: 900;
+      backdrop-filter: blur(18px);
+    }
+
+    .cta {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      color: #061016;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      font-weight: 950;
+      text-decoration: none;
+      box-shadow: 0 20px 54px rgba(83, 244, 255, .18);
+    }
+
+    .btn.dark {
+      color: var(--ink);
+      background: var(--panel-strong);
+      border-color: var(--line);
+      box-shadow: none;
+      backdrop-filter: blur(18px);
+    }
+
+    .product-stage {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      padding: 18px;
+      overflow: visible;
+    }
+
+    .halo {
+      position: absolute;
+      width: min(72vmin, 610px);
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle, rgba(83, 244, 255, .18), transparent 62%),
+        conic-gradient(from 180deg, rgba(83,244,255,.0), rgba(83,244,255,.32), rgba(119,255,183,.24), rgba(83,244,255,.0));
+      filter: blur(.2px);
+      animation: spin 12s linear infinite;
+      z-index: -1;
+    }
+
+    .product {
+      width: 100%;
+      height: 100%;
+      max-width: 560px;
+      max-height: 680px;
+      object-fit: contain;
+      filter: drop-shadow(0 44px 52px rgba(0, 0, 0, .52));
+      transform-origin: center bottom;
+      z-index: 1;
+    }
+
+    .callout {
+      position: absolute;
+      display: grid;
+      gap: 4px;
+      z-index: 4;
+      min-width: 126px;
+      padding: 10px 11px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      background: rgba(10, 15, 22, .72);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+      cursor: pointer;
+      animation: calloutPulse 1.9s ease-in-out infinite;
+    }
+
+    .callout:hover {
+      border-color: rgba(83, 244, 255, .46);
+      background: rgba(14, 24, 34, .88);
+    }
+
+    .callout span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .callout b {
+      font-size: 18px;
+      line-height: 1.05;
+    }
+
+    .callout.one { top: 7%; right: 2%; }
+    .callout.two { left: 0; top: 30%; }
+    .callout.three { right: 3%; bottom: 24%; }
+    .callout.four { left: 2%; bottom: 10%; }
+    .callout.five { right: 35%; bottom: 4%; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 760px;
+    }
+
+    .metric {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+    }
+
+    .metric b {
+      display: block;
+      font-size: clamp(30px, 3.7vw, 54px);
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .script {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+      max-width: 720px;
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      font-weight: 900;
+    }
+
+    .line span { color: var(--muted); }
+    .line b { text-align: right; }
+
+    .quote {
+      max-width: 940px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 6.8vw, 104px);
+      line-height: .93;
+      font-weight: 800;
+    }
+
+    .detail-media {
+      position: relative;
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(83, 244, 255, .12), transparent 44%),
+        rgba(255, 255, 255, .055);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .detail-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+      max-width: 700px;
+    }
+
+    .benefit-card {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 13px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .07);
+      backdrop-filter: blur(18px);
+    }
+
+    .benefit-card i {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(83, 244, 255, .7);
+      border-radius: 999px;
+      color: #53f4ff;
+      background: rgba(83, 244, 255, .08);
+      box-shadow: 0 0 20px rgba(83, 244, 255, .14);
+    }
+
+    .benefit-card i svg {
+      color: #53f4ff;
+      stroke: currentColor;
+    }
+
+    .benefit-card .lucide,
+    .benefit-icon .lucide {
+      color: #53f4ff;
+      stroke: #53f4ff !important;
+      animation: iconGlow 2.4s ease-in-out infinite;
+    }
+
+    .benefit-card svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.2;
+    }
+
+    .benefit-card b {
+      display: block;
+      color: white;
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    .benefit-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .detail-slide .copy h2 {
+      font-size: clamp(36px, 4.7vw, 74px);
+      line-height: .92;
+      margin-bottom: 10px;
+    }
+
+    .detail-slide .copy p {
+      font-size: clamp(15px, 1.3vw, 19px);
+      line-height: 1.35;
+    }
+
+    .detail-slide .benefit-grid {
+      gap: 9px;
+      margin-top: 16px;
+      max-width: 620px;
+    }
+
+    .detail-slide .benefit-card {
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 15px;
+    }
+
+    .detail-slide .benefit-card i {
+      width: 40px;
+      height: 40px;
+    }
+
+    .detail-slide .benefit-card svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .detail-slide .benefit-card b {
+      font-size: 16px;
+    }
+
+    .detail-slide .benefit-card span {
+      font-size: 13px;
+      line-height: 1.22;
+    }
+
+    .profit-slide .scene {
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    }
+
+    .profit-slide .detail-media {
+      padding: 8px;
+      background:
+        radial-gradient(circle at 70% 38%, rgba(83, 244, 255, .14), transparent 42%),
+        rgba(255, 255, 255, .045);
+    }
+
+    .profit-slide .detail-media img {
+      object-fit: contain;
+      border-radius: 22px;
+    }
+
+    .profit-slide .metrics {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 18px;
+      gap: 10px;
+    }
+
+    .profit-slide .metric {
+      padding: 13px;
+      border-radius: 18px;
+    }
+
+    .profit-slide .metric b {
+      color: var(--aqua);
+      font-size: clamp(26px, 3.2vw, 48px);
+    }
+
+    .profit-slide .benefit-grid {
+      margin-top: 14px;
+      gap: 8px;
+    }
+
+    .pagination {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: grid;
+      gap: 10px;
+    }
+
+    .slide-arrow {
+      position: fixed;
+      top: 50%;
+      z-index: 11;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(83, 244, 255, .32);
+      border-radius: 999px;
+      color: #53f4ff;
+      background: rgba(5, 7, 10, .58);
+      box-shadow: 0 0 28px rgba(83, 244, 255, .12);
+      backdrop-filter: blur(14px);
+      cursor: pointer;
+      transform: translateY(-50%);
+      animation: arrowPulse 1.9s ease-in-out infinite;
+    }
+
+    .slide-arrow svg {
+      width: 25px;
+      height: 25px;
+      stroke-width: 2.6;
+    }
+
+    .slide-arrow.prev { left: 104px; }
+    .slide-arrow.next { right: 20px; }
+
+    .pagination .swiper-pagination-bullet {
+      width: 9px;
+      height: 9px;
+      margin: 0 !important;
+      opacity: 1;
+      background: rgba(255, 255, 255, .34);
+      transition: .25s ease;
+    }
+
+    .pagination .swiper-pagination-bullet-active {
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--aqua), var(--green));
+    }
+
+    .mobile-note {
+      display: none;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, .62);
+      backdrop-filter: blur(16px);
+    }
+
+    .modal.open {
+      display: grid;
+    }
+
+    .modal-card {
+      position: relative;
+      z-index: 2;
+      width: min(640px, 100%);
+      max-height: calc(100dvh - 36px);
+      overflow-y: auto;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(83, 244, 255, .18), transparent 38%),
+        rgba(8, 13, 20, .94);
+      box-shadow: 0 34px 110px rgba(0, 0, 0, .52);
+      padding: 14px;
+      padding-top: 46px;
+      color: var(--ink);
+      scrollbar-width: thin;
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .modal-copy {
+      min-width: 0;
+    }
+
+    .modal-x {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .1);
+      color: white;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .modal-card small {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: var(--aqua);
+      background: rgba(83, 244, 255, .1);
+      border: 1px solid rgba(83, 244, 255, .2);
+      font-size: 9px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .modal-card h3 {
+      margin: 7px 0 6px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(23px, 4vw, 34px);
+      line-height: .96;
+    }
+
+    .modal-card p {
+      max-width: none;
+      font-size: 11px;
+      line-height: 1.28;
+    }
+
+    .modal-image {
+      display: none;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 210px;
+      margin: 0;
+      border-radius: 14px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .14);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .34);
+      cursor: zoom-in;
+    }
+
+    .modal-image.show {
+      display: block;
+    }
+
+    .modal-image.wide {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      max-height: 190px;
+    }
+
+    .modal-card.wide-content {
+      width: min(820px, 100%);
+    }
+
+    .modal-card.wide-content .modal-body {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    }
+
+    .modal-card.wide-content .modal-image.wide {
+      max-height: 250px;
+    }
+
+    .modal-list {
+      display: grid;
+      gap: 7px;
+      margin: 9px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .modal-list li {
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .07);
+      color: var(--steel);
+      font-size: 10px;
+      font-weight: 800;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 9px;
+      align-items: center;
+    }
+
+    .benefit-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(83, 244, 255, .7);
+      border-radius: 999px;
+      color: #53f4ff;
+      background: rgba(83, 244, 255, .08);
+      box-shadow: 0 0 20px rgba(83, 244, 255, .14);
+    }
+
+    .benefit-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.3;
+      color: #53f4ff;
+      stroke: currentColor;
+    }
+
+    .benefit-text {
+      min-width: 0;
+      color: #eaf4ff;
+      line-height: 1.25;
+    }
+
+    .modal-close {
+      width: 100%;
+      min-height: 32px;
+      margin-top: 9px;
+      border: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--aqua), var(--green));
+      color: #061016;
+      font-weight: 950;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      place-items: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, .88);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .viewer.open {
+      display: grid;
+    }
+
+    .viewer img {
+      max-width: 94vw;
+      max-height: 82dvh;
+      object-fit: contain;
+      transform: translate(var(--pan-x, 0px), var(--pan-y, 0px)) scale(var(--zoom, 1));
+      transition: transform .18s ease;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .viewer img.dragging {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .expand-image {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(119, 255, 183, .5);
+      border-radius: 999px;
+      color: var(--green);
+      background: rgba(5, 7, 10, .58);
+      box-shadow: 0 0 24px rgba(119, 255, 183, .14);
+      backdrop-filter: blur(14px);
+      cursor: pointer;
+    }
+
+    .expand-image svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.4;
+    }
+
+    .viewer-tools {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 121;
+      display: flex;
+      gap: 8px;
+    }
+
+    .viewer-tools button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .12);
+      color: white;
+      font-size: 22px;
+      font-weight: 950;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes calloutPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, .38), 0 0 0 0 rgba(83, 244, 255, .28);
+      }
+      50% {
+        transform: scale(1.045);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, .44), 0 0 0 9px rgba(83, 244, 255, 0);
+      }
+    }
+
+    @keyframes iconGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(83, 244, 255, 0));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 8px rgba(83, 244, 255, .62));
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% {
+        opacity: .72;
+        box-shadow: 0 0 20px rgba(83, 244, 255, .08);
+      }
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 34px rgba(83, 244, 255, .22);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        position: fixed;
+        inset: 6px 10px auto;
+        width: auto;
+        height: 40px;
+        border-right: 0;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 1fr;
+        padding: 0 10px;
+      }
+
+      .logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        font-size: 11px;
+      }
+
+      .vertical {
+        writing-mode: initial;
+        transform: none;
+        justify-self: start;
+        margin-left: 10px;
+        max-width: 52vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .swiper {
+        width: 100vw;
+        height: 100dvh;
+      }
+
+      .swiper-slide {
+        padding: 58px 12px 28px;
+      }
+
+      .scene {
+        width: calc(100vw - 24px);
+        height: calc(100dvh - 88px);
+        grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+        gap: 10px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 7vw, 58px);
+      }
+
+      h2, .quote {
+        font-size: clamp(32px, 6vw, 52px);
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      .eyebrow {
+        min-height: 30px;
+        font-size: 10px;
+      }
+
+      .product {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+      }
+
+      .callout {
+        min-width: 92px;
+        padding: 7px;
+        border-radius: 14px;
+      }
+
+      .callout span { font-size: 8px; }
+      .callout b { font-size: 11px; }
+      .callout.one { top: 2%; right: 0; }
+      .callout.two { left: 0; top: 42%; }
+      .callout.three { right: 2%; bottom: 3%; }
+      .callout.four { left: 0; bottom: 3%; }
+      .callout.five { right: 34%; bottom: 3%; }
+
+      .power, .cta {
+        margin-top: 16px;
+        gap: 8px;
+      }
+
+      .chip {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .btn {
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 13px;
+        font-size: 13px;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .metric {
+        padding: 12px;
+        border-radius: 16px;
+      }
+
+      .metric b {
+        font-size: 25px;
+      }
+
+      .metric span {
+        font-size: 11px;
+      }
+
+      .script {
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .line {
+        padding: 10px 11px;
+        border-radius: 14px;
+        font-size: 12px;
+      }
+
+      .detail-media {
+        padding: 10px;
+        border-radius: 20px;
+      }
+
+      .benefit-grid {
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .benefit-card {
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 9px;
+        padding: 9px;
+        border-radius: 14px;
+      }
+
+      .benefit-card i {
+        width: 36px;
+        height: 36px;
+      }
+
+      .benefit-card svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .benefit-card b {
+        font-size: 14px;
+      }
+
+      .benefit-card span {
+        font-size: 12px;
+      }
+
+      .detail-slide .copy h2 {
+        font-size: clamp(24px, 4.8vw, 38px);
+        margin: 8px 0 7px;
+      }
+
+      .detail-slide .copy p {
+        font-size: 12px;
+        line-height: 1.28;
+      }
+
+      .detail-slide .benefit-grid {
+        gap: 6px;
+        margin-top: 9px;
+      }
+
+      .detail-slide .benefit-card {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 7px;
+        padding: 7px 8px;
+        border-radius: 11px;
+      }
+
+      .detail-slide .benefit-card i {
+        width: 30px;
+        height: 30px;
+      }
+
+      .detail-slide .benefit-card svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .detail-slide .benefit-card b {
+        font-size: 12px;
+      }
+
+      .detail-slide .benefit-card span {
+        font-size: 10px;
+        line-height: 1.18;
+      }
+
+      .profit-slide .scene {
+        grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      }
+
+      .profit-slide .metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .profit-slide .metric {
+        padding: 8px;
+        border-radius: 12px;
+      }
+
+      .profit-slide .metric b {
+        font-size: 22px;
+      }
+
+      .profit-slide .metric span {
+        font-size: 9px;
+      }
+
+      .profit-slide .benefit-grid {
+        margin-top: 8px;
+      }
+
+      .pagination {
+        right: auto;
+        top: auto;
+        left: 50%;
+        bottom: 8px;
+        transform: translateX(-50%);
+        display: flex;
+      }
+
+      .slide-arrow {
+        width: 38px;
+        height: 38px;
+      }
+
+      .slide-arrow svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .slide-arrow.prev { left: 12px; }
+      .slide-arrow.next { right: 12px; }
+
+      .pagination .swiper-pagination-bullet-active {
+        width: 34px;
+        height: 9px;
+      }
+    }
+
+    @media (max-width: 680px) and (orientation: portrait) {
+      body {
+        overflow: hidden;
+      }
+
+      .scene {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(210px, 36dvh) auto;
+        align-items: start;
+        height: calc(100dvh - 104px);
+        overflow-y: auto;
+        padding-bottom: 12px;
+        scrollbar-width: thin;
+      }
+
+      .copy {
+        align-self: start;
+        overflow: visible;
+      }
+
+      .product-stage {
+        padding: 10px 18px;
+        order: -1;
+        min-height: 210px;
+      }
+
+      .product {
+        width: min(58vw, 230px);
+        height: auto;
+        max-width: 230px;
+        max-height: 100%;
+      }
+
+      .halo {
+        width: min(84vw, 420px);
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .line {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .line b {
+        text-align: left;
+      }
+
+      .mobile-note {
+        display: block;
+        position: fixed;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+        z-index: 11;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .modal {
+        align-items: start;
+        padding: 12px;
+        padding-top: 18px;
+      }
+
+      .modal-card {
+        width: min(560px, 100%);
+        max-height: calc(100dvh - 24px);
+        border-radius: 16px;
+        padding: 10px;
+        padding-top: 40px;
+      }
+
+      .modal-body {
+        grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+        gap: 8px;
+      }
+
+      .modal-card h3 {
+        margin: 8px 0 6px;
+        font-size: 21px;
+      }
+
+      .modal-card p {
+        font-size: 10px;
+        line-height: 1.25;
+      }
+
+      .modal-card small {
+        font-size: 8px;
+        padding: 4px 7px;
+      }
+
+      .modal-image {
+        border-radius: 10px;
+        aspect-ratio: 1 / 1;
+        max-height: 150px;
+      }
+
+      .modal-image.wide {
+        aspect-ratio: 16 / 9;
+        max-height: 118px;
+      }
+
+      .modal-card.wide-content {
+        width: min(720px, 100%);
+      }
+
+      .modal-card.wide-content .modal-body {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      }
+
+      .modal-card.wide-content .modal-image.wide {
+        max-height: 170px;
+      }
+
+      .modal-list li {
+        padding: 6px 7px;
+        border-radius: 9px;
+        font-size: 9px;
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 7px;
+      }
+
+      .benefit-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      .benefit-icon svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .modal-list {
+        gap: 5px;
+        margin-top: 7px;
+      }
+
+      .modal-close {
+        min-height: 30px;
+        margin-top: 7px;
+        border-radius: 9px;
+        font-size: 10px;
+      }
+
+      .modal-x {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-image,
+      .modal-image.wide {
+        aspect-ratio: 16 / 7;
+        max-height: 110px;
+      }
+
+      .modal-card.wide-content .modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-height: 720px) {
+      .swiper-slide {
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
+
+      .scene {
+        height: calc(100dvh - 36px);
+      }
+
+      h1, h2 {
+        margin: 12px 0 10px;
+        font-size: clamp(42px, 6.2vw, 82px);
+      }
+
+      h2, .quote {
+        font-size: clamp(38px, 5.4vw, 72px);
+      }
+
+      p {
+        font-size: clamp(15px, 1.35vw, 19px);
+        line-height: 1.38;
+      }
+
+      .power, .cta, .metrics, .script {
+        margin-top: 16px;
+      }
+
+      .chip {
+        min-height: 36px;
+        font-size: 13px;
+      }
+
+      .btn {
+        min-height: 44px;
+      }
+    }
+
+    @media (max-width: 920px) and (max-height: 520px) {
+      .rail {
+        inset: 6px 10px auto;
+        height: 38px;
+      }
+
+      .swiper-slide {
+        padding: 50px 10px 14px;
+      }
+
+      .scene {
+        width: calc(100vw - 20px);
+        height: calc(100dvh - 64px);
+        grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+        gap: 8px;
+        align-items: stretch;
+      }
+
+      .copy {
+        align-self: stretch;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 4px;
+        scrollbar-width: thin;
+      }
+
+      .eyebrow {
+        min-height: 26px;
+        padding: 0 9px;
+        font-size: 9px;
+      }
+
+      h1 {
+        margin: 6px 0 6px;
+        font-size: clamp(27px, 5vw, 38px);
+        line-height: .88;
+      }
+
+      h2, .quote {
+        margin: 8px 0 8px;
+        font-size: clamp(28px, 5vw, 38px);
+        line-height: .92;
+      }
+
+      p {
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .power, .cta {
+        margin-top: 8px;
+        gap: 6px;
+      }
+
+      .chip {
+        min-height: 25px;
+        padding: 0 7px;
+        font-size: 9px;
+      }
+
+      .btn {
+        min-height: 30px;
+        padding: 0 9px;
+        font-size: 10px;
+      }
+
+      .product {
+        width: min(38vw, 260px);
+        height: auto;
+        max-width: 260px;
+        max-height: 88%;
+      }
+
+      .product-stage {
+        padding: 14px 24px;
+      }
+
+      .halo {
+        width: min(56vmin, 340px);
+      }
+
+      .callout {
+        min-width: 82px;
+        padding: 6px;
+      }
+
+      .callout span { font-size: 8px; }
+      .callout b { font-size: 10px; }
+      .callout.one { top: 0; right: 0; }
+      .callout.two { left: 0; top: 44%; }
+      .callout.three { right: 3%; bottom: 0; }
+      .callout.four { left: 0; bottom: 0; }
+      .callout.five { right: 34%; bottom: 0; }
+
+      .metrics {
+        margin-top: 10px;
+        gap: 7px;
+      }
+
+      .metric {
+        padding: 9px;
+      }
+
+      .metric b {
+        font-size: 20px;
+      }
+
+      .metric span {
+        font-size: 9px;
+      }
+
+      .script {
+        margin-top: 10px;
+        gap: 6px;
+      }
+
+      .line {
+        padding: 8px 9px;
+        font-size: 10px;
+      }
+
+      .pagination {
+        bottom: 3px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <aside class="rail">
+      <div class="logo">RO</div>
+      <div class="vertical">Purificador RYZTOR 100GPD</div>
+      <div class="counter" id="counter">01/05</div>
+    </aside>
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Filtro RO de encimera</span>
+              <h1>Purificador de agua PRO HERO 10X</h1>
+              <p>Purificador de Agua de Osmosis Inversa de Encimera con produccion 100GPD para limpiar el agua, reducir olor y sabor a cloro, mejorar el sabor, alcalinizar y aportar minerales para una experiencia diaria mas fresca.</p>
+              <div class="power">
+                <span class="chip">100GPD produccion</span>
+                <span class="chip">5 etapas</span>
+                <span class="chip">Quita olor a cloro</span>
+                <span class="chip">Alcaliniza + minerales</span>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.png" alt="Purificador de agua de osmosis inversa RYZTOR 100GPD">
+              <button class="callout one" type="button" data-image="cloro.png" data-title="(0) cloro" data-kicker="Resultado" data-text="Ayuda a eliminar el olor y sabor a cloro para que el agua se sienta mas fresca desde el primer vaso." data-benefits="Mejor sabor para tomar agua todos los dias|Cafe y te sin sabor quimico|Compara el olor y sabor antes/despues"><span>Resultado</span><b>(0) cloro</b></button>
+              <button class="callout two" type="button" data-image="osmosis.png" data-image-layout="wide" data-title="RO 5 etapas" data-kicker="Filtracion" data-text="Sistema de osmosis inversa de 5 etapas pensado para limpiar el agua y retener particulas no deseadas antes del consumo." data-benefits="Filtracion mas completa que una jarra comun|Agua mas confiable para tomar y cocinar|Mayor tranquilidad para familia, cocina y oficina"><span>Filtracion</span><b>RO 5 etapas</b></button>
+              <button class="callout three" type="button" data-image="mineral.png" data-image-layout="wide" data-title="Agua mineralizada" data-kicker="Agua final" data-text="Despues de filtrar, el agua se vuelve mas agradable, alcalinizada y con minerales para una experiencia diaria premium." data-benefits="Sensacion de agua mas suave|Sabor mas agradable para tomar todos los dias|Producto de uso diario, no de compra impulsiva"><span>Agua final</span><b>Mineralizada</b></button>
+              <button class="callout four" type="button" data-image="bidon.png" data-title="Menos gasto en bidones" data-kicker="Costo" data-text="En vez de comprar bidones una y otra vez, el hogar produce agua purificada en casa y reduce el gasto repetido." data-benefits="Ahorro mensual frente a compras constantes|Menos tiempo cargando y esperando bidones|Evita bidones calentados por el sol y almacenados en plastico"><span>Costo</span><b>Menos bidones</b></button>
+              <button class="callout five" type="button" data-image="alcalina.png" data-title="Agua alcalina" data-kicker="pH+" data-text="Agua con pH mas alto, sabor mas suave y minerales añadidos despues de la filtracion." data-benefits="pH mas alto que el agua comun|Sabor mas suave y menos acidez percibida|Aporte de minerales como Ca, Mg, Na y K"><span>pH+</span><b>Alcalina</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="cloro.png" alt="Agua con olor y sabor a cloro">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Resultado</span>
+              <h2>(0) cloro en el sabor diario.</h2>
+              <p>Ayuda a eliminar el olor y sabor a cloro para que el agua se sienta mas fresca desde el primer vaso.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="glass-water"></i><div><b>Mejor sabor</b><span>para tomar agua todos los dias.</span></div></div>
+                <div class="benefit-card"><i data-lucide="coffee"></i><div><b>Cafe y te</b><span>sin sabor quimico ni olor fuerte.</span></div></div>
+                <div class="benefit-card"><i data-lucide="wind"></i><div><b>Compara antes/despues</b><span>oler y probar hace que el beneficio sea evidente.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="osmosis.png" alt="Sistema de osmosis inversa de 5 etapas">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Filtracion</span>
+              <h2>RO de 5 etapas para agua mas limpia.</h2>
+              <p>La osmosis inversa trabaja por etapas para retener sedimentos, reducir olores, sabores no deseados y particulas antes del consumo.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="filter"></i><div><b>Filtracion completa</b><span>mas avanzada que una jarra comun.</span></div></div>
+                <div class="benefit-card"><i data-lucide="utensils"></i><div><b>Para tomar y cocinar</b><span>agua mas confiable para el uso diario en casa.</span></div></div>
+                <div class="benefit-card"><i data-lucide="shield-check"></i><div><b>Mas tranquilidad</b><span>para familia, cocina y oficina.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="mineral.png" alt="Agua mineralizada despues de filtrar">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Agua final</span>
+              <h2>Mineralizada, alcalinizada y mas agradable.</h2>
+              <p>Despues de filtrar, el agua se vuelve mas suave al paladar y suma minerales para una experiencia diaria premium.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="gem"></i><div><b>Con minerales</b><span>para una sensacion de agua mas completa.</span></div></div>
+                <div class="benefit-card"><i data-lucide="sparkles"></i><div><b>Sabor mas agradable</b><span>ideal para tomar todos los dias.</span></div></div>
+                <div class="benefit-card"><i data-lucide="calendar-check"></i><div><b>Uso diario</b><span>un beneficio que se repite vaso tras vaso.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="alcalina.png" alt="Agua alcalinizada con minerales esenciales">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">pH+</span>
+              <h2>Agua alcalina con pH mas alto y minerales.</h2>
+              <p>La alcalinizacion eleva el pH del agua y puede darle un sabor mas suave, con minerales añadidos despues de la filtracion.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="activity"></i><div><b>pH mas alto</b><span>agua menos acida en comparacion con agua comun.</span></div></div>
+                <div class="benefit-card"><i data-lucide="gem"></i><div><b>Minerales añadidos</b><span>Ca, Mg, Na y K despues de filtrar.</span></div></div>
+                <div class="benefit-card"><i data-lucide="glass-water"></i><div><b>Sabor mas suave</b><span>menor acidez percibida al tomarla.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide profit-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Negocio MLM</span>
+              <h2>Venta con margen alto y recompra recurrente.</h2>
+              <p>Un producto de uso diario: se vende por necesidad familiar, se demuestra con un vaso y abre recompra por filtros, mantenimiento y referidos.</p>
+              <div class="metrics">
+                <div class="metric"><b>+200%</b><span>margen objetivo por unidad</span></div>
+                <div class="metric"><b>3x</b><span>producto, filtros y referidos</span></div>
+                <div class="metric"><b>1</b><span>demostracion para explicar valor</span></div>
+              </div>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="trending-up"></i><div><b>Alta demanda</b><span>agua limpia para hogares, oficinas y negocios.</span></div></div>
+                <div class="benefit-card"><i data-lucide="refresh-cw"></i><div><b>Recompra</b><span>filtros y mantenimiento generan ventas recurrentes.</span></div></div>
+                <div class="benefit-card"><i data-lucide="badge-dollar-sign"></i><div><b>Margen claro</b><span>precio premium con argumento visible en demostracion.</span></div></div>
+              </div>
+            </div>
+            <div class="detail-media">
+              <img src="300.png" alt="Ventas y ganancia del purificador RYZTOR">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide detail-slide">
+          <div class="scene">
+            <div class="detail-media">
+              <img src="bidon.png" alt="Bidones de agua expuestos al sol">
+              <button class="expand-image" type="button" aria-label="Ampliar imagen"><i data-lucide="expand"></i></button>
+            </div>
+            <div class="copy">
+              <span class="eyebrow">Costo</span>
+              <h2>Menos bidones, menos carga, menos gasto.</h2>
+              <p>En vez de comprar bidones una y otra vez, el hogar produce agua purificada en casa y reduce el gasto repetido.</p>
+              <div class="benefit-grid">
+                <div class="benefit-card"><i data-lucide="coins"></i><div><b>Ahorro mensual</b><span>frente a compras constantes de agua.</span></div></div>
+                <div class="benefit-card"><i data-lucide="clock"></i><div><b>Mas tiempo</b><span>sin pedir, esperar ni cargar bidones.</span></div></div>
+                <div class="benefit-card"><i data-lucide="recycle"></i><div><b>Menos plastico</b><span>evita bidones calentados por el sol y almacenados en casa.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide" id="demo">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">La demostracion vende</span>
+              <h2>La venta empieza cuando prueban agua sin sabor a cloro.</h2>
+              <p>En MLM gana el producto que la persona siente en la boca. Sirves un vaso, comparas olor, comparas sabor y explicas: filtra, limpia, alcaliniza y remineraliza. Es una demostracion simple y poderosa.</p>
+              <div class="metrics">
+                <div class="metric"><b>60s</b><span>para captar atencion</span></div>
+                <div class="metric"><b>1</b><span>vaso para abrir conversacion</span></div>
+                <div class="metric"><b>5</b><span>argumentos faciles</span></div>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.png" alt="Pantalla digital del purificador de agua RYZTOR">
+              <button class="callout one" type="button" data-image="cloro.png" data-title="Sin olor fuerte" data-kicker="Prueba" data-text="El olor a cloro es una de las objeciones mas faciles de demostrar: acercas el vaso, comparas y dejas que la persona note la diferencia." data-benefits="Impacto inmediato en demostracion|No requiere explicacion larga|Perfecto para reuniones en casa"><span>Prueba</span><b>Sin olor fuerte</b></button>
+              <button class="callout two" type="button" data-image="cloro.png" data-title="Sabor mas suave" data-kicker="Sabor" data-text="Cuando el agua sabe mejor, la familia toma mas agua y usa el purificador para cocinar, cafe, te y visitas." data-benefits="Mas agradable para ninos y adultos|Mejor base para cafe y te|Beneficio que se siente en la boca"><span>Sabor</span><b>Mas suave</b></button>
+              <button class="callout three" type="button" data-title="Agua diaria" data-kicker="Cierre" data-text="No es un lujo que se usa una vez: es agua para todos los dias, para tomar, cocinar, preparar cafe, te y servir a la familia." data-benefits="Uso constante en casa|Agua disponible sin cargar bidones|Menos compras repetidas de agua"><span>Cierre</span><b>Agua diaria</b></button>
+              <button class="callout four" type="button" data-image="bidon.png" data-title="Adios bidones al sol" data-kicker="Costo" data-text="El bidon se compra, se carga, se almacena y muchas veces pasa horas al sol. El purificador cambia ese gasto por produccion diaria en casa." data-benefits="Menos dependencia del delivery de agua|Menos plastico entrando a la casa|Historia potente: ahorro + tiempo + confianza"><span>Costo</span><b>Sin bidones</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Guion primera hora</span>
+              <h2>La reunion debe oler, saborear y demostrar limpieza.</h2>
+              <p>La primera hora no es teoria. Es agua de grifo contra agua purificada: olor a cloro, sabor a cloro, filtracion RO, alcalinizacion y minerales. La gente entiende el beneficio en el primer vaso.</p>
+              <div class="script">
+                <div class="line"><span>Minuto 0-10</span><b>Oler agua del grifo vs purificada</b></div>
+                <div class="line"><span>Minuto 10-25</span><b>Probar sabor: menos cloro, mas frescura</b></div>
+                <div class="line"><span>Minuto 25-40</span><b>Explicar RO, alcalinizacion y minerales</b></div>
+                <div class="line"><span>Minuto 40-60</span><b>Cerrar: hogar limpio o negocio duplicable</b></div>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.png" alt="Purificador RYZTOR con panel tactil">
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide" id="red">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">MLM exagerado</span>
+              <h2>Una familia siente la diferencia. Una red la multiplica.</h2>
+              <p>El mensaje es facil de duplicar: agua limpia, sin olor a cloro, sin sabor pesado, alcalinizada y con minerales. Sirve para hijos, cafe, te, cocina, visitas, oficina y cada recomendacion abre otra demostracion.</p>
+              <div class="script">
+                <div class="line"><span>Cliente</span><b>Quiere quitar cloro, olor y mal sabor</b></div>
+                <div class="line"><span>Anfitrion</span><b>Invita a probar agua mas fresca</b></div>
+                <div class="line"><span>Socio</span><b>Duplica la prueba vaso contra vaso</b></div>
+                <div class="line"><span>Lider</span><b>Entrena beneficios y cierres semanales</b></div>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.png" alt="Purificador RO para venta en red">
+              <button class="callout one" type="button" data-image="cloro.png" data-title="Menos cloro" data-kicker="Beneficio" data-text="El beneficio se entiende en segundos: menos olor, menos sabor pesado y agua mas agradable para el consumo familiar." data-benefits="Mensaje facil de duplicar|Beneficio familiar y cotidiano|Comparacion simple vaso contra vaso"><span>Beneficio</span><b>Menos cloro</b></button>
+              <button class="callout two" type="button" data-title="Prueba simple" data-kicker="Replica" data-text="Cada socio puede repetir la misma demostracion sin ser experto: agua de grifo, agua filtrada, olor, sabor y cierre." data-benefits="Ideal para nuevos vendedores|Guion corto y repetible|Menos dependencia del lider"><span>Replica</span><b>Prueba simple</b></button>
+              <button class="callout three" type="button" data-title="Agua + referido" data-kicker="Movimiento" data-text="El producto abre conversacion natural: quien prueba agua mejor puede recomendar a otra familia, oficina o negocio." data-benefits="Referidos por experiencia real|Producto demostrable en reuniones|Puerta de entrada para construir red"><span>Movimiento</span><b>Agua + referido</b></button>
+              <button class="callout four" type="button" data-image="bidon.png" data-title="Ahorro que se repite" data-kicker="Costo" data-text="El costo de los bidones vuelve cada semana y cada mes. Con un purificador en casa, el agua diaria deja de depender de compras constantes." data-benefits="Ahorro acumulado mes tras mes|Menos tiempo perdido pidiendo, esperando y cargando agua|Menos espacio ocupado por bidones en la casa"><span>Costo</span><b>Ahorro mensual</b></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="swiper-slide">
+          <div class="scene">
+            <div class="copy">
+              <span class="eyebrow">Cierre</span>
+              <div class="quote">“No vendas un filtro. Vende agua limpia, sin olor a cloro, con mejor sabor y minerales.”</div>
+              <div class="cta">
+                <a class="btn" href="https://wa.me/" target="_blank" rel="noreferrer">Enviar por WhatsApp</a>
+                <a class="btn dark" href="#demo">Repetir guion</a>
+              </div>
+            </div>
+            <div class="product-stage">
+              <div class="halo"></div>
+              <img class="product" src="purificador.png" alt="Purificador de agua RYZTOR para cierre comercial">
+              <button class="callout one" type="button" data-title="Agua limpia" data-kicker="Promesa" data-text="La promesa central es simple: agua purificada para tomar, cocinar y servir con mas confianza todos los dias." data-benefits="Beneficio emocional para la familia|Uso diario y visible|Mas valor percibido en la cocina"><span>Promesa</span><b>Agua limpia</b></button>
+              <button class="callout two" type="button" data-image="cloro.png" data-title="Mejor sabor" data-kicker="Prueba" data-text="El sabor no se discute: el agua se prueba. Menos olor a cloro, menos sabor pesado y una experiencia mas suave en cada vaso." data-benefits="Agua mas agradable para toda la familia|Mejor base para cafe, te y cocina|Beneficio inmediato desde el primer vaso"><span>Prueba</span><b>Mejor sabor</b></button>
+              <button class="callout three" type="button" data-title="Agua para la casa" data-kicker="Oferta" data-text="Agua limpia en casa para tomar, cocinar, preparar bebidas y servir a visitas sin depender de bidones almacenados." data-benefits="Agua disponible para tomar y cocinar|Menos compras repetidas de agua|Mas control sobre el agua que consume la familia"><span>Oferta</span><b>Para tu casa</b></button>
+              <button class="callout four" type="button" data-image="bidon.png" data-title="Costo inteligente" data-kicker="Costo" data-text="Deja de pagar por agua en bidones expuestos al calor, al transporte y al plastico. Cambia ese gasto repetido por agua purificada en casa." data-benefits="Ahorro masivo en compras repetidas|Menos esfuerzo cargando bidones pesados|Menos plastico y menos agua expuesta al sol"><span>Costo</span><b>No mas bidones</b></button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="pagination"></div>
+    </div>
+    <button class="slide-arrow prev" type="button" id="prevSlide" aria-label="Diapositiva anterior"><i data-lucide="chevron-left"></i></button>
+    <button class="slide-arrow next" type="button" id="nextSlide" aria-label="Diapositiva siguiente"><i data-lucide="chevron-right"></i></button>
+    <div class="mobile-note">Desliza horizontal</div>
+  </main>
+
+  <div class="modal" id="benefitModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-x" type="button" id="modalX" aria-label="Cerrar">×</button>
+      <div class="modal-body">
+        <img class="modal-image" id="modalImage" src="" alt="">
+        <div class="modal-copy">
+          <small id="modalKicker">Beneficio</small>
+          <h3 id="modalTitle">Agua limpia</h3>
+          <p id="modalText">Beneficio del purificador.</p>
+          <ul class="modal-list" id="modalList"></ul>
+          <button class="modal-close" type="button" id="modalClose">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="viewer" id="imageViewer" aria-hidden="true">
+    <div class="viewer-tools">
+      <button type="button" id="zoomOut" aria-label="Alejar">−</button>
+      <button type="button" id="zoomIn" aria-label="Acercar">+</button>
+      <button type="button" id="viewerClose" aria-label="Cerrar">×</button>
+    </div>
+    <img id="viewerImage" src="" alt="">
+  </div>
+
+  <script>
+    const counter = document.getElementById("counter");
+    const modal = document.getElementById("benefitModal");
+    const modalKicker = document.getElementById("modalKicker");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const modalImage = document.getElementById("modalImage");
+    const modalList = document.getElementById("modalList");
+    const modalClose = document.getElementById("modalClose");
+    const modalX = document.getElementById("modalX");
+    const imageViewer = document.getElementById("imageViewer");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerClose = document.getElementById("viewerClose");
+    const zoomIn = document.getElementById("zoomIn");
+    const zoomOut = document.getElementById("zoomOut");
+    const prevSlide = document.getElementById("prevSlide");
+    const nextSlide = document.getElementById("nextSlide");
+    let imageZoom = 1;
+    let panX = 0;
+    let panY = 0;
+    let dragStart = null;
+    let pinchStart = null;
+
+    const swiper = new Swiper(".swiper", {
+      speed: 820,
+      grabCursor: true,
+      keyboard: { enabled: true },
+      mousewheel: { forceToAxis: true },
+      pagination: { el: ".pagination", clickable: true },
+      touchRatio: 1.15
+    });
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function updateCounter() {
+      counter.textContent = `${pad(swiper.activeIndex + 1)}/${pad(swiper.slides.length)}`;
+    }
+
+    function animateActive() {
+      const slide = swiper.slides[swiper.activeIndex];
+      const copy = slide.querySelectorAll(".eyebrow, h1, h2, .quote, p, .chip, .metric, .line, .btn");
+      const product = slide.querySelector(".product");
+      const callouts = slide.querySelectorAll(".callout");
+
+      gsap.fromTo(copy, { y: 30, opacity: 0 }, {
+        y: 0,
+        opacity: 1,
+        duration: .75,
+        ease: "power3.out",
+        stagger: .045
+      });
+
+      if (product) {
+        gsap.fromTo(product, { y: 36, scale: .94, opacity: .2 }, {
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          duration: .95,
+          ease: "power3.out"
+        });
+      }
+
+      gsap.fromTo(callouts, { x: 24, opacity: 0 }, {
+        x: 0,
+        opacity: 1,
+        duration: .65,
+        delay: .22,
+        ease: "power3.out",
+        stagger: .08
+      });
+    }
+
+    function openBenefitModal(button) {
+      function benefitIcon(text) {
+        const value = text.toLowerCase();
+        if (value.includes("ahorro") || value.includes("compras") || value.includes("gasto")) return "coins";
+        if (value.includes("tiempo") || value.includes("esperando")) return "clock";
+        if (value.includes("cargando") || value.includes("carga") || value.includes("pesados")) return "package";
+        if (value.includes("plastico") || value.includes("sol") || value.includes("bidon")) return "recycle";
+        if (value.includes("cafe") || value.includes("te")) return "coffee";
+        if (value.includes("familia") || value.includes("ninos") || value.includes("adultos")) return "users";
+        if (value.includes("cocinar") || value.includes("cocina")) return "utensils";
+        if (value.includes("sabor") || value.includes("suave") || value.includes("agradable")) return "glass-water";
+        if (value.includes("olor") || value.includes("oler") || value.includes("cloro") || value.includes("quimico")) return "wind";
+        if (value.includes("filtracion") || value.includes("particulas") || value.includes("jarra")) return "filter";
+        if (value.includes("confianza") || value.includes("tranquilidad")) return "shield-check";
+        if (value.includes("ph") || value.includes("acidez") || value.includes("acida")) return "activity";
+        if (value.includes("minerales") || value.includes("mineral")) return "gem";
+        if (value.includes("diario") || value.includes("dias") || value.includes("constante")) return "calendar-check";
+        return "sparkles";
+      }
+      modalKicker.textContent = button.dataset.kicker || "Beneficio";
+      modalTitle.textContent = button.dataset.title || "Beneficio";
+      modalText.textContent = button.dataset.text || "";
+      if (button.dataset.image) {
+        modalImage.src = button.dataset.image;
+        modalImage.alt = button.dataset.title || "Imagen del beneficio";
+        modalImage.classList.add("show");
+        modalImage.classList.toggle("wide", button.dataset.imageLayout === "wide");
+        modal.querySelector(".modal-card").classList.toggle("wide-content", button.dataset.imageLayout === "wide");
+      } else {
+        modalImage.removeAttribute("src");
+        modalImage.alt = "";
+        modalImage.classList.remove("show", "wide");
+        modal.querySelector(".modal-card").classList.remove("wide-content");
+      }
+      modalList.innerHTML = (button.dataset.benefits || "")
+        .split("|")
+        .filter(Boolean)
+        .map((item, index) => `
+          <li>
+            <span class="benefit-icon"><i data-lucide="${benefitIcon(item)}"></i></span>
+            <span class="benefit-text">${item}</span>
+          </li>
+        `)
+        .join("");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      if (window.lucide) lucide.createIcons();
+      gsap.fromTo(".modal-card", { y: 24, scale: .96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: .35, ease: "power3.out" });
+    }
+
+    function closeBenefitModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    function setViewerZoom(value) {
+      imageZoom = Math.min(Math.max(value, 1), 3.5);
+      viewerImage.style.setProperty("--zoom", imageZoom);
+      if (imageZoom === 1) {
+        panX = 0;
+        panY = 0;
+        viewerImage.style.setProperty("--pan-x", "0px");
+        viewerImage.style.setProperty("--pan-y", "0px");
+      }
+    }
+
+    function openImageViewerFrom(src, alt) {
+      if (!src) return;
+      viewerImage.src = src;
+      viewerImage.alt = alt || "Imagen ampliada";
+      panX = 0;
+      panY = 0;
+      viewerImage.style.setProperty("--pan-x", "0px");
+      viewerImage.style.setProperty("--pan-y", "0px");
+      setViewerZoom(1);
+      imageViewer.classList.add("open");
+      imageViewer.setAttribute("aria-hidden", "false");
+    }
+
+    function openImageViewer() {
+      openImageViewerFrom(modalImage.src, modalImage.alt);
+    }
+
+    function closeImageViewer() {
+      imageViewer.classList.remove("open");
+      imageViewer.setAttribute("aria-hidden", "true");
+      viewerImage.removeAttribute("src");
+    }
+
+    document.querySelectorAll(".callout").forEach((button) => {
+      button.addEventListener("click", () => openBenefitModal(button));
+    });
+
+    document.querySelectorAll(".expand-image").forEach((button) => {
+      button.addEventListener("click", () => {
+        const image = button.parentElement.querySelector("img");
+        openImageViewerFrom(image.src, image.alt);
+      });
+    });
+    document.querySelectorAll(".detail-media img").forEach((image) => {
+      image.addEventListener("click", () => openImageViewerFrom(image.src, image.alt));
+    });
+
+    modalClose.addEventListener("click", closeBenefitModal);
+    modalX.addEventListener("click", closeBenefitModal);
+    modalImage.addEventListener("click", openImageViewer);
+    zoomIn.addEventListener("click", () => setViewerZoom(imageZoom + .35));
+    zoomOut.addEventListener("click", () => setViewerZoom(imageZoom - .35));
+    viewerClose.addEventListener("click", closeImageViewer);
+    imageViewer.addEventListener("click", (event) => {
+      if (event.target === imageViewer) closeImageViewer();
+    });
+    imageViewer.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      setViewerZoom(imageZoom + (event.deltaY < 0 ? .18 : -.18));
+    }, { passive: false });
+    viewerImage.addEventListener("pointerdown", (event) => {
+      if (imageZoom <= 1) return;
+      dragStart = { x: event.clientX, y: event.clientY, panX, panY };
+      viewerImage.classList.add("dragging");
+      viewerImage.setPointerCapture(event.pointerId);
+    });
+    viewerImage.addEventListener("pointermove", (event) => {
+      if (!dragStart) return;
+      panX = dragStart.panX + event.clientX - dragStart.x;
+      panY = dragStart.panY + event.clientY - dragStart.y;
+      viewerImage.style.setProperty("--pan-x", `${panX}px`);
+      viewerImage.style.setProperty("--pan-y", `${panY}px`);
+    });
+    viewerImage.addEventListener("pointerup", () => {
+      dragStart = null;
+      viewerImage.classList.remove("dragging");
+    });
+    viewerImage.addEventListener("pointercancel", () => {
+      dragStart = null;
+      viewerImage.classList.remove("dragging");
+    });
+    imageViewer.addEventListener("touchstart", (event) => {
+      if (event.touches.length !== 2) return;
+      const [a, b] = event.touches;
+      const distance = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      pinchStart = { distance, zoom: imageZoom };
+      dragStart = null;
+      viewerImage.classList.remove("dragging");
+    }, { passive: true });
+    imageViewer.addEventListener("touchmove", (event) => {
+      if (!pinchStart || event.touches.length !== 2) return;
+      event.preventDefault();
+      const [a, b] = event.touches;
+      const distance = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      setViewerZoom(pinchStart.zoom * (distance / pinchStart.distance));
+    }, { passive: false });
+    imageViewer.addEventListener("touchend", (event) => {
+      if (event.touches.length < 2) pinchStart = null;
+    });
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeBenefitModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && imageViewer.classList.contains("open")) {
+        closeImageViewer();
+        return;
+      }
+      if (event.key === "Escape") closeBenefitModal();
+    });
+
+    swiper.on("slideChangeTransitionStart", () => {
+      updateCounter();
+      animateActive();
+    });
+
+    prevSlide.addEventListener("click", () => swiper.slidePrev());
+    nextSlide.addEventListener("click", () => swiper.slideNext());
+
+    updateCounter();
+    if (window.lucide) lucide.createIcons();
+    animateActive();
+  </script>
+</body>
+</html>
