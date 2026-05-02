@@ -24,17 +24,17 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     :root {
-      --paper: #f7f3ea;
-      --paper-2: #fffaf0;
-      --ink: #15202b;
-      --muted: #66707c;
-      --line: rgba(21,32,43,.14);
-      --green: #1f8a70;
-      --blue: #2868d8;
-      --orange: #e58b3a;
-      --red: #c44747;
-      --panel: rgba(255,255,255,.7);
-      --shadow: 0 24px 70px rgba(38, 44, 52, .16);
+      --paper: #f7f7f4;
+      --paper-2: #ffffff;
+      --ink: #080808;
+      --muted: #626262;
+      --line: rgba(8,8,8,.14);
+      --green: #111111;
+      --blue: #4b4b4b;
+      --orange: #0f0f0f;
+      --red: #2b2b2b;
+      --panel: rgba(255,255,255,.84);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .14);
       --radius: 14px;
       --max: 1180px;
     }
@@ -47,11 +47,11 @@
       color: var(--ink);
       font-family: Archivo, Arial, sans-serif;
       background:
-        linear-gradient(90deg, rgba(21,32,43,.035) 1px, transparent 1px),
-        linear-gradient(rgba(21,32,43,.035) 1px, transparent 1px),
-        radial-gradient(circle at 16% 18%, rgba(31,138,112,.18), transparent 26%),
-        radial-gradient(circle at 84% 12%, rgba(40,104,216,.16), transparent 28%),
-        linear-gradient(135deg, #fffaf0 0%, #eef4ef 48%, #f7f3ea 100%);
+        linear-gradient(90deg, rgba(8,8,8,.035) 1px, transparent 1px),
+        linear-gradient(rgba(8,8,8,.035) 1px, transparent 1px),
+        radial-gradient(circle at 16% 18%, rgba(0,0,0,.08), transparent 28%),
+        radial-gradient(circle at 84% 12%, rgba(0,0,0,.06), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #eeeeea 48%, #f8f8f4 100%);
       background-size: 62px 62px, 62px 62px, auto, auto, auto;
       line-height: 1.55;
     }
@@ -64,7 +64,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(255,250,240,.82);
+      background: rgba(255,255,255,.82);
       backdrop-filter: blur(18px);
     }
 
@@ -93,7 +93,7 @@
       place-items: center;
       border-radius: 50%;
       color: #fff;
-      background: conic-gradient(from 140deg, var(--green), var(--blue), var(--orange), var(--green));
+      background: conic-gradient(from 140deg, #050505, #5a5a5a, #111111, #d8d8d8, #050505);
       animation: markSpin 10s linear infinite;
     }
 
@@ -122,10 +122,10 @@
     }
 
     .btn {
-      border-color: rgba(31,138,112,.35);
+      border-color: rgba(0,0,0,.25);
       color: #fff;
       background: linear-gradient(135deg, var(--green), var(--blue));
-      box-shadow: 0 16px 38px rgba(31,138,112,.22);
+      box-shadow: 0 16px 38px rgba(0,0,0,.2);
     }
 
     .secondary {
@@ -224,7 +224,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 20%, rgba(255,250,240,.92) 100%);
+      background: linear-gradient(180deg, transparent 20%, rgba(255,255,255,.94) 100%);
       z-index: 1;
     }
 
@@ -369,7 +369,7 @@
       position: absolute;
       inset: 0 auto 0 0;
       width: var(--progress, 10%);
-      background: linear-gradient(90deg, rgba(31,138,112,.18), transparent);
+      background: linear-gradient(90deg, rgba(0,0,0,.12), transparent);
       animation: progressGlow 3.8s ease-in-out infinite;
     }
 
@@ -395,7 +395,7 @@
       height: 280px;
       position: absolute;
       border-radius: 50%;
-      border: 2px dashed rgba(31,138,112,.42);
+      border: 2px dashed rgba(0,0,0,.3);
       animation: spin 18s linear infinite;
     }
 
@@ -409,7 +409,7 @@
       text-align: center;
       font-weight: 900;
       background: linear-gradient(135deg, var(--green), var(--blue));
-      box-shadow: 0 24px 60px rgba(31,138,112,.28);
+      box-shadow: 0 24px 60px rgba(0,0,0,.22);
       z-index: 2;
     }
 
@@ -731,16 +731,16 @@
   <script>
     lucide.createIcons();
 
-    const chartText = "#15202b";
-    const chartGrid = "rgba(21,32,43,.12)";
+    const chartText = "#080808";
+    const chartGrid = "rgba(8,8,8,.12)";
 
-    new Chart(document.getElementById("equityChart"), {
+    const equityChart = new Chart(document.getElementById("equityChart"), {
       type: "doughnut",
       data: {
         labels: ["Luis Higueras", "Jose Eduardo Callau"],
         datasets: [{
           data: [50, 50],
-          backgroundColor: ["#1f8a70", "#2868d8"],
+          backgroundColor: ["#080808", "#b7b7b0"],
           borderWidth: 0,
           hoverOffset: 12
         }]
@@ -754,14 +754,14 @@
       }
     });
 
-    new Chart(document.getElementById("costChart"), {
+    const costChart = new Chart(document.getElementById("costChart"), {
       type: "bar",
       data: {
         labels: ["Luis", "Jose"],
         datasets: [{
           label: "Participacion de gastos",
           data: [50, 50],
-          backgroundColor: ["#1f8a70", "#2868d8"],
+          backgroundColor: ["#080808", "#b7b7b0"],
           borderRadius: 12
         }]
       },
@@ -777,16 +777,17 @@
       }
     });
 
-    new Chart(document.getElementById("investmentChart"), {
+    const investmentChart = new Chart(document.getElementById("investmentChart"), {
       type: "radar",
       data: {
         labels: ["OEM", "Branding", "Web", "Contenido", "Logistica", "Medicos"],
         datasets: [{
           label: "Prioridad inicial",
           data: [95, 85, 78, 90, 70, 82],
-          borderColor: "#1f8a70",
-          backgroundColor: "rgba(31,138,112,.18)",
-          pointBackgroundColor: "#2868d8",
+          borderColor: "#080808",
+          backgroundColor: "rgba(8,8,8,.12)",
+          pointBackgroundColor: "#ffffff",
+          pointBorderColor: "#080808",
           pointRadius: 4
         }]
       },
@@ -807,6 +808,29 @@
         plugins: { legend: { display: false } }
       }
     });
+
+    let pulse = 0;
+    window.setInterval(() => {
+      pulse += 1;
+      const wave = Math.sin(pulse / 2) * 3;
+      const waveSoft = Math.sin(pulse / 2.6) * 5;
+
+      equityChart.data.datasets[0].data = [50 + wave, 50 - wave];
+      equityChart.update("active");
+
+      costChart.data.datasets[0].data = [50 + wave, 50 - wave];
+      costChart.update("active");
+
+      investmentChart.data.datasets[0].data = [
+        95 + waveSoft,
+        85 - wave,
+        78 + wave,
+        90 + waveSoft / 2,
+        70 - waveSoft / 2,
+        82 + wave
+      ];
+      investmentChart.update("active");
+    }, 1800);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
