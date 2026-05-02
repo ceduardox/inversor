@@ -501,6 +501,7 @@
     .orbit-point {
       --angle: 0deg;
       --distance: clamp(130px, 15vw, 158px);
+      --point: var(--blue);
       position: absolute;
       left: 50%;
       top: 50%;
@@ -508,14 +509,18 @@
       min-height: 50px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255,255,255,.16);
+      border: 1px solid color-mix(in srgb, var(--point), #fff 24%);
       border-radius: 14px;
-      background: rgba(7,13,24,.86);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--point), #05070d 30%), rgba(7,13,24,.9)),
+        radial-gradient(circle at 22% 18%, rgba(255,255,255,.24), transparent 34%);
       backdrop-filter: blur(10px);
       color: #fff;
       font-size: 12px;
       font-weight: 900;
       text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,.54);
+      box-shadow: 0 16px 34px color-mix(in srgb, var(--point), transparent 72%);
       transform:
         translate(-50%, -50%)
         rotate(var(--angle))
@@ -890,12 +895,12 @@
           <div class="investment-stage" aria-label="Areas de inversion del proyecto HBDERM">
             <div class="investment-orbit">
               <div class="investment-center">HBDERM</div>
-              <div class="orbit-point" style="--angle:0deg">OEM</div>
-              <div class="orbit-point" style="--angle:60deg">Branding</div>
-              <div class="orbit-point" style="--angle:120deg">Web</div>
-              <div class="orbit-point" style="--angle:180deg">Contenido</div>
-              <div class="orbit-point" style="--angle:240deg">Logistica</div>
-              <div class="orbit-point" style="--angle:300deg">Medicos</div>
+              <div class="orbit-point" style="--angle:0deg;--point:#3b82f6">OEM</div>
+              <div class="orbit-point" style="--angle:60deg;--point:#26d07c">Branding</div>
+              <div class="orbit-point" style="--angle:120deg;--point:#f59e0b">Web</div>
+              <div class="orbit-point" style="--angle:180deg;--point:#ef4444">Contenido</div>
+              <div class="orbit-point" style="--angle:240deg;--point:#8b5cf6">Logistica</div>
+              <div class="orbit-point" style="--angle:300deg;--point:#06b6d4">Medicos</div>
             </div>
           </div>
         </div>
