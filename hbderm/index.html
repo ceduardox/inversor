@@ -246,7 +246,6 @@
     }
 
     .hero-media::after,
-    .slide::after,
     .image-frame::after {
       content: "";
       position: absolute;
@@ -335,16 +334,328 @@
 
     .slide-visual {
       position: relative;
-      min-height: 620px;
+      min-height: var(--deck-h);
       overflow: hidden;
     }
 
-    .slide-visual img {
+    .slide-visual > img {
       width: 100%;
       height: 100%;
-      min-height: 620px;
+      min-height: var(--deck-h);
       object-fit: cover;
       filter: saturate(1.06) contrast(1.08);
+    }
+
+    .slide-art {
+      min-height: var(--deck-h);
+      height: 100%;
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: clamp(22px, 4vw, 54px);
+      background:
+        radial-gradient(circle at 68% 22%, rgba(47,128,255,.22), transparent 28%),
+        linear-gradient(145deg, #03050a 0%, #09172a 100%);
+      overflow: hidden;
+    }
+
+    .slide-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 58px 58px;
+      opacity: .55;
+    }
+
+    .product-scene {
+      width: min(92%, 540px);
+      height: 360px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: end center;
+    }
+
+    .product-scene .platform {
+      width: 86%;
+      height: 76px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: linear-gradient(135deg, #111923, #02040a);
+      box-shadow: 0 28px 70px rgba(0,0,0,.52);
+    }
+
+    .product-scene .bottle {
+      position: absolute;
+      bottom: 54px;
+      width: 126px;
+      height: 240px;
+      border: 1px solid rgba(255,255,255,.36);
+      border-radius: 28px 28px 12px 12px;
+      background: linear-gradient(110deg, #fff, #c9d4e3 36%, #fff 58%, #9eafc2);
+      box-shadow: 0 24px 55px rgba(0,0,0,.42);
+    }
+
+    .product-scene .bottle::before {
+      content: "";
+      position: absolute;
+      top: -44px;
+      left: 28px;
+      right: 28px;
+      height: 54px;
+      border-radius: 10px 10px 3px 3px;
+      background: linear-gradient(180deg, #fff, #c6d1df);
+    }
+
+    .product-scene .bottle.one { left: 30%; transform: translateX(-50%) scale(.86); }
+    .product-scene .bottle.two { right: 26%; transform: translateX(50%); }
+
+    .product-scene .orb {
+      position: absolute;
+      left: 8%;
+      bottom: 62px;
+      width: 150px;
+      height: 150px;
+      border: 1px solid rgba(136,189,255,.28);
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 30%, rgba(255,255,255,.44), rgba(47,128,255,.18) 42%, rgba(0,0,0,.3));
+    }
+
+    .browser-ui,
+    .market-ui,
+    .phone-ui,
+    .network-ui,
+    .live-ui {
+      position: relative;
+      z-index: 1;
+      width: min(92%, 560px);
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(3,5,10,.78);
+      box-shadow: var(--shadow);
+    }
+
+    .browser-ui { min-height: 350px; padding: 18px; }
+
+    .browser-top {
+      height: 34px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid var(--line);
+      margin: -18px -18px 18px;
+      padding: 0 15px;
+    }
+
+    .browser-top span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.28);
+    }
+
+    .browser-hero {
+      min-height: 130px;
+      display: grid;
+      align-content: end;
+      border: 1px solid rgba(136,189,255,.18);
+      padding: 20px;
+      background:
+        linear-gradient(90deg, rgba(3,5,10,.92), rgba(47,128,255,.12)),
+        url("assets/hero-hbderm.png") center/cover;
+    }
+
+    .browser-hero img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 12px;
+    }
+
+    .browser-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .browser-grid div,
+    .market-card,
+    .social-card {
+      min-height: 88px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.055);
+      padding: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .external-logo {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+    }
+
+    .market-ui { padding: 22px; }
+
+    .market-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .market-title small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .market-product {
+      min-height: 250px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        url("assets/hero-hbderm.png") center/cover;
+    }
+
+    .market-card strong,
+    .social-card strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .phone-ui {
+      width: min(88%, 360px);
+      min-height: 520px;
+      border-radius: 28px;
+      padding: 16px;
+    }
+
+    .phone-screen {
+      min-height: 488px;
+      display: grid;
+      align-content: space-between;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px;
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(3,5,10,.2), rgba(3,5,10,.92)),
+        url("assets/hero-hbderm.png") center/cover;
+    }
+
+    .shop-pill {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(3,5,10,.74);
+      padding: 8px 12px;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .shop-pill img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .video-stack {
+      display: grid;
+      gap: 8px;
+    }
+
+    .video-stack div {
+      min-height: 52px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: var(--soft);
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .network-ui {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px;
+    }
+
+    .social-card {
+      min-height: 160px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .social-card img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .link-line {
+      height: 8px;
+      background: linear-gradient(90deg, var(--blue), transparent);
+    }
+
+    .live-ui {
+      min-height: 400px;
+      display: grid;
+      grid-template-columns: 1fr .56fr;
+      gap: 18px;
+      padding: 22px;
+      align-items: end;
+    }
+
+    .tablet,
+    .mobile {
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        linear-gradient(180deg, rgba(3,5,10,.08), rgba(3,5,10,.92)),
+        url("assets/hero-hbderm.png") center/cover;
+      box-shadow: 0 20px 48px rgba(0,0,0,.36);
+    }
+
+    .tablet {
+      min-height: 300px;
+      display: grid;
+      align-content: end;
+      padding: 18px;
+    }
+
+    .mobile {
+      min-height: 360px;
+      border-radius: 24px;
+      padding: 16px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .live-badge {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fe2c55;
+      color: #fff;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
     }
 
     .slide-content {
@@ -725,7 +1036,8 @@
       .hero-media img,
       .slide,
       .slide-visual,
-      .slide-visual img { min-height: min(520px, var(--deck-h)); }
+      .slide-visual > img,
+      .slide-art { min-height: min(520px, var(--deck-h)); }
     }
 
     @media (max-width: 720px) {
@@ -748,7 +1060,8 @@
       .hero-media img,
       .slide,
       .slide-visual,
-      .slide-visual img { min-height: 430px; }
+      .slide-visual > img,
+      .slide-art { min-height: 430px; }
       .deck-controls {
         position: static;
         padding: 14px;
@@ -814,7 +1127,14 @@
         <div class="slides" id="slides">
           <article class="slide">
             <div class="slide-visual">
-              <img src="assets/hero-hbderm.png" alt="Producto premium HBDERM">
+              <div class="slide-art">
+                <div class="product-scene" aria-label="Producto premium con documentacion de confianza">
+                  <div class="orb"></div>
+                  <div class="bottle one"></div>
+                  <div class="bottle two"></div>
+                  <div class="platform"></div>
+                </div>
+              </div>
             </div>
             <div class="slide-content">
               <div class="channel-logo hb"><img src="logo-hb-white.png" alt="HBDERM"></div>
@@ -829,7 +1149,20 @@
 
           <article class="slide">
             <div class="slide-visual">
-              <img src="assets/hero-hbderm.png" alt="Pagina web premium para suplementos">
+              <div class="slide-art">
+                <div class="browser-ui" aria-label="Mockup de website premium HBDERM">
+                  <div class="browser-top"><span></span><span></span><span></span></div>
+                  <div class="browser-hero">
+                    <img src="logo-hb-white.png" alt="HBDERM">
+                    <strong>Quality, COA, Reviews, Ritual</strong>
+                  </div>
+                  <div class="browser-grid">
+                    <div>Product Page</div>
+                    <div>COA Library</div>
+                    <div>Affiliate Kit</div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="slide-content">
               <div class="channel-logo web"><span>WEB</span><span>Luxury Site</span></div>
@@ -844,10 +1177,21 @@
 
           <article class="slide">
             <div class="slide-visual">
-              <img src="assets/hero-hbderm.png" alt="Amazon Shop para suplementos premium">
+              <div class="slide-art">
+                <div class="market-ui" aria-label="Mockup Amazon Shop HBDERM">
+                  <div class="market-title">
+                    <img class="external-logo" src="https://cdn.simpleicons.org/amazon/FF9900" alt="Amazon">
+                    <div>Amazon Shop <small>HBDERM Storefront</small></div>
+                  </div>
+                  <div class="market-grid">
+                    <div class="market-product"></div>
+                    <div class="market-card"><strong>A+ Content</strong>COA, beneficios permitidos, imagenes legibles y soporte.</div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="slide-content">
-              <div class="channel-logo amazon"><span>amazon</span><span>shop</span></div>
+              <div class="channel-logo amazon"><img class="external-logo" src="https://cdn.simpleicons.org/amazon/FF9900" alt="Amazon"><span>Amazon Shop</span></div>
               <h3>Amazon Shop listo para compliance.</h3>
               <p>Preparar Brand Registry, GTIN/UPC, imagenes legibles, A+ Content, COA y documentos que Seller Central pueda pedir.</p>
               <blockquote class="quote">"No mandes inventario FBA antes de validar etiqueta, imagenes y documentos."</blockquote>
@@ -859,10 +1203,24 @@
 
           <article class="slide">
             <div class="slide-visual">
-              <img src="assets/hero-hbderm.png" alt="TikTok Shop para contenido y live selling">
+              <div class="slide-art">
+                <div class="phone-ui" aria-label="Mockup TikTok Shop HBDERM">
+                  <div class="phone-screen">
+                    <div class="shop-pill">
+                      <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok">
+                      <span>TikTok Shop</span>
+                    </div>
+                    <div class="video-stack">
+                      <div>UGC: rutina diaria</div>
+                      <div>Creator code: HBDERM10</div>
+                      <div>Live product pin</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="slide-content">
-              <div class="channel-logo tiktok"><span>♪</span><span>TikTok Shop</span></div>
+              <div class="channel-logo tiktok"><img class="external-logo" src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok"><span>TikTok Shop</span></div>
               <h3>TikTok Shop con contenido, no solo catalogo.</h3>
               <p>Crear TikTok Business, contenido organico, creadores, Spark Ads, guiones aprobados y documentos por SKU para elegibilidad.</p>
               <blockquote class="quote">"La categoria suplementos puede exigir aprobacion; crece audiencia mientras preparas compliance."</blockquote>
@@ -874,7 +1232,14 @@
 
           <article class="slide">
             <div class="slide-visual">
-              <img src="assets/hero-hbderm.png" alt="Red de creadores y cuentas sociales para HBDERM">
+              <div class="slide-art">
+                <div class="network-ui" aria-label="Red de cuentas sociales HBDERM">
+                  <div class="social-card"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok"><strong>@hbderm.official</strong><span class="link-line"></span></div>
+                  <div class="social-card"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram"><strong>@hbderm.skin</strong><span class="link-line"></span></div>
+                  <div class="social-card"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok"><strong>Creator Network</strong><span class="link-line"></span></div>
+                  <div class="social-card"><img src="logo-hb-white.png" alt="HBDERM"><strong>HBDERM Store</strong><span class="link-line"></span></div>
+                </div>
+              </div>
             </div>
             <div class="slide-content">
               <div class="channel-logo viral"><span><i data-lucide="network"></i></span><span>Viralizacion</span></div>
@@ -889,7 +1254,12 @@
 
           <article class="slide">
             <div class="slide-visual">
-              <img src="assets/hero-hbderm.png" alt="Set premium para TikTok Live">
+              <div class="slide-art">
+                <div class="live-ui" aria-label="Set de tablet y movil para TikTok Live">
+                  <div class="tablet"><span class="shop-pill"><img src="logo-hb-white.png" alt="HBDERM">Tablet loop 45-90s</span></div>
+                  <div class="mobile"><span class="live-badge"><i data-lucide="radio"></i>LIVE</span><span class="shop-pill"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok">TikTok Live</span></div>
+                </div>
+              </div>
             </div>
             <div class="slide-content">
               <div class="channel-logo live"><span>LIVE</span><span>Tablet + Mobile</span></div>
