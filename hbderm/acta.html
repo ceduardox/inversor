@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acta de Reunion | VitaSOD Global</title>
+  <meta name="description" content="Acta de reunion y plan de accion para crear mediante OEM en Texas un producto Glutation + SOD con lanzamiento objetivo en Bolivia.">
+  <link rel="canonical" href="https://ceduardox.github.io/inversor/hbderm/acta.html">
+  <link rel="icon" type="image/png" href="logo-hb-white.png">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="VitaSOD Global">
+  <meta property="og:title" content="Acta de Reunion | VitaSOD Global">
+  <meta property="og:description" content="Acuerdos, roles, gastos 50/50, roadmap y estrategia de viralizacion para el producto Glutation + SOD.">
+  <meta property="og:url" content="https://ceduardox.github.io/inversor/hbderm/acta.html">
+  <meta property="og:image" content="https://ceduardox.github.io/inversor/hbderm/assets/hero-hbderm.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Acta de Reunion | VitaSOD Global">
+  <meta name="twitter:description" content="Acuerdos, roles, gastos 50/50, roadmap y estrategia de viralizacion para el producto Glutation + SOD.">
+  <meta name="twitter:image" content="https://ceduardox.github.io/inversor/hbderm/assets/hero-hbderm.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Source+Serif+4:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --paper: #f7f3ea;
+      --paper-2: #fffaf0;
+      --ink: #15202b;
+      --muted: #66707c;
+      --line: rgba(21,32,43,.14);
+      --green: #1f8a70;
+      --blue: #2868d8;
+      --orange: #e58b3a;
+      --red: #c44747;
+      --panel: rgba(255,255,255,.7);
+      --shadow: 0 24px 70px rgba(38, 44, 52, .16);
+      --radius: 14px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Archivo, Arial, sans-serif;
+      background:
+        linear-gradient(90deg, rgba(21,32,43,.035) 1px, transparent 1px),
+        linear-gradient(rgba(21,32,43,.035) 1px, transparent 1px),
+        radial-gradient(circle at 16% 18%, rgba(31,138,112,.18), transparent 26%),
+        radial-gradient(circle at 84% 12%, rgba(40,104,216,.16), transparent 28%),
+        linear-gradient(135deg, #fffaf0 0%, #eef4ef 48%, #f7f3ea 100%);
+      background-size: 62px 62px, 62px 62px, auto, auto, auto;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin-top: 0; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,250,240,.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: conic-gradient(from 140deg, var(--green), var(--blue), var(--orange), var(--green));
+      animation: markSpin 10s linear infinite;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .links a,
+    .secondary,
+    .btn {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 14px;
+      background: rgba(255,255,255,.56);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .btn {
+      border-color: rgba(31,138,112,.35);
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 16px 38px rgba(31,138,112,.22);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,.62);
+      color: var(--ink);
+    }
+
+    .section {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 76px 0;
+    }
+
+    .hero {
+      min-height: calc(100dvh - 72px);
+      display: grid;
+      align-items: center;
+      padding-top: 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .86fr);
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1, h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      letter-spacing: -.03em;
+      line-height: .95;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin-bottom: 22px;
+      font-size: clamp(50px, 7vw, 104px);
+    }
+
+    .lead {
+      max-width: 720px;
+      margin-bottom: 28px;
+      color: #344153;
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .fact-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255,255,255,.62);
+      box-shadow: var(--shadow);
+    }
+
+    .fact {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .fact:last-child { border-right: 0; }
+    .fact strong { display: block; font-size: 25px; }
+    .fact span { color: var(--muted); font-size: 13px; }
+
+    .product-card {
+      min-height: 560px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.88)),
+        url("assets/hero-hbderm.png") center/cover;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .product-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(255,250,240,.92) 100%);
+      z-index: 1;
+    }
+
+    .product-label {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .product-label h2 {
+      margin-bottom: 8px;
+      font-size: 42px;
+    }
+
+    .product-label p { margin: 0; color: var(--muted); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(280px, .55fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 26px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(34px, 5vw, 68px);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card,
+    .chart-card,
+    .timeline-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      min-height: 100%;
+      padding: 22px;
+      transition: transform .26s ease, box-shadow .26s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 80px rgba(38,44,52,.2);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .card p,
+    li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    li + li { margin-top: 8px; }
+
+    .agreement {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(320px, .75fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .chart-card {
+      padding: 22px;
+      min-height: 360px;
+    }
+
+    .chart-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .chart-wrap {
+      height: 270px;
+      position: relative;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-card {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr) 150px;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      background: rgba(255,255,255,.72);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--progress, 10%);
+      background: linear-gradient(90deg, rgba(31,138,112,.18), transparent);
+      animation: progressGlow 3.8s ease-in-out infinite;
+    }
+
+    .timeline-card > * { position: relative; z-index: 1; }
+    .month { color: var(--green); font-weight: 900; }
+    .status { justify-self: end; font-size: 12px; font-weight: 900; color: var(--blue); }
+
+    .flywheel {
+      min-height: 440px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255,255,255,.58);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .flywheel::before {
+      content: "";
+      width: 280px;
+      height: 280px;
+      position: absolute;
+      border-radius: 50%;
+      border: 2px dashed rgba(31,138,112,.42);
+      animation: spin 18s linear infinite;
+    }
+
+    .hub {
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      text-align: center;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 24px 60px rgba(31,138,112,.28);
+      z-index: 2;
+    }
+
+    .node {
+      position: absolute;
+      width: 160px;
+      min-height: 76px;
+      display: grid;
+      align-content: center;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(255,255,255,.82);
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      font-weight: 900;
+      animation: nodeFloat 5s ease-in-out infinite;
+    }
+
+    .node small { color: var(--muted); font-weight: 700; }
+    .node.a { top: 28px; left: 50%; transform: translateX(-50%); }
+    .node.b { right: 34px; top: 42%; animation-delay: .4s; }
+    .node.c { bottom: 30px; left: 50%; transform: translateX(-50%); animation-delay: .8s; }
+    .node.d { left: 34px; top: 42%; animation-delay: 1.2s; }
+
+    .note {
+      border-left: 4px solid var(--orange);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: rgba(255,255,255,.66);
+      color: #344153;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer .section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes markSpin {
+      from { filter: hue-rotate(0deg); }
+      to { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes progressGlow {
+      0%, 100% { opacity: .62; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes nodeFloat {
+      0%, 100% { margin-top: 0; }
+      50% { margin-top: -8px; }
+    }
+
+    @media (max-width: 980px) {
+      .links { display: none; }
+      .hero-grid,
+      .section-head,
+      .agreement,
+      .grid.two,
+      .grid.three,
+      .grid.four {
+        grid-template-columns: 1fr;
+      }
+      .product-card { min-height: 460px; }
+      .timeline-card { grid-template-columns: 1fr; }
+      .status { justify-self: start; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 58px 0; }
+      .fact-strip { grid-template-columns: 1fr; }
+      .fact { border-right: 0; border-bottom: 1px solid var(--line); }
+      .fact:last-child { border-bottom: 0; }
+      .flywheel { min-height: 620px; }
+      .node { position: static; transform: none !important; margin: 8px; }
+      .flywheel::before { width: 220px; height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#inicio">
+        <span class="mark"><i data-lucide="sparkles"></i></span>
+        <span>VitaSOD Global</span>
+      </a>
+      <div class="links">
+        <a href="#acuerdos">Acuerdos</a>
+        <a href="#roles">Roles</a>
+        <a href="#gastos">Gastos</a>
+        <a href="#roadmap">Roadmap</a>
+        <a class="btn" href="index.html"><i data-lucide="arrow-left"></i>Volver HBDERM</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="section hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Acta de reunion · producto OEM desde Texas</p>
+          <h1>VitaSOD Global: Glutation + SOD para todo publico.</h1>
+          <p class="lead">Nombre de trabajo para el proyecto conjunto entre Luis Higueras y Jose Eduardo Callau: crear, posicionar y viralizar un suplemento Glutation + SOD fabricado mediante OEM desde Texas, con vision global y lanzamiento objetivo en Bolivia en septiembre.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#acuerdos"><i data-lucide="clipboard-check"></i>Ver acuerdos</a>
+            <a class="secondary" href="#roadmap">Roadmap septiembre</a>
+          </div>
+          <div class="fact-strip">
+            <div class="fact"><strong>50/50</strong><span>Gastos compartidos entre socios.</span></div>
+            <div class="fact"><strong>Texas</strong><span>Base OEM para formulacion y produccion.</span></div>
+            <div class="fact"><strong>Sep.</strong><span>Meta: lanzamiento en Bolivia.</span></div>
+          </div>
+        </div>
+
+        <aside class="product-card" aria-label="Producto VitaSOD Global">
+          <div class="product-label">
+            <h2>Glutation + SOD</h2>
+            <p>Marca de alcance masivo: ni barata ni cara, clara, confiable y preparada para venderse en todo el mundo.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="acuerdos">
+      <div class="section-head">
+        <h2>Lo que se quedo</h2>
+        <p>Resumen de acuerdos principales de la reunion. Este documento es una memoria operativa y debe formalizarse legalmente si se usara como contrato.</p>
+      </div>
+      <div class="agreement">
+        <div class="grid two">
+          <article class="card">
+            <span class="icon"><i data-lucide="factory"></i></span>
+            <h3>Producto base</h3>
+            <p>Crear mediante OEM un suplemento Glutation + SOD desde Texas, con calidad, trazabilidad y posibilidad de venta global.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><i data-lucide="badge-check"></i></span>
+            <h3>Nombre de trabajo</h3>
+            <p><strong>VitaSOD Global</strong>. Nombre claro, saludable, entendible y no lujoso. Puede validarse antes de registrar marca.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><i data-lucide="globe-2"></i></span>
+            <h3>Vision</h3>
+            <p>Que el producto pueda venderse por todo el mundo y llegue a Bolivia como lanzamiento objetivo en septiembre.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><i data-lucide="heart-handshake"></i></span>
+            <h3>Proposito</h3>
+            <p>Construir un futuro para los hijos y una vejez estable, tranquila y con mayor seguridad financiera.</p>
+          </article>
+        </div>
+        <div class="chart-card">
+          <h3>Modelo de aporte inicial</h3>
+          <div class="chart-wrap"><canvas id="equityChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roles">
+      <div class="section-head">
+        <h2>Roles y responsabilidades</h2>
+        <p>La fuerza del proyecto es unir tecnologia, viralizacion, experiencia, contactos medicos y capacidad de posicionamiento.</p>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="icon"><i data-lucide="network"></i></span>
+          <h3>Luis Higueras</h3>
+          <p>Aporta contactos, medicos, experiencia comercial, criterio de mercado y relaciones que pueden acelerar confianza y distribucion.</p>
+        </article>
+        <article class="card">
+          <span class="icon"><i data-lucide="pen-tool"></i></span>
+          <h3>Jose Eduardo Callau</h3>
+          <p>Crear branding, redes sociales, posicionamiento, solicitud del producto, estructura digital y sistema de viralizacion.</p>
+        </article>
+        <article class="card">
+          <span class="icon"><i data-lucide="rocket"></i></span>
+          <h3>Trabajo conjunto</h3>
+          <p>Definir marca, empaque, claims permitidos, estrategia de contenido, ventas y ruta de lanzamiento local e internacional.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="gastos">
+      <div class="section-head">
+        <h2>Gastos 50/50</h2>
+        <p>Los gastos se compartiran mitad y mitad. Se recomienda registrar cada pago, comprobante y categoria desde el primer dia.</p>
+      </div>
+      <div class="grid two">
+        <div class="chart-card">
+          <h3>Distribucion de gastos</h3>
+          <div class="chart-wrap"><canvas id="costChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>Areas de inversion</h3>
+          <div class="chart-wrap"><canvas id="investmentChart"></canvas></div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:16px">Acuerdo operativo: todo gasto importante debe aprobarse y registrarse. Categorias sugeridas: OEM, muestras, laboratorio, branding, empaque, web, redes, contenido, importacion, registro y marketing.</p>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="section-head">
+        <h2>Roadmap a septiembre</h2>
+        <p>Plan resumido para llegar con marca, producto y lanzamiento en Bolivia.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-card" style="--progress:18%">
+          <strong class="month">Mayo</strong>
+          <div><strong>Definicion</strong><br><span>Nombre, propuesta, OEM, requerimientos, presupuesto y tareas.</span></div>
+          <span class="status">Inicio</span>
+        </article>
+        <article class="timeline-card" style="--progress:38%">
+          <strong class="month">Junio</strong>
+          <div><strong>Producto y branding</strong><br><span>Muestras, etiqueta, identidad visual, claims permitidos y web base.</span></div>
+          <span class="status">Construccion</span>
+        </article>
+        <article class="timeline-card" style="--progress:62%">
+          <strong class="month">Julio</strong>
+          <div><strong>Contenido y validacion</strong><br><span>Redes, videos, afiliados, landing, material medico/comercial y pruebas.</span></div>
+          <span class="status">Validacion</span>
+        </article>
+        <article class="timeline-card" style="--progress:82%">
+          <strong class="month">Agosto</strong>
+          <div><strong>Prelanzamiento</strong><br><span>Lista de espera, creadores, contactos medicos, pedidos iniciales y logistica.</span></div>
+          <span class="status">Prelaunch</span>
+        </article>
+        <article class="timeline-card" style="--progress:100%">
+          <strong class="month">Sept.</strong>
+          <div><strong>Lanzamiento Bolivia</strong><br><span>Presentacion, venta inicial, contenido masivo, eventos y medicion diaria.</span></div>
+          <span class="status">Launch</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="viralizacion">
+      <div class="section-head">
+        <h2>Tecnologia + viralizacion</h2>
+        <p>El deber principal de Jose es viralizar y construir la marca digital. La meta es posicionar rapido sin perder confianza.</p>
+      </div>
+      <div class="agreement">
+        <div class="flywheel">
+          <div class="hub">VitaSOD<br>Store</div>
+          <div class="node a">Contenido diario<small> TikTok, Reels, Shorts</small></div>
+          <div class="node b">Contactos medicos<small> confianza y autoridad</small></div>
+          <div class="node c">Afiliados<small> codigos y comisiones</small></div>
+          <div class="node d">Tecnologia<small> landing, CRM, medicion</small></div>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <span class="icon"><i data-lucide="smartphone"></i></span>
+            <h3>Redes y posicionamiento</h3>
+            <p>Crear cuentas oficiales, calendario, videos cortos, live selling, testimonios permitidos y links medibles hacia la tienda.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><i data-lucide="database"></i></span>
+            <h3>Sistema digital</h3>
+            <p>Landing page, CRM, email/SMS, UTMs, dashboard de ventas, biblioteca de claims y control de aprobaciones.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><i data-lucide="stethoscope"></i></span>
+            <h3>Confianza profesional</h3>
+            <p>Usar experiencia y contactos medicos de Luis para educacion, charlas, validacion de mensajes y derivacion comercial.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><i data-lucide="line-chart"></i></span>
+            <h3>Medicion semanal</h3>
+            <p>Revisar contenido, leads, costo por venta, recompra, feedback del mercado y ajustes de posicionamiento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Proximos pasos</h2>
+        <p>Checklist de accion inmediata para convertir el acta en ejecucion.</p>
+      </div>
+      <div class="grid four">
+        <article class="card"><span class="icon"><i data-lucide="search-check"></i></span><h3>Validar nombre</h3><p>Revisar disponibilidad de marca, dominio y handles para VitaSOD Global o variantes.</p></article>
+        <article class="card"><span class="icon"><i data-lucide="file-text"></i></span><h3>Formalizar acuerdo</h3><p>Documento legal de sociedad, propiedad, gastos, utilidades y responsabilidades.</p></article>
+        <article class="card"><span class="icon"><i data-lucide="flask-conical"></i></span><h3>Solicitar OEM</h3><p>Cotizacion, formula, MOQ, muestras, tiempos, COA y requisitos de etiqueta.</p></article>
+        <article class="card"><span class="icon"><i data-lucide="palette"></i></span><h3>Branding base</h3><p>Logo, tono, empaque, web, redes, material comercial y plan de contenido.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section">
+      <span>Acta operativa · VitaSOD Global</span>
+      <span>Preparado para Luis Higueras y Jose Eduardo Callau.</span>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const chartText = "#15202b";
+    const chartGrid = "rgba(21,32,43,.12)";
+
+    new Chart(document.getElementById("equityChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Luis Higueras", "Jose Eduardo Callau"],
+        datasets: [{
+          data: [50, 50],
+          backgroundColor: ["#1f8a70", "#2868d8"],
+          borderWidth: 0,
+          hoverOffset: 12
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { animateRotate: true, duration: 1800 },
+        plugins: { legend: { position: "bottom", labels: { color: chartText, font: { weight: "700" } } } },
+        cutout: "62%"
+      }
+    });
+
+    new Chart(document.getElementById("costChart"), {
+      type: "bar",
+      data: {
+        labels: ["Luis", "Jose"],
+        datasets: [{
+          label: "Participacion de gastos",
+          data: [50, 50],
+          backgroundColor: ["#1f8a70", "#2868d8"],
+          borderRadius: 12
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 1800, easing: "easeOutQuart" },
+        scales: {
+          y: { beginAtZero: true, max: 60, grid: { color: chartGrid }, ticks: { color: chartText, callback: (v) => v + "%" } },
+          x: { grid: { display: false }, ticks: { color: chartText } }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    new Chart(document.getElementById("investmentChart"), {
+      type: "radar",
+      data: {
+        labels: ["OEM", "Branding", "Web", "Contenido", "Logistica", "Medicos"],
+        datasets: [{
+          label: "Prioridad inicial",
+          data: [95, 85, 78, 90, 70, 82],
+          borderColor: "#1f8a70",
+          backgroundColor: "rgba(31,138,112,.18)",
+          pointBackgroundColor: "#2868d8",
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 2200, easing: "easeInOutQuart" },
+        scales: {
+          r: {
+            angleLines: { color: chartGrid },
+            grid: { color: chartGrid },
+            pointLabels: { color: chartText, font: { weight: "700" } },
+            ticks: { display: false },
+            suggestedMin: 0,
+            suggestedMax: 100
+          }
+        },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll(".section-head, .card, .chart-card, .timeline-card, .flywheel, .product-card").forEach((item) => {
+      item.classList.add("reveal");
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>
