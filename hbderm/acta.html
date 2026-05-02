@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Acta de Reunion | VitaSOD Global</title>
+  <title>Acta de Reunion | HBDERM</title>
   <meta name="description" content="Acta de reunion y plan de accion para crear mediante OEM en Texas un producto Glutation + SOD con lanzamiento objetivo en Bolivia.">
-  <link rel="canonical" href="https://ceduardox.github.io/inversor/hbderm/acta.html">
+  <link rel="canonical" href="https://proyecto.neraversestudio.com/hbderm/acta.html">
   <link rel="icon" type="image/png" href="logo-hb-white.png">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="VitaSOD Global">
-  <meta property="og:title" content="Acta de Reunion | VitaSOD Global">
+  <meta property="og:site_name" content="HBDERM">
+  <meta property="og:title" content="Acta de Reunion | HBDERM">
   <meta property="og:description" content="Acuerdos, roles, gastos 50/50, roadmap y estrategia de viralizacion para el producto Glutation + SOD.">
-  <meta property="og:url" content="https://ceduardox.github.io/inversor/hbderm/acta.html">
-  <meta property="og:image" content="https://ceduardox.github.io/inversor/hbderm/assets/hero-hbderm.png">
+  <meta property="og:url" content="https://proyecto.neraversestudio.com/hbderm/acta.html">
+  <meta property="og:image" content="https://proyecto.neraversestudio.com/hbderm/assets/hero-hbderm.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Acta de Reunion | VitaSOD Global">
+  <meta name="twitter:title" content="Acta de Reunion | HBDERM">
   <meta name="twitter:description" content="Acuerdos, roles, gastos 50/50, roadmap y estrategia de viralizacion para el producto Glutation + SOD.">
-  <meta name="twitter:image" content="https://ceduardox.github.io/inversor/hbderm/assets/hero-hbderm.png">
+  <meta name="twitter:image" content="https://proyecto.neraversestudio.com/hbderm/assets/hero-hbderm.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Source+Serif+4:wght@600;700;800&display=swap" rel="stylesheet">
@@ -84,6 +84,14 @@
       gap: 12px;
       font-weight: 900;
       letter-spacing: -.02em;
+    }
+
+    .brand-logo {
+      width: 136px;
+      height: 42px;
+      object-fit: contain;
+      object-position: left center;
+      filter: drop-shadow(0 12px 28px rgba(59,130,246,.24));
     }
 
     .mark {
@@ -239,6 +247,13 @@
       padding: 22px;
       background: rgba(5,7,13,.78);
       backdrop-filter: blur(18px);
+    }
+
+    .product-logo {
+      width: 142px;
+      height: auto;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 10px 28px rgba(59,130,246,.22));
     }
 
     .product-label h2 {
@@ -505,9 +520,34 @@
 
     @media (max-width: 640px) {
       .section { padding: 58px 0; }
+      .hero { min-height: auto; padding-top: 36px; }
+      .nav {
+        min-height: 64px;
+        width: min(var(--max), calc(100% - 22px));
+      }
+      .brand-logo { width: 112px; }
+      h1 { font-size: clamp(42px, 13vw, 62px); }
+      h2 { font-size: clamp(32px, 10vw, 48px); }
+      .lead { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
+      .btn,
+      .secondary {
+        width: 100%;
+      }
       .fact-strip { grid-template-columns: 1fr; }
       .fact { border-right: 0; border-bottom: 1px solid var(--line); }
       .fact:last-child { border-bottom: 0; }
+      .product-card { min-height: 390px; border-radius: 20px; }
+      .product-label {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 18px;
+      }
+      .product-label h2 { font-size: 34px; }
+      .product-logo { width: 118px; }
+      .chart-card { min-height: 330px; padding: 16px; }
+      .chart-wrap { height: 235px; }
       .flywheel { min-height: 620px; }
       .node { position: static; transform: none !important; margin: 8px; }
       .flywheel::before { width: 220px; height: 220px; }
@@ -518,8 +558,7 @@
   <header class="topbar">
     <nav class="nav">
       <a class="brand" href="#inicio">
-        <span class="mark"><i data-lucide="sparkles"></i></span>
-        <span>VitaSOD Global</span>
+        <img class="brand-logo" src="logo-hb-white.png" alt="HBDERM">
       </a>
       <div class="links">
         <a href="#acuerdos">Acuerdos</a>
@@ -536,8 +575,8 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Acta de reunion · producto OEM desde Texas</p>
-          <h1>VitaSOD Global: Glutation + SOD para todo publico.</h1>
-          <p class="lead">Nombre de trabajo para el proyecto conjunto entre Luis Higueras y Jose Eduardo Callau: crear, posicionar y viralizar un suplemento Glutation + SOD fabricado mediante OEM desde Texas, con vision global y lanzamiento objetivo en Bolivia en septiembre.</p>
+          <h1>HBDERM: Glutation + SOD para todo publico.</h1>
+          <p class="lead">Acta del proyecto conjunto entre Luis Higueras y Jose Eduardo Callau: crear, posicionar y viralizar bajo HBDERM un suplemento Glutation + SOD fabricado mediante OEM desde Texas, con vision global y lanzamiento objetivo en Bolivia en septiembre.</p>
           <div class="hero-actions">
             <a class="btn" href="#acuerdos"><i data-lucide="clipboard-check"></i>Ver acuerdos</a>
             <a class="secondary" href="#roadmap">Roadmap septiembre</a>
@@ -549,8 +588,9 @@
           </div>
         </div>
 
-        <aside class="product-card" aria-label="Producto VitaSOD Global">
+        <aside class="product-card" aria-label="Producto HBDERM Glutation SOD">
           <div class="product-label">
+            <img class="product-logo" src="logo-hb-white.png" alt="HBDERM">
             <h2>Glutation + SOD</h2>
             <p>Marca de alcance masivo: ni barata ni cara, clara, confiable y preparada para venderse en todo el mundo.</p>
           </div>
@@ -573,7 +613,7 @@
           <article class="card">
             <span class="icon"><i data-lucide="badge-check"></i></span>
             <h3>Nombre de trabajo</h3>
-            <p><strong>VitaSOD Global</strong>. Nombre claro, saludable, entendible y no lujoso. Puede validarse antes de registrar marca.</p>
+            <p><strong>HBDERM</strong>. Empresa y marca principal del proyecto. El producto Glutation + SOD vivira dentro de esta arquitectura.</p>
           </article>
           <article class="card">
             <span class="icon"><i data-lucide="globe-2"></i></span>
@@ -676,7 +716,7 @@
       </div>
       <div class="agreement">
         <div class="flywheel">
-          <div class="hub">VitaSOD<br>Store</div>
+          <div class="hub">HBDERM<br>Store</div>
           <div class="node a">Contenido diario<small> TikTok, Reels, Shorts</small></div>
           <div class="node b">Contactos medicos<small> confianza y autoridad</small></div>
           <div class="node c">Afiliados<small> codigos y comisiones</small></div>
@@ -713,7 +753,7 @@
         <p>Checklist de accion inmediata para convertir el acta en ejecucion.</p>
       </div>
       <div class="grid four">
-        <article class="card"><span class="icon"><i data-lucide="search-check"></i></span><h3>Validar nombre</h3><p>Revisar disponibilidad de marca, dominio y handles para VitaSOD Global o variantes.</p></article>
+        <article class="card"><span class="icon"><i data-lucide="search-check"></i></span><h3>Arquitectura de marca</h3><p>Confirmar HBDERM como empresa/marca madre y definir el nombre comercial del SKU Glutation + SOD.</p></article>
         <article class="card"><span class="icon"><i data-lucide="file-text"></i></span><h3>Formalizar acuerdo</h3><p>Documento legal de sociedad, propiedad, gastos, utilidades y responsabilidades.</p></article>
         <article class="card"><span class="icon"><i data-lucide="flask-conical"></i></span><h3>Solicitar OEM</h3><p>Cotizacion, formula, MOQ, muestras, tiempos, COA y requisitos de etiqueta.</p></article>
         <article class="card"><span class="icon"><i data-lucide="palette"></i></span><h3>Branding base</h3><p>Logo, tono, empaque, web, redes, material comercial y plan de contenido.</p></article>
@@ -723,7 +763,7 @@
 
   <footer class="footer">
     <div class="section">
-      <span>Acta operativa · VitaSOD Global</span>
+      <span>Acta operativa · HBDERM</span>
       <span>Preparado para Luis Higueras y Jose Eduardo Callau.</span>
     </div>
   </footer>
