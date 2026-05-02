@@ -319,6 +319,45 @@
     .card h3 { margin-bottom: 8px; font-size: 20px; }
     .card p { color: var(--muted); font-size: 14px; }
 
+    .build-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .build-card {
+      min-height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.055)),
+        radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--item), transparent 64%), transparent 36%);
+      box-shadow: var(--shadow);
+    }
+
+    .build-chart {
+      height: 150px;
+      margin: 14px 0;
+      position: relative;
+    }
+
+    .build-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .build-card p,
+    .build-card li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .build-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
     .note {
       border-left: 4px solid var(--orange);
       border-radius: 16px;
@@ -367,6 +406,9 @@
       .grid.three {
         grid-template-columns: 1fr;
       }
+      .build-map {
+        grid-template-columns: 1fr;
+      }
       .hero {
         min-height: auto;
       }
@@ -410,6 +452,8 @@
       .chart-card { min-height: 360px; padding: 16px; }
       .chart-wrap { height: 280px; }
       .card { padding: 18px; }
+      .build-card { padding: 16px; }
+      .build-chart { height: 130px; }
       .footer .section { align-items: flex-start; }
     }
 
@@ -417,6 +461,7 @@
       .section { width: min(var(--max), calc(100% - 18px)); }
       .total-card { padding: 16px; }
       .chart-wrap { height: 250px; }
+      .build-chart { height: 120px; }
       .line-item {
         grid-template-columns: 1fr;
       }
@@ -447,6 +492,48 @@
           <h1>Inicio HBDERM.</h1>
           <p class="lead">Calculo base para activar presencia digital con VPS propio, blogs, tienda, dominios y correos profesionales. Se utilizara lo necesario para comenzar bien, sin comprar una infraestructura costosa antes de validarla.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="ejecucion">
+      <div class="section-head">
+        <h2>Que se hara</h2>
+        <p>Antes de ver los montos, esta es la estructura inicial que se construira: tienda, blogs y branding trabajando juntos.</p>
+      </div>
+      <div class="build-map">
+        <article class="build-card reveal" style="--item:#3b82f6">
+          <span class="icon"><i data-lucide="shopping-bag"></i></span>
+          <h3>Tienda webstore</h3>
+          <p>Canal principal para presentar el producto, captar interesados y preparar ventas.</p>
+          <div class="build-chart"><canvas id="storeChart"></canvas></div>
+          <ul>
+            <li>Landing de producto</li>
+            <li>Catalogo y formularios</li>
+            <li>Base para pagos y pedidos</li>
+          </ul>
+        </article>
+        <article class="build-card reveal" style="--item:#22d37e">
+          <span class="icon"><i data-lucide="newspaper"></i></span>
+          <h3>Blogs SEO</h3>
+          <p>Red de contenido para educar, posicionar busquedas y enviar trafico hacia HBDERM.</p>
+          <div class="build-chart"><canvas id="blogsChart"></canvas></div>
+          <ul>
+            <li>5 dominios para blogs</li>
+            <li>Contenido satelite</li>
+            <li>Enlaces hacia la tienda</li>
+          </ul>
+        </article>
+        <article class="build-card reveal" style="--item:#f59e0b">
+          <span class="icon"><i data-lucide="sparkles"></i></span>
+          <h3>Branding</h3>
+          <p>Identidad visual inicial para que la marca se vea seria desde el primer contacto.</p>
+          <div class="build-chart"><canvas id="brandChart"></canvas></div>
+          <ul>
+            <li>Logo e imagenes</li>
+            <li>Marca y piezas visuales</li>
+            <li>Estilo para redes y web</li>
+          </ul>
+        </article>
       </div>
     </section>
 
@@ -558,6 +645,56 @@
 
   <script>
     lucide.createIcons();
+
+    const miniChartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { animateRotate: true, duration: 1700, easing: "easeOutQuart" },
+      cutout: "64%",
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }
+      }
+    };
+
+    new Chart(document.getElementById("storeChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Producto", "Pedidos", "Leads"],
+        datasets: [{
+          data: [45, 30, 25],
+          backgroundColor: ["#3b82f6", "#06b6d4", "#22d37e"],
+          borderWidth: 0
+        }]
+      },
+      options: miniChartOptions
+    });
+
+    new Chart(document.getElementById("blogsChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["SEO", "Educacion", "Trafico"],
+        datasets: [{
+          data: [40, 35, 25],
+          backgroundColor: ["#22d37e", "#3b82f6", "#f59e0b"],
+          borderWidth: 0
+        }]
+      },
+      options: miniChartOptions
+    });
+
+    new Chart(document.getElementById("brandChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Logo", "Imagenes", "Sistema visual"],
+        datasets: [{
+          data: [30, 35, 35],
+          backgroundColor: ["#f59e0b", "#ef4444", "#8b5cf6"],
+          borderWidth: 0
+        }]
+      },
+      options: miniChartOptions
+    });
 
     new Chart(document.getElementById("budgetChart"), {
       type: "doughnut",
