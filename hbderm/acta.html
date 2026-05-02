@@ -392,7 +392,7 @@
 
     .spend-stage,
     .investment-stage {
-      min-height: 270px;
+      min-height: 330px;
       position: relative;
       display: grid;
       place-items: center;
@@ -465,7 +465,7 @@
     }
 
     .investment-orbit {
-      width: min(82vw, 360px);
+      width: min(82vw, 410px);
       aspect-ratio: 1;
       position: relative;
       border: 1px solid rgba(255,255,255,.18);
@@ -474,7 +474,7 @@
         radial-gradient(circle, rgba(59,130,246,.16) 0 18%, transparent 19%),
         repeating-radial-gradient(circle, transparent 0 36px, rgba(255,255,255,.1) 37px 38px);
       transform-style: preserve-3d;
-      animation: orbitTilt 7s ease-in-out infinite;
+      animation: orbitFloat 6s ease-in-out infinite;
     }
 
     .investment-orbit::before {
@@ -500,17 +500,18 @@
 
     .orbit-point {
       --angle: 0deg;
-      --distance: 42%;
+      --distance: clamp(130px, 15vw, 158px);
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 104px;
-      min-height: 54px;
+      width: 98px;
+      min-height: 50px;
       display: grid;
       place-items: center;
       border: 1px solid rgba(255,255,255,.16);
       border-radius: 14px;
-      background: rgba(255,255,255,.09);
+      background: rgba(7,13,24,.86);
+      backdrop-filter: blur(10px);
       color: #fff;
       font-size: 12px;
       font-weight: 900;
@@ -689,9 +690,9 @@
       50% { transform: rotateX(58deg) rotateZ(-14deg) translateY(-8px); }
     }
 
-    @keyframes orbitTilt {
-      0%, 100% { transform: rotateX(58deg) rotateZ(-12deg); }
-      50% { transform: rotateX(52deg) rotateZ(10deg); }
+    @keyframes orbitFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.02); }
     }
 
     @keyframes pointPulse {
@@ -745,7 +746,7 @@
       .chart-card { min-height: 330px; padding: 16px; }
       .chart-wrap { height: 235px; }
       .spend-stage,
-      .investment-stage { min-height: 260px; overflow: hidden; }
+      .investment-stage { min-height: 320px; overflow: hidden; }
       .bar-3d-wrap {
         width: 280px;
         height: 190px;
@@ -753,11 +754,12 @@
         transform: rotateX(56deg) rotateZ(-18deg) scale(.82);
       }
       .bar-3d { height: 124px; }
-      .investment-orbit { width: min(88vw, 300px); }
+      .investment-orbit { width: min(88vw, 310px); }
       .orbit-point {
-        width: 86px;
+        --distance: 110px;
+        width: 82px;
         min-height: 46px;
-        font-size: 11px;
+        font-size: 10px;
       }
       .flywheel { min-height: 620px; }
       .node { position: static; transform: none !important; margin: 8px; }
