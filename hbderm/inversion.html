@@ -115,6 +115,7 @@
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
       padding: 74px 0;
+      overflow: clip;
     }
 
     .hero {
@@ -129,6 +130,10 @@
       grid-template-columns: minmax(0, .96fr) minmax(340px, .7fr);
       gap: 28px;
       align-items: center;
+    }
+
+    .hero .hero-grid {
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .eyebrow {
@@ -163,6 +168,7 @@
     .summary {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -181,6 +187,8 @@
 
     .total-card {
       position: relative;
+      width: 100%;
+      min-width: 0;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 22px;
@@ -257,6 +265,7 @@
     .line-item {
       display: grid;
       grid-template-columns: 46px minmax(0, 1fr) 120px;
+      min-width: 0;
       gap: 14px;
       align-items: center;
       padding: 16px;
@@ -265,6 +274,7 @@
     .icon {
       width: 46px;
       height: 46px;
+      flex: 0 0 auto;
       display: grid;
       place-items: center;
       border-radius: 14px;
@@ -288,6 +298,7 @@
       justify-self: end;
       font-size: 24px;
       font-weight: 900;
+      white-space: nowrap;
     }
 
     .chart-card {
@@ -356,28 +367,62 @@
       .grid.three {
         grid-template-columns: 1fr;
       }
+      .hero {
+        min-height: auto;
+      }
+      .summary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 640px) {
-      .section { width: min(var(--max), calc(100% - 22px)); padding: 56px 0; }
-      .hero { min-height: auto; padding-top: 36px; }
+      .section { width: min(var(--max), calc(100% - 22px)); padding: 50px 0; }
+      .hero { min-height: auto; padding-top: 34px; }
       .nav { width: min(var(--max), calc(100% - 22px)); min-height: 64px; }
+      .btn { min-height: 38px; padding: 0 12px; font-size: 12px; }
       .brand-logo { width: 112px; }
-      h1 { font-size: clamp(42px, 13vw, 62px); }
-      .lead { font-size: 16px; }
+      h1 { margin-bottom: 18px; font-size: clamp(40px, 12vw, 58px); }
+      h2 { font-size: clamp(31px, 10vw, 44px); }
+      .lead { margin-bottom: 0; font-size: 16px; }
+      .section-head { gap: 12px; margin-bottom: 18px; padding-bottom: 18px; }
       .summary,
       .split { grid-template-columns: 1fr; }
-      .summary-item { border-right: 0; border-bottom: 1px solid var(--line); }
+      .summary-item { padding: 15px; border-right: 0; border-bottom: 1px solid var(--line); }
       .summary-item:last-child { border-bottom: 0; }
+      .summary-item strong { font-size: 24px; }
+      .total-card { border-radius: 18px; padding: 18px; }
+      .total { font-size: clamp(48px, 17vw, 72px); }
+      .split div { padding: 12px; }
+      .split strong { font-size: 22px; }
       .line-item {
-        grid-template-columns: 42px minmax(0, 1fr);
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px;
       }
+      .icon { width: 40px; height: 40px; border-radius: 12px; }
+      .line-item h3 { font-size: 15px; }
+      .line-item p { font-size: 12px; }
       .amount {
         grid-column: 2;
         justify-self: start;
+        font-size: 21px;
       }
       .chart-card { min-height: 360px; padding: 16px; }
       .chart-wrap { height: 280px; }
+      .card { padding: 18px; }
+      .footer .section { align-items: flex-start; }
+    }
+
+    @media (max-width: 420px) {
+      .section { width: min(var(--max), calc(100% - 18px)); }
+      .total-card { padding: 16px; }
+      .chart-wrap { height: 250px; }
+      .line-item {
+        grid-template-columns: 1fr;
+      }
+      .amount {
+        grid-column: 1;
+      }
     }
   </style>
 </head>
