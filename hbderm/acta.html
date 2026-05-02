@@ -24,17 +24,17 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     :root {
-      --paper: #f7f7f4;
-      --paper-2: #ffffff;
-      --ink: #080808;
-      --muted: #626262;
-      --line: rgba(8,8,8,.14);
-      --green: #111111;
-      --blue: #4b4b4b;
-      --orange: #0f0f0f;
-      --red: #2b2b2b;
-      --panel: rgba(255,255,255,.84);
-      --shadow: 0 24px 70px rgba(0, 0, 0, .14);
+      --paper: #05070d;
+      --paper-2: #0b111c;
+      --ink: #f8fbff;
+      --muted: #aab6c8;
+      --line: rgba(255,255,255,.13);
+      --green: #26d07c;
+      --blue: #3b82f6;
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --panel: rgba(255,255,255,.07);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .42);
       --radius: 14px;
       --max: 1180px;
     }
@@ -47,11 +47,11 @@
       color: var(--ink);
       font-family: Archivo, Arial, sans-serif;
       background:
-        linear-gradient(90deg, rgba(8,8,8,.035) 1px, transparent 1px),
-        linear-gradient(rgba(8,8,8,.035) 1px, transparent 1px),
-        radial-gradient(circle at 16% 18%, rgba(0,0,0,.08), transparent 28%),
-        radial-gradient(circle at 84% 12%, rgba(0,0,0,.06), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #eeeeea 48%, #f8f8f4 100%);
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        radial-gradient(circle at 16% 18%, rgba(59,130,246,.22), transparent 28%),
+        radial-gradient(circle at 84% 12%, rgba(38,208,124,.14), transparent 30%),
+        linear-gradient(135deg, #05070d 0%, #0b1422 48%, #05070d 100%);
       background-size: 62px 62px, 62px 62px, auto, auto, auto;
       line-height: 1.55;
     }
@@ -64,7 +64,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.82);
+      background: rgba(5,7,13,.82);
       backdrop-filter: blur(18px);
     }
 
@@ -93,7 +93,7 @@
       place-items: center;
       border-radius: 50%;
       color: #fff;
-      background: conic-gradient(from 140deg, #050505, #5a5a5a, #111111, #d8d8d8, #050505);
+      background: conic-gradient(from 140deg, var(--blue), var(--green), var(--orange), var(--red), var(--blue));
       animation: markSpin 10s linear infinite;
     }
 
@@ -115,21 +115,21 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       padding: 0 14px;
-      background: rgba(255,255,255,.56);
+      background: rgba(255,255,255,.07);
       color: var(--ink);
       font-size: 13px;
       font-weight: 900;
     }
 
     .btn {
-      border-color: rgba(0,0,0,.25);
+      border-color: rgba(59,130,246,.46);
       color: #fff;
-      background: linear-gradient(135deg, var(--green), var(--blue));
-      box-shadow: 0 16px 38px rgba(0,0,0,.2);
+      background: linear-gradient(135deg, var(--blue), #1e40af);
+      box-shadow: 0 16px 38px rgba(59,130,246,.22);
     }
 
     .secondary {
-      background: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.08);
       color: var(--ink);
     }
 
@@ -177,7 +177,7 @@
     .lead {
       max-width: 720px;
       margin-bottom: 28px;
-      color: #344153;
+      color: #dce8f8;
       font-size: clamp(17px, 2vw, 22px);
     }
 
@@ -194,7 +194,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       overflow: hidden;
-      background: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.07);
       box-shadow: var(--shadow);
     }
 
@@ -214,7 +214,7 @@
       border: 1px solid var(--line);
       border-radius: 28px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.88)),
+        linear-gradient(180deg, rgba(5,7,13,.14), rgba(5,7,13,.9)),
         url("assets/hero-hbderm.png") center/cover;
       box-shadow: var(--shadow);
       isolation: isolate;
@@ -224,7 +224,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 20%, rgba(255,255,255,.94) 100%);
+      background: linear-gradient(180deg, transparent 20%, rgba(5,7,13,.94) 100%);
       z-index: 1;
     }
 
@@ -237,7 +237,7 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 22px;
-      background: rgba(255,255,255,.82);
+      background: rgba(5,7,13,.78);
       backdrop-filter: blur(18px);
     }
 
@@ -359,7 +359,7 @@
       gap: 16px;
       align-items: center;
       padding: 18px;
-      background: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.07);
       overflow: hidden;
       position: relative;
     }
@@ -369,7 +369,7 @@
       position: absolute;
       inset: 0 auto 0 0;
       width: var(--progress, 10%);
-      background: linear-gradient(90deg, rgba(0,0,0,.12), transparent);
+      background: linear-gradient(90deg, rgba(59,130,246,.24), transparent);
       animation: progressGlow 3.8s ease-in-out infinite;
     }
 
@@ -384,7 +384,7 @@
       place-items: center;
       border: 1px solid var(--line);
       border-radius: 28px;
-      background: rgba(255,255,255,.58);
+      background: rgba(255,255,255,.06);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -395,7 +395,7 @@
       height: 280px;
       position: absolute;
       border-radius: 50%;
-      border: 2px dashed rgba(0,0,0,.3);
+      border: 2px dashed rgba(59,130,246,.42);
       animation: spin 18s linear infinite;
     }
 
@@ -409,7 +409,7 @@
       text-align: center;
       font-weight: 900;
       background: linear-gradient(135deg, var(--green), var(--blue));
-      box-shadow: 0 24px 60px rgba(0,0,0,.22);
+      box-shadow: 0 24px 60px rgba(59,130,246,.24);
       z-index: 2;
     }
 
@@ -422,7 +422,7 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 12px;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.09);
       box-shadow: var(--shadow);
       font-size: 13px;
       font-weight: 900;
@@ -439,8 +439,8 @@
       border-left: 4px solid var(--orange);
       border-radius: var(--radius);
       padding: 18px;
-      background: rgba(255,255,255,.66);
-      color: #344153;
+      background: rgba(255,255,255,.07);
+      color: #dce8f8;
     }
 
     .footer {
@@ -731,8 +731,8 @@
   <script>
     lucide.createIcons();
 
-    const chartText = "#080808";
-    const chartGrid = "rgba(8,8,8,.12)";
+    const chartText = "#f8fbff";
+    const chartGrid = "rgba(255,255,255,.14)";
 
     const equityChart = new Chart(document.getElementById("equityChart"), {
       type: "doughnut",
@@ -740,7 +740,7 @@
         labels: ["Luis Higueras", "Jose Eduardo Callau"],
         datasets: [{
           data: [50, 50],
-          backgroundColor: ["#080808", "#b7b7b0"],
+          backgroundColor: ["#3b82f6", "#26d07c"],
           borderWidth: 0,
           hoverOffset: 12
         }]
@@ -761,7 +761,7 @@
         datasets: [{
           label: "Participacion de gastos",
           data: [50, 50],
-          backgroundColor: ["#080808", "#b7b7b0"],
+          backgroundColor: ["#3b82f6", "#26d07c"],
           borderRadius: 12
         }]
       },
@@ -784,10 +784,10 @@
         datasets: [{
           label: "Prioridad inicial",
           data: [95, 85, 78, 90, 70, 82],
-          borderColor: "#080808",
-          backgroundColor: "rgba(8,8,8,.12)",
-          pointBackgroundColor: "#ffffff",
-          pointBorderColor: "#080808",
+          borderColor: "#3b82f6",
+          backgroundColor: "rgba(59,130,246,.18)",
+          pointBackgroundColor: ["#3b82f6", "#26d07c", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4"],
+          pointBorderColor: "#ffffff",
           pointRadius: 4
         }]
       },
