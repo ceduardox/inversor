@@ -24,6 +24,7 @@
       --shadow: 0 30px 90px rgba(0,0,0,.48);
       --radius: 8px;
       --max: 1180px;
+      --deck-h: clamp(520px, calc(100dvh - 170px), 620px);
     }
 
     * { box-sizing: border-box; }
@@ -227,7 +228,7 @@
 
     .hero-media {
       position: relative;
-      min-height: 620px;
+      min-height: var(--deck-h);
       overflow: hidden;
       border: 1px solid var(--line);
       background: #050910;
@@ -237,7 +238,7 @@
 
     .hero-media img {
       width: 100%;
-      min-height: 620px;
+      min-height: var(--deck-h);
       height: 100%;
       object-fit: cover;
       filter: saturate(1.08) contrast(1.09);
@@ -324,7 +325,7 @@
     .slide {
       position: relative;
       min-width: 100%;
-      min-height: 620px;
+      min-height: var(--deck-h);
       display: grid;
       grid-template-columns: minmax(0, .9fr) minmax(320px, .72fr);
       align-items: stretch;
@@ -356,6 +357,13 @@
         linear-gradient(135deg, rgba(3,5,10,.9), rgba(7,20,38,.72)),
         rgba(3,5,10,.7);
       border-left: 1px solid var(--line);
+    }
+
+    .section-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 22px;
     }
 
     .channel-logo {
@@ -398,8 +406,18 @@
     }
 
     .channel-logo.live span:first-child,
-    .channel-logo.web span:first-child {
+    .channel-logo.web span:first-child,
+    .channel-logo.viral span:first-child {
       color: var(--blue-soft);
+    }
+
+    .channel-logo.viral span:first-child {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(136,189,255,.44);
+      background: rgba(47,128,255,.12);
     }
 
     .slide h3 {
@@ -707,7 +725,7 @@
       .hero-media img,
       .slide,
       .slide-visual,
-      .slide-visual img { min-height: 520px; }
+      .slide-visual img { min-height: min(520px, var(--deck-h)); }
     }
 
     @media (max-width: 720px) {
@@ -751,6 +769,7 @@
         <a href="#deck">Slider</a>
         <a href="#primero">Primero</a>
         <a href="#activos">Activos</a>
+        <a href="#viralizacion">Viralizacion</a>
         <a href="#checklist">Checklist</a>
         <a class="btn" href="#deck"><i data-lucide="play"></i>Ver diapositivas</a>
       </div>
@@ -855,6 +874,21 @@
 
           <article class="slide">
             <div class="slide-visual">
+              <img src="assets/hero-hbderm.png" alt="Red de creadores y cuentas sociales para HBDERM">
+            </div>
+            <div class="slide-content">
+              <div class="channel-logo viral"><span><i data-lucide="network"></i></span><span>Viralizacion</span></div>
+              <h3>Mas cuentas hablando de la marca.</h3>
+              <p>Crear una red de cuentas oficiales, creadores verificados y afiliados que direccionen a la tienda HBDERM aumenta repeticion, busquedas y trafico.</p>
+              <blockquote class="quote">"Mas voces reales, mas prueba social. Todo debe apuntar a la tienda, con disclosure y control de marca."</blockquote>
+              <div class="slide-actions">
+                <a class="slide-btn" href="#viralizacion"><i data-lucide="trending-up"></i>Ver sistema</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="slide">
+            <div class="slide-visual">
               <img src="assets/hero-hbderm.png" alt="Set premium para TikTok Live">
             </div>
             <div class="slide-content">
@@ -883,6 +917,9 @@
       <div class="section-head">
         <h2>Por donde empezar</h2>
         <p>Tres pasos antes de gastar fuerte en inventario, pauta o influencers.</p>
+      </div>
+      <div class="section-cta">
+        <button class="slide-btn" type="button" data-slide-target="0"><i data-lucide="presentation"></i>Ver diapositiva de confianza</button>
       </div>
       <div class="grid three">
         <article class="card">
@@ -915,6 +952,9 @@
         <h2>Activos minimos</h2>
         <p>Una marca premium necesita material listo para web, vendedores, afiliados, Amazon y TikTok.</p>
       </div>
+      <div class="section-cta">
+        <button class="slide-btn" type="button" data-slide-target="1"><i data-lucide="presentation"></i>Ver diapositiva web</button>
+      </div>
       <div class="calculator">
         <div class="control">
           <label class="control-title" for="products">Productos iniciales</label>
@@ -937,6 +977,10 @@
       <div class="section-head">
         <h2>Canales</h2>
         <p>Activalos en orden: propiedad de audiencia, marketplaces, creadores y escala.</p>
+      </div>
+      <div class="section-cta">
+        <button class="slide-btn" type="button" data-slide-target="2"><i data-lucide="shopping-bag"></i>Amazon Shop</button>
+        <button class="slide-btn" type="button" data-slide-target="3"><i data-lucide="music-2"></i>TikTok Shop</button>
       </div>
       <div class="grid two">
         <article class="card">
@@ -962,10 +1006,47 @@
       </div>
     </section>
 
+    <section class="section" id="viralizacion">
+      <div class="section-head">
+        <h2>Viralizacion y mas ventas</h2>
+        <p>La marca se posiciona mas rapido cuando varias voces reales hablan del producto y todas llevan trafico a la tienda HBDERM.</p>
+      </div>
+      <div class="section-cta">
+        <button class="slide-btn" type="button" data-slide-target="4"><i data-lucide="presentation"></i>Ver diapositiva de viralizacion</button>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="icon"><i data-lucide="badge-check"></i></span>
+          <h3>Cuentas verificables</h3>
+          <p>Cuentas oficiales, creadores, afiliados e influencers con identidad clara, disclosure y links a la tienda HBDERM.</p>
+        </article>
+        <article class="card">
+          <span class="icon"><i data-lucide="route"></i></span>
+          <h3>Todo dirige a la tienda</h3>
+          <p>Bio links, codigos, landing pages por creador, UTM y cupones para medir quien genera trafico y ventas.</p>
+        </article>
+        <article class="card">
+          <span class="icon"><i data-lucide="kanban-square"></i></span>
+          <h3>Sistema de administracion</h3>
+          <p>Calendario, roles, biblioteca de claims aprobados, tablero de publicaciones, permisos y control de respuestas.</p>
+        </article>
+      </div>
+      <div class="image-frame">
+        <img src="assets/hero-hbderm.png" alt="Sistema de contenido premium para viralizar HBDERM">
+        <div class="frame-copy">
+          <h3>Mas voces, una sola direccion.</h3>
+          <p>La estrategia es multiplicar contenido real y medible sin romper reglas de plataforma: nada de cuentas falsas, engagement artificial ni infraestructura para evadir bloqueos.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="live">
       <div class="section-head">
         <h2>Live selling</h2>
         <p>Tablet + movil puede funcionar si se ve premium y se opera con disciplina.</p>
+      </div>
+      <div class="section-cta">
+        <button class="slide-btn" type="button" data-slide-target="5"><i data-lucide="presentation"></i>Ver diapositiva live</button>
       </div>
       <div class="grid three">
         <article class="card">
@@ -1072,6 +1153,14 @@
     document.getElementById("prevSlide").addEventListener("click", () => goToSlide(currentSlide - 1));
     document.getElementById("nextSlide").addEventListener("click", () => goToSlide(currentSlide + 1));
     goToSlide(0);
+
+    document.querySelectorAll("[data-slide-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = Number(button.dataset.slideTarget);
+        goToSlide(target);
+        document.getElementById("deck").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
