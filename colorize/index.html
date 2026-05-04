@@ -1,0 +1,1976 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colorize x NeraSend | Slides del proyecto</title>
+  <meta name="description" content="Presentacion vertical paso a paso para explicar NeraSend, Colorize, videos, CPA y rentabilidad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --bg: #070a12;
+      --panel: rgba(15, 22, 36, .86);
+      --panel-2: rgba(21, 31, 50, .82);
+      --line: rgba(204, 220, 245, .16);
+      --ink: #f7faff;
+      --soft: #dbe7f7;
+      --muted: #a9b7ca;
+      --cyan: #22d3ee;
+      --green: #6dff9c;
+      --blue: #6b8cff;
+      --pink: #ff6bd6;
+      --amber: #ffd166;
+      --red: #ff5d73;
+      --max: 1180px;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .42);
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.5;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        radial-gradient(circle at 14% 14%, rgba(34,211,238,.2), transparent 26%),
+        radial-gradient(circle at 86% 18%, rgba(255,107,214,.16), transparent 28%),
+        radial-gradient(circle at 74% 86%, rgba(109,255,156,.13), transparent 30%),
+        var(--bg);
+      background-size: 58px 58px, 58px 58px, auto, auto, auto, auto;
+      overflow: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, p { margin-top: 0; }
+    strong { color: var(--ink); }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 10, 18, .82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 800;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(34,211,238,.38);
+      border-radius: 8px;
+      color: var(--cyan);
+      background: rgba(34,211,238,.08);
+    }
+
+    .nav a.nav-pill {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 12px;
+      color: var(--soft);
+      background: rgba(255,255,255,.055);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .progress {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 35;
+      display: flex;
+      gap: 8px;
+      transform: translateX(-50%);
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 10, 18, .72);
+      backdrop-filter: blur(14px);
+    }
+
+    .progress a {
+      width: 10px;
+      height: 10px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+    }
+
+    .slider {
+      height: 100vh;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 92px 0 34px;
+      scroll-snap-align: start;
+      scroll-margin-top: 0;
+    }
+
+    .slide-arrow {
+      position: fixed;
+      top: 50%;
+      z-index: 36;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(7, 10, 18, .74);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transform: translateY(-50%);
+    }
+
+    .slide-arrow:hover {
+      border-color: rgba(34,211,238,.48);
+      color: var(--cyan);
+    }
+
+    .slide-arrow.prev { left: 18px; }
+    .slide-arrow.next { right: 18px; }
+
+    .slide-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(340px, .62fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .copy,
+    .visual,
+    .card,
+    .chart-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .copy {
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    .step {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .step b {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--accent), transparent 88%);
+      font-family: Sora, Inter, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: Sora, Inter, sans-serif;
+      letter-spacing: 0;
+      line-height: 1.04;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(34px, 5vw, 66px);
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(30px, 4.4vw, 56px);
+    }
+
+    .lead {
+      color: var(--soft);
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .plain {
+      color: var(--soft);
+      font-size: 17px;
+    }
+
+    .simple-list {
+      display: grid;
+      gap: 11px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .simple-list li {
+      display: flex;
+      gap: 10px;
+      color: var(--soft);
+      font-size: 16px;
+    }
+
+    .simple-list i {
+      color: var(--accent);
+      flex: 0 0 auto;
+      margin-top: 3px;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 12%, color-mix(in srgb, var(--accent), transparent 78%), transparent 45%),
+        var(--panel-2);
+    }
+
+    .visual img,
+    .visual video {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .visual-label {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: 14px;
+      background: rgba(7, 10, 18, .78);
+      backdrop-filter: blur(14px);
+      color: var(--soft);
+      font-weight: 800;
+    }
+
+    .icon-visual,
+    .logo-visual {
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .big-icon {
+      width: min(260px, 58vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 42%);
+      border-radius: 22px;
+      color: var(--accent);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent), transparent 78%), rgba(255,255,255,.035)),
+        rgba(255,255,255,.04);
+      box-shadow: 0 0 70px color-mix(in srgb, var(--accent), transparent 70%);
+    }
+
+    .big-icon i {
+      width: 118px;
+      height: 118px;
+      stroke-width: 1.7;
+    }
+
+    .logo-stack {
+      width: min(420px, 86%);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: center;
+    }
+
+    .logo-tile,
+    .logo-hero {
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 46%);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent), transparent 84%), rgba(255,255,255,.045)),
+        rgba(255,255,255,.04);
+      box-shadow: 0 0 70px color-mix(in srgb, var(--accent), transparent 76%);
+    }
+
+    .youtube-official {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,0,0,.42);
+    }
+
+    .logo-tile {
+      aspect-ratio: 1;
+      padding: 18px;
+    }
+
+    .logo-hero {
+      width: min(300px, 70vw);
+      aspect-ratio: 1;
+      padding: 42px;
+    }
+
+    .logo-hero.youtube-official {
+      width: min(300px, 70vw);
+      aspect-ratio: 1;
+      padding: 46px;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-img.invert {
+      filter: invert(1);
+    }
+
+    .youtube-play {
+      width: 100%;
+      max-width: 250px;
+      aspect-ratio: 16 / 11;
+      display: grid;
+      place-items: center;
+      border-radius: 34px;
+      background: #ff0000;
+      box-shadow: 0 24px 70px rgba(255, 0, 0, .32);
+    }
+
+    .youtube-play::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 42px solid transparent;
+      border-bottom: 42px solid transparent;
+      border-left: 70px solid #fff;
+      transform: translateX(8px);
+    }
+
+    .youtube-play.small {
+      width: 58px;
+      height: 40px;
+      max-width: none;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      box-shadow: none;
+    }
+
+    .youtube-play.small::before {
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      border-left-width: 17px;
+      transform: translateX(2px);
+    }
+
+    .social-graphic {
+      position: relative;
+      width: min(360px, 82vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(109,255,156,.18), transparent 34%),
+        linear-gradient(135deg, rgba(109,255,156,.12), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(109,255,156,.18);
+    }
+
+    .social-ring {
+      position: absolute;
+      width: 74%;
+      height: 74%;
+      border: 2px dashed rgba(109,255,156,.36);
+      border-radius: 999px;
+      animation: socialSpin 14s linear infinite;
+    }
+
+    .social-card {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 22px;
+      background: rgba(7,10,18,.78);
+      box-shadow: 0 20px 50px rgba(0,0,0,.22);
+      animation: socialFloat 4.8s ease-in-out infinite;
+    }
+
+    .social-card.youtube { left: 50%; top: 24px; transform: translateX(-50%); border-color: rgba(255,0,0,.45); }
+    .social-card.facebook { right: 32px; bottom: 74px; border-color: rgba(66,103,178,.6); animation-delay: .35s; }
+    .social-card.tiktok { left: 32px; bottom: 74px; border-color: rgba(255,107,214,.5); animation-delay: .7s; }
+
+    .facebook-mark,
+    .tiktok-mark {
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .facebook-mark {
+      color: #4267B2;
+      font-size: 70px;
+    }
+
+    .tiktok-mark {
+      color: #fff;
+      font-size: 64px;
+      text-shadow: -4px 0 #22d3ee, 4px 0 #ff6bd6;
+    }
+
+    .audience-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 132px;
+      height: 132px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(109,255,156,.5);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      background: rgba(109,255,156,.13);
+      color: #6dff9c;
+      box-shadow: 0 0 46px rgba(109,255,156,.2);
+      font-family: Sora, Inter, sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    @keyframes socialSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes socialFloat {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -10px; }
+    }
+
+    .referral-graphic {
+      position: relative;
+      width: min(330px, 78vw);
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,209,102,.18), transparent 34%),
+        linear-gradient(135deg, rgba(255,209,102,.13), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(255,209,102,.18);
+    }
+
+    .referral-graphic::before,
+    .referral-graphic::after {
+      content: "";
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 70%;
+      height: 70%;
+      border: 2px dashed rgba(255,209,102,.52);
+      border-radius: 999px;
+      transform: translate(-50%, -50%) rotate(12deg);
+      animation: orbit 12s linear infinite;
+    }
+
+    .referral-graphic::after {
+      width: 46%;
+      height: 46%;
+      border-color: rgba(109,255,156,.46);
+      animation-duration: 9s;
+      animation-direction: reverse;
+    }
+
+    .person-node,
+    .main-node {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    .main-node {
+      left: 50%;
+      top: 50%;
+      width: 86px;
+      height: 86px;
+      transform: translate(-50%, -50%);
+      background: #ffd166;
+      color: #101624;
+      box-shadow: 0 0 42px rgba(255,209,102,.42);
+    }
+
+    .person-node {
+      width: 58px;
+      height: 58px;
+      background: #101624;
+      color: var(--soft);
+      border: 1px solid rgba(255,209,102,.48);
+    }
+
+    .person-node i,
+    .main-node i {
+      width: 30px;
+      height: 30px;
+    }
+
+    .person-node.n1 { left: 50%; top: 8%; transform: translateX(-50%); }
+    .person-node.n2 { right: 10%; top: 28%; }
+    .person-node.n3 { right: 18%; bottom: 13%; }
+    .person-node.n4 { left: 18%; bottom: 13%; }
+    .person-node.n5 { left: 10%; top: 28%; }
+
+    .connector {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 2px;
+      height: 118px;
+      z-index: 1;
+      transform-origin: top center;
+      background: linear-gradient(rgba(255,209,102,.72), transparent);
+    }
+
+    .connector.c1 { transform: rotate(0deg); }
+    .connector.c2 { transform: rotate(72deg); }
+    .connector.c3 { transform: rotate(144deg); }
+    .connector.c4 { transform: rotate(216deg); }
+    .connector.c5 { transform: rotate(288deg); }
+
+    @keyframes orbit {
+      to { transform: translate(-50%, -50%) rotate(372deg); }
+    }
+
+    .conversion-graphic {
+      position: relative;
+      width: min(330px, 78vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,107,214,.18), transparent 34%),
+        linear-gradient(135deg, rgba(255,107,214,.12), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(255,107,214,.18);
+    }
+
+    .conversion-graphic svg {
+      position: absolute;
+      inset: 30px;
+      width: calc(100% - 60px);
+      height: calc(100% - 60px);
+      transform: rotate(-90deg);
+      overflow: visible;
+    }
+
+    .conversion-track {
+      fill: none;
+      stroke: rgba(255,255,255,.12);
+      stroke-width: 14;
+    }
+
+    .conversion-progress {
+      fill: none;
+      stroke: #ff6bd6;
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-dasharray: 565;
+      stroke-dashoffset: 565;
+      filter: drop-shadow(0 0 16px rgba(255,107,214,.62));
+      animation: fillTen 3.2s ease-in-out infinite;
+    }
+
+    .conversion-value {
+      position: relative;
+      z-index: 2;
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(56px, 11vw, 98px);
+      font-weight: 900;
+      color: #ff6bd6;
+      line-height: 1;
+      text-shadow: 0 0 32px rgba(255,107,214,.38);
+    }
+
+    .conversion-value::before {
+      content: "0%";
+      animation: countTen 3.2s steps(10, end) infinite;
+    }
+
+    .audience-dot {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 999px;
+      background: #ff6bd6;
+      box-shadow: 0 0 18px rgba(255,107,214,.68);
+      animation: dotIn 3.2s ease-in-out infinite;
+    }
+
+    .audience-dot.d1 { left: 11%; top: 18%; --tx: 125px; --ty: 105px; animation-delay: 0s; }
+    .audience-dot.d2 { right: 13%; top: 20%; --tx: -118px; --ty: 100px; animation-delay: .18s; }
+    .audience-dot.d3 { left: 16%; bottom: 21%; --tx: 110px; --ty: -104px; animation-delay: .36s; }
+    .audience-dot.d4 { right: 16%; bottom: 23%; --tx: -108px; --ty: -98px; animation-delay: .54s; }
+    .audience-dot.d5 { left: 49%; top: 8%; --tx: 0px; --ty: 137px; animation-delay: .72s; }
+    .audience-dot.d6 { left: 50%; bottom: 9%; --tx: 0px; --ty: -134px; animation-delay: .9s; }
+
+    @keyframes fillTen {
+      0%, 12% { stroke-dashoffset: 565; }
+      60%, 82% { stroke-dashoffset: 508.5; }
+      100% { stroke-dashoffset: 565; }
+    }
+
+    @keyframes countTen {
+      0% { content: "0%"; }
+      10% { content: "1%"; }
+      20% { content: "2%"; }
+      30% { content: "3%"; }
+      40% { content: "4%"; }
+      50% { content: "5%"; }
+      60% { content: "6%"; }
+      70% { content: "7%"; }
+      80% { content: "8%"; }
+      90% { content: "9%"; }
+      100% { content: "10%"; }
+    }
+
+    @keyframes dotIn {
+      0% { transform: scale(.7); opacity: .2; }
+      45% { transform: translate(0, 0) scale(1); opacity: 1; }
+      72% { transform: translate(var(--tx), var(--ty)) scale(.45); opacity: .35; }
+      100% { transform: scale(.7); opacity: .2; }
+    }
+
+    .cpa-graphic {
+      position: relative;
+      width: min(330px, 78vw);
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(109,255,156,.18), transparent 34%),
+        linear-gradient(135deg, rgba(109,255,156,.12), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(109,255,156,.18);
+    }
+
+    .task-card {
+      position: absolute;
+      left: 40px;
+      top: 58px;
+      width: 158px;
+      border: 1px solid rgba(109,255,156,.42);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(7,10,18,.82);
+      box-shadow: 0 20px 50px rgba(0,0,0,.24);
+      animation: taskFloat 4s ease-in-out infinite;
+    }
+
+    .task-line {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 9px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .task-line::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: #6dff9c;
+      box-shadow: 0 0 18px rgba(109,255,156,.38);
+    }
+
+    .task-line::after {
+      content: "";
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(219,231,247,.38);
+    }
+
+    .money-stack {
+      position: absolute;
+      right: 42px;
+      bottom: 66px;
+      width: 132px;
+      height: 88px;
+      animation: moneyPop 4s ease-in-out infinite;
+    }
+
+    .bill {
+      position: absolute;
+      inset: auto 0 0 auto;
+      width: 118px;
+      height: 58px;
+      border: 2px solid rgba(16,22,36,.75);
+      border-radius: 12px;
+      background: #6dff9c;
+      box-shadow: 0 14px 30px rgba(109,255,156,.22);
+    }
+
+    .bill:nth-child(1) { transform: translate(-16px, -18px) rotate(-10deg); opacity: .7; }
+    .bill:nth-child(2) { transform: translate(-8px, -8px) rotate(-4deg); opacity: .86; }
+    .bill:nth-child(3) { transform: rotate(4deg); }
+
+    .bill::before {
+      content: "$";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #101624;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .cpa-arrow {
+      position: absolute;
+      left: 148px;
+      top: 160px;
+      width: 92px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #6dff9c, transparent);
+      animation: arrowPulse 2.4s ease-in-out infinite;
+    }
+
+    .cpa-arrow::after {
+      content: "";
+      position: absolute;
+      right: -3px;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      border-top: 4px solid #6dff9c;
+      border-right: 4px solid #6dff9c;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .coin-dot {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #ffd166;
+      box-shadow: 0 0 20px rgba(255,209,102,.52);
+      animation: coinMove 2.8s ease-in-out infinite;
+    }
+
+    .coin-dot.c1 { left: 120px; top: 128px; animation-delay: 0s; }
+    .coin-dot.c2 { left: 94px; top: 190px; animation-delay: .45s; }
+    .coin-dot.c3 { left: 190px; top: 92px; animation-delay: .9s; }
+
+    @keyframes taskFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes moneyPop {
+      0%, 100% { transform: scale(.96); }
+      50% { transform: scale(1.04); }
+    }
+
+    @keyframes arrowPulse {
+      0%, 100% { opacity: .45; transform: scaleX(.86); }
+      50% { opacity: 1; transform: scaleX(1); }
+    }
+
+    @keyframes coinMove {
+      0% { transform: translate(0, 0) scale(.75); opacity: .25; }
+      45% { opacity: 1; }
+      75% { transform: translate(92px, 70px) scale(1); opacity: .9; }
+      100% { transform: translate(110px, 82px) scale(.55); opacity: 0; }
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stat,
+    .card {
+      padding: 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.028)),
+        radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent), transparent 78%), transparent 56%);
+    }
+
+    .stat strong,
+    .card strong {
+      display: block;
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(24px, 3.4vw, 42px);
+      line-height: 1.08;
+    }
+
+    .stat span,
+    .card span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .math {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .math-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--soft);
+      font-size: 15px;
+    }
+
+    .math-row:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .math-row strong {
+      font-family: Sora, Inter, sans-serif;
+      white-space: nowrap;
+    }
+
+    .answer {
+      margin-top: 18px;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 10px;
+      padding: 18px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent), transparent 84%), rgba(255,255,255,.04));
+      color: var(--ink);
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(22px, 3vw, 36px);
+      line-height: 1.18;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .card i {
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .card-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .card-logo.youtube-logo {
+      width: 56px;
+      height: 42px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .card-logo.invert {
+      filter: invert(1);
+    }
+
+    .mini-cpa-logo {
+      position: relative;
+      width: 58px;
+      height: 48px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .mini-cpa-logo::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 34px;
+      height: 38px;
+      border: 1px solid rgba(109,255,156,.5);
+      border-radius: 8px;
+      background: rgba(109,255,156,.16);
+      box-shadow: inset 0 0 0 8px rgba(7,10,18,.5);
+    }
+
+    .mini-cpa-logo::after {
+      content: "$";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #6dff9c;
+      color: #101624;
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 900;
+    }
+
+    .mini-money-logo {
+      width: 58px;
+      height: 48px;
+      position: relative;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .mini-money-logo::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      width: 48px;
+      height: 30px;
+      border-radius: 8px;
+      background: #ffd166;
+      transform: rotate(-7deg);
+      box-shadow: 8px -8px 0 rgba(255,209,102,.55);
+    }
+
+    .mini-money-logo::after {
+      content: "$";
+      position: absolute;
+      right: 2px;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(7,10,18,.9);
+      border: 1px solid rgba(255,209,102,.5);
+      color: #ffd166;
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 900;
+    }
+
+    .money-graphic {
+      position: relative;
+      width: min(330px, 78vw);
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255,209,102,.2), transparent 34%),
+        linear-gradient(135deg, rgba(255,209,102,.12), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(255,209,102,.18);
+    }
+
+    .vault-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 172px;
+      height: 172px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,209,102,.52);
+      border-radius: 999px;
+      transform: translate(-50%, -50%);
+      background: rgba(7,10,18,.5);
+      box-shadow: inset 0 0 30px rgba(255,209,102,.12), 0 0 42px rgba(255,209,102,.18);
+      animation: vaultPulse 3.2s ease-in-out infinite;
+    }
+
+    .vault-circle::before {
+      content: "$";
+      color: #ffd166;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 92px;
+      font-weight: 900;
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(255,209,102,.38);
+    }
+
+    .cash-card {
+      position: absolute;
+      width: 116px;
+      height: 62px;
+      border-radius: 14px;
+      background: #ffd166;
+      box-shadow: 0 18px 38px rgba(255,209,102,.18);
+      animation: cashOrbit 4.8s ease-in-out infinite;
+    }
+
+    .cash-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px 18px;
+      border: 2px solid rgba(16,22,36,.48);
+      border-radius: 999px;
+    }
+
+    .cash-card.c1 { left: 32px; top: 54px; transform: rotate(-12deg); }
+    .cash-card.c2 { right: 28px; top: 76px; transform: rotate(10deg); animation-delay: .4s; }
+    .cash-card.c3 { left: 100px; bottom: 42px; transform: rotate(-4deg); animation-delay: .8s; }
+
+    .calendar-graphic {
+      position: relative;
+      width: min(330px, 78vw);
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255,107,214,.18), transparent 34%),
+        linear-gradient(135deg, rgba(255,107,214,.12), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(255,107,214,.18);
+    }
+
+    .calendar-top {
+      height: 58px;
+      border-radius: 18px 18px 0 0;
+      background: #ff6bd6;
+      box-shadow: 0 18px 42px rgba(255,107,214,.22);
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-top: 0;
+      border-radius: 0 0 18px 18px;
+      background: rgba(7,10,18,.68);
+    }
+
+    .day-cell {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      background: rgba(255,255,255,.1);
+      animation: dayFill 3.8s ease-in-out infinite;
+    }
+
+    .day-cell:nth-child(3n) { animation-delay: .12s; }
+    .day-cell:nth-child(4n) { animation-delay: .24s; }
+    .day-cell:nth-child(5n) { animation-delay: .36s; }
+
+    .calendar-total {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100% - 44px);
+      border: 1px solid rgba(255,107,214,.48);
+      border-radius: 14px;
+      padding: 10px 14px;
+      background: rgba(7,10,18,.78);
+      color: #ff6bd6;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      box-shadow: 0 0 28px rgba(255,107,214,.16);
+    }
+
+    .content-graphic,
+    .dev-graphic {
+      position: relative;
+      width: min(350px, 82vw);
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--accent), transparent 82%), transparent 36%),
+        linear-gradient(135deg, color-mix(in srgb, var(--accent), transparent 88%), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px color-mix(in srgb, var(--accent), transparent 84%);
+    }
+
+    .video-card {
+      position: absolute;
+      left: 42px;
+      top: 50px;
+      width: 190px;
+      height: 116px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 18px;
+      background: rgba(7,10,18,.78);
+      box-shadow: 0 24px 58px rgba(0,0,0,.26);
+      animation: taskFloat 4.4s ease-in-out infinite;
+    }
+
+    .video-card:nth-child(2) {
+      left: 100px;
+      top: 154px;
+      transform: scale(.88);
+      opacity: .78;
+      animation-delay: .35s;
+    }
+
+    .video-card:nth-child(3) {
+      left: 156px;
+      top: 246px;
+      transform: scale(.78);
+      opacity: .62;
+      animation-delay: .7s;
+    }
+
+    .route-arrow {
+      position: absolute;
+      right: 46px;
+      top: 142px;
+      width: 64px;
+      height: 64px;
+      border-top: 6px solid #6b8cff;
+      border-right: 6px solid #6b8cff;
+      transform: rotate(45deg);
+      filter: drop-shadow(0 0 18px rgba(107,140,255,.42));
+      animation: arrowPulse 2.4s ease-in-out infinite;
+    }
+
+    .earn-badge {
+      position: absolute;
+      right: 42px;
+      bottom: 46px;
+      width: 104px;
+      height: 104px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: #ffd166;
+      color: #101624;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      box-shadow: 0 0 50px rgba(255,209,102,.3);
+      animation: moneyPop 3.8s ease-in-out infinite;
+    }
+
+    .code-window {
+      position: absolute;
+      left: 34px;
+      top: 44px;
+      width: 202px;
+      border: 1px solid rgba(34,211,238,.42);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(7,10,18,.78);
+      box-shadow: 0 24px 58px rgba(0,0,0,.26);
+      animation: taskFloat 4.2s ease-in-out infinite;
+    }
+
+    .code-line {
+      display: block;
+      height: 9px;
+      margin: 11px 0;
+      border-radius: 999px;
+      background: rgba(219,231,247,.3);
+    }
+
+    .code-line:nth-child(2) { width: 68%; background: rgba(34,211,238,.72); }
+    .code-line:nth-child(3) { width: 86%; }
+    .code-line:nth-child(4) { width: 54%; background: rgba(109,255,156,.7); }
+
+    .mini-game {
+      position: absolute;
+      right: 42px;
+      top: 72px;
+      width: 94px;
+      height: 94px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        rgba(7,10,18,.78);
+      background-size: 31px 31px;
+      animation: socialFloat 4s ease-in-out infinite;
+    }
+
+    .mini-game::before,
+    .mini-game::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: #ff6bd6;
+      box-shadow: 31px 31px 0 #6dff9c;
+    }
+
+    .mini-game::before { left: 10px; top: 10px; }
+    .mini-game::after { right: 10px; bottom: 10px; background: #ffd166; box-shadow: none; }
+
+    .partner-nodes {
+      position: absolute;
+      right: 54px;
+      bottom: 46px;
+      width: 136px;
+      height: 118px;
+    }
+
+    .partner-nodes span {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(34,211,238,.16);
+      border: 1px solid rgba(34,211,238,.42);
+      color: #22d3ee;
+      animation: socialFloat 3.8s ease-in-out infinite;
+    }
+
+    .partner-nodes span:nth-child(1) { left: 0; top: 0; }
+    .partner-nodes span:nth-child(2) { right: 0; top: 14px; animation-delay: .3s; }
+    .partner-nodes span:nth-child(3) { left: 42px; bottom: 0; animation-delay: .6s; }
+
+    .equity-graphic {
+      position: relative;
+      width: min(350px, 82vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 45%);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(109,255,156,.18), transparent 34%),
+        linear-gradient(135deg, rgba(109,255,156,.12), rgba(255,255,255,.035));
+      box-shadow: 0 0 80px rgba(109,255,156,.18);
+    }
+
+    .equity-ring {
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: conic-gradient(#6dff9c 0 33%, rgba(255,255,255,.12) 33% 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 58px rgba(109,255,156,.22);
+      animation: moneyPop 4s ease-in-out infinite;
+    }
+
+    .equity-ring::before {
+      content: "33%";
+      width: 150px;
+      height: 150px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(7,10,18,.9);
+      color: #6dff9c;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 44px;
+      font-weight: 900;
+    }
+
+    .investment-flow {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .pay-step {
+      min-height: 74px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(109,255,156,.34);
+      border-radius: 14px;
+      background: rgba(7,10,18,.72);
+      color: var(--soft);
+      font-family: Sora, Inter, sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .flow-plus {
+      color: #6dff9c;
+      font-family: Sora, Inter, sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    @keyframes vaultPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(.96); }
+      50% { transform: translate(-50%, -50%) scale(1.04); }
+    }
+
+    @keyframes cashOrbit {
+      0%, 100% { translate: 0 0; opacity: .78; }
+      50% { translate: 0 -12px; opacity: 1; }
+    }
+
+    @keyframes dayFill {
+      0%, 18% { background: rgba(255,255,255,.1); transform: scale(.92); }
+      52%, 82% { background: #ff6bd6; transform: scale(1); box-shadow: 0 0 16px rgba(255,107,214,.34); }
+      100% { background: rgba(255,255,255,.1); transform: scale(.92); }
+    }
+
+    .chart-card {
+      padding: 18px;
+    }
+
+    .chart-card h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .chart {
+      width: 100%;
+      height: 420px;
+      min-height: 420px;
+    }
+
+    @media (max-width: 980px) {
+      .progress { display: none; }
+      .slide-inner {
+        grid-template-columns: 1fr;
+      }
+      .cards,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      .visual,
+      .visual img,
+      .visual video,
+      .icon-visual,
+      .logo-visual {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav { width: min(var(--max), calc(100% - 22px)); }
+      .brand span { display: none; }
+      .nav a.nav-pill { font-size: 12px; padding: 0 10px; }
+      .slide { padding-top: 82px; }
+      .slide-inner { width: min(var(--max), calc(100% - 22px)); }
+      .copy { padding: 18px; }
+      .math-row { grid-template-columns: 1fr; }
+      .chart { height: 330px; min-height: 330px; }
+      .slide-arrow {
+        top: auto;
+        bottom: 16px;
+        width: 46px;
+        height: 46px;
+        transform: none;
+      }
+      .slide-arrow.prev { left: 16px; }
+      .slide-arrow.next { right: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#slide-1" aria-label="Colorize x NeraSend">
+        <span class="brand-icon"><i data-lucide="presentation"></i></span>
+        <span>Colorize x NeraSend</span>
+      </a>
+      <a class="nav-pill" href="#slide-8"><i data-lucide="calculator"></i>Ver calculo</a>
+    </nav>
+  </header>
+
+  <nav class="progress" aria-label="Slides">
+    <a href="#slide-1"></a>
+    <a href="#slide-2"></a>
+    <a href="#slide-3"></a>
+    <a href="#slide-4"></a>
+    <a href="#slide-5"></a>
+    <a href="#slide-6"></a>
+    <a href="#slide-7"></a>
+    <a href="#slide-8"></a>
+    <a href="#slide-9"></a>
+    <a href="#slide-10"></a>
+    <a href="#slide-11"></a>
+    <a href="#slide-12"></a>
+  </nav>
+
+  <button class="slide-arrow prev" type="button" aria-label="Slide anterior"><i data-lucide="chevron-left"></i></button>
+  <button class="slide-arrow next" type="button" aria-label="Slide siguiente"><i data-lucide="chevron-right"></i></button>
+
+  <main class="slider" id="slider">
+    <section class="slide" id="slide-1" style="--accent:var(--cyan)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>1</b> La idea</span>
+          <h1>Una oportunidad temprana en la economia de juegos con IA.</h1>
+          <p class="lead">NeraSend combina juego viral, agentes IA, recompensas, referidos y monetizacion por contenido/CPA. La oportunidad para el socio es entrar antes de que el crecimiento ocurra, no cuando el proyecto ya este valorizado.</p>
+          <ul class="simple-list">
+            <li><i data-lucide="check-circle-2"></i><span>El usuario juega, sube rangos y desbloquea agentes IA.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>El crecimiento se impulsa con referidos, tareas y videos.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>El negocio monetiza comunidad, atencion, CPA, anunciantes y futuras expansiones.</span></li>
+          </ul>
+        </article>
+        <aside class="visual">
+          <video autoplay muted loop playsinline preload="auto" poster="teclea.png" aria-label="Video en bucle de NeraSend">
+            <source src="bucle.webm" type="video/webm">
+            <source src="bucle.mp4" type="video/mp4">
+          </video>
+          <div class="visual-label">Narrativa visual: comunidad + juego + servidores + agentes IA.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-2" style="--accent:var(--green)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>2</b> Audiencia</span>
+          <h2>Colorize entra con ventaja desde el inicio.</h2>
+          <p class="plain">La oportunidad para el socio es entrar en una etapa temprana, cuando su comunidad puede acelerar el lanzamiento y capturar una participacion importante desde el primer crecimiento. Colorize no solo aporta trafico: puede convertirse en el primer socio estrategico de distribucion.</p>
+          <div class="stats">
+            <div class="stat"><strong>80K</strong><span>YouTube</span></div>
+            <div class="stat"><strong>201K</strong><span>Facebook</span></div>
+            <div class="stat"><strong>270K</strong><span>TikTok</span></div>
+          </div>
+          <div class="answer">Audiencia total aproximada: 551,000 personas.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="social-graphic" aria-label="Grafico visual de redes sociales">
+            <span class="social-ring"></span>
+            <span class="social-card youtube"><span class="youtube-play small" aria-label="YouTube"></span></span>
+            <span class="social-card facebook"><span class="facebook-mark">f</span></span>
+            <span class="social-card tiktok"><span class="tiktok-mark">♪</span></span>
+            <span class="audience-core">551K</span>
+          </div>
+          <div class="visual-label">Oportunidad: entrar temprano y participar del crecimiento inicial.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-3" style="--accent:var(--pink)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>3</b> Entrada inicial</span>
+          <h2>Si entra solo el 10%, ya hay 55,100 usuarios.</h2>
+          <p class="plain">Este es un supuesto conservador para hacer la primera simulacion. No significa que siempre va a pasar; sirve para ver el potencial.</p>
+          <div class="math">
+            <div class="math-row"><span>Audiencia total Colorize</span><strong>551,000</strong></div>
+            <div class="math-row"><span>Porcentaje que entra al juego</span><strong>10%</strong></div>
+            <div class="math-row"><span>Primer grupo de jugadores</span><strong>55,100</strong></div>
+          </div>
+          <div class="answer">551,000 x 10% = 55,100 usuarios iniciales.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="conversion-graphic" aria-label="Animacion de conversion al 10 por ciento">
+            <svg viewBox="0 0 220 220" aria-hidden="true">
+              <circle class="conversion-track" cx="110" cy="110" r="90"></circle>
+              <circle class="conversion-progress" cx="110" cy="110" r="90"></circle>
+            </svg>
+            <span class="audience-dot d1"></span>
+            <span class="audience-dot d2"></span>
+            <span class="audience-dot d3"></span>
+            <span class="audience-dot d4"></span>
+            <span class="audience-dot d5"></span>
+            <span class="audience-dot d6"></span>
+            <span class="conversion-value"></span>
+          </div>
+          <div class="visual-label">Primer objetivo: convertir audiencia en jugadores.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-4" style="--accent:var(--amber)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>4</b> Referidos</span>
+          <h2>El juego crece porque obliga a invitar.</h2>
+          <p class="plain">Para subir de rango, el jugador debe invitar personas o lograr que sus referidos avancen. Eso convierte el progreso del juego en crecimiento viral.</p>
+          <div class="math">
+            <div class="math-row"><span>Usuarios iniciales</span><strong>55,100</strong></div>
+            <div class="math-row"><span>Cada usuario invita</span><strong>2 personas</strong></div>
+            <div class="math-row"><span>Invitaciones generadas</span><strong>110,200</strong></div>
+            <div class="math-row"><span>Si convierte 35%</span><strong>38,570 nuevos</strong></div>
+          </div>
+          <div class="answer">55,100 iniciales + 38,570 referidos = 93,670 usuarios ciclo 1.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="referral-graphic" aria-label="Grafico visual de referidos">
+            <span class="connector c1"></span>
+            <span class="connector c2"></span>
+            <span class="connector c3"></span>
+            <span class="connector c4"></span>
+            <span class="connector c5"></span>
+            <span class="main-node"><i data-lucide="user-plus"></i></span>
+            <span class="person-node n1"><i data-lucide="user"></i></span>
+            <span class="person-node n2"><i data-lucide="user"></i></span>
+            <span class="person-node n3"><i data-lucide="user"></i></span>
+            <span class="person-node n4"><i data-lucide="user"></i></span>
+            <span class="person-node n5"><i data-lucide="user"></i></span>
+          </div>
+          <div class="visual-label">La viralidad nace del requisito para subir de rango.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" style="--accent:var(--blue)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>5</b> Rol Colorize</span>
+          <h2>Colorize dirige audiencia con videos.</h2>
+          <p class="plain">Colorize puede crear nuevos videos para llevar usuarios al juego, y tambien se pueden aprovechar videos actuales que ya existen para empezar mas rapido.</p>
+          <ul class="simple-list">
+            <li><i data-lucide="check-circle-2"></i><span>Videos explicando como entrar, subir rango y ganar recompensas.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Videos actuales pueden redirigir con links, comentarios fijados y descripciones.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>La monetizacion del canal ayuda a generar ganancia mientras se dirige trafico al juego.</span></li>
+          </ul>
+          <div class="answer">Colorize gana por contenido, comunidad y participacion temprana en el crecimiento.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="content-graphic" aria-label="Grafico de videos que direccionan trafico">
+            <div class="video-card"><span class="youtube-play small"></span></div>
+            <div class="video-card"><span class="youtube-play small"></span></div>
+            <div class="video-card"><span class="youtube-play small"></span></div>
+            <span class="route-arrow"></span>
+            <span class="earn-badge">$</span>
+          </div>
+          <div class="visual-label">Videos actuales + videos nuevos direccionan usuarios al juego.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-6" style="--accent:var(--cyan)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>6</b> Rol Eduardo</span>
+          <h2>Eduardo construye y expande el sistema.</h2>
+          <p class="plain">Eduardo se encarga del desarrollo del juego, actualizaciones, nuevas mecanicas, alianzas con anunciantes y crecimiento del ecosistema interno.</p>
+          <ul class="simple-list">
+            <li><i data-lucide="check-circle-2"></i><span>Desarrollo del juego, rangos, agentes IA, tareas y paneles.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Actualizaciones, nuevos juegos dentro del juego y eventos para retener usuarios.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Parcerias con anunciantes, CPA, sponsors y nuevas fuentes de ingreso.</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>Apoyo para configurar YouTube, estrategia del canal y guiones para videos.</span></li>
+          </ul>
+          <div class="answer">El socio aporta distribucion; Eduardo opera producto, tecnologia y monetizacion.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="dev-graphic" aria-label="Grafico de desarrollo, juegos y alianzas">
+            <div class="code-window">
+              <span class="code-line"></span>
+              <span class="code-line"></span>
+              <span class="code-line"></span>
+              <span class="code-line"></span>
+            </div>
+            <span class="mini-game"></span>
+            <div class="partner-nodes">
+              <span><i data-lucide="megaphone"></i></span>
+              <span><i data-lucide="gamepad-2"></i></span>
+              <span><i data-lucide="bot"></i></span>
+            </div>
+          </div>
+          <div class="visual-label">Producto, actualizaciones, anunciantes, guiones y nuevos juegos.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-7" style="--accent:var(--green)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>7</b> Sociedad</span>
+          <h2>Propuesta: 33% de todo el proyecto.</h2>
+          <p class="plain">La entrada de Colorize seria como socio estrategico con participacion del 33% sobre el proyecto completo, no solo sobre una campaña o un canal.</p>
+          <div class="math">
+            <div class="math-row"><span>Participacion propuesta para Colorize</span><strong>33%</strong></div>
+            <div class="math-row"><span>Inversion total requerida para entrada, desarrollo y expansion</span><strong>$10,000</strong></div>
+            <div class="math-row"><span>Pago inicial para entrar y activar la sociedad</span><strong>$5,000</strong></div>
+            <div class="math-row"><span>Saldo restante</span><strong>$5,000</strong></div>
+          </div>
+          <div class="answer">Puede pagar $5,000 ahora y el resto en partes. Si el proyecto empieza a generar, el saldo puede cubrirse desde sus propias ganancias.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="equity-graphic" aria-label="Grafico de participacion e inversion">
+            <span class="equity-ring"></span>
+            <div class="investment-flow">
+              <span class="pay-step">$5K</span>
+              <span class="flow-plus">+</span>
+              <span class="pay-step">$5K</span>
+            </div>
+          </div>
+          <div class="visual-label">33% de todo el proyecto con entrada flexible por etapas.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" style="--accent:var(--blue)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>8</b> Videos</span>
+          <h2>Videos: NO son $77 por video.</h2>
+          <p class="lead">Los $77 son el total estimado de todos los videos vistos durante un dia completo.</p>
+          <div class="math">
+            <div class="math-row"><span>Usuarios activos en el dia</span><strong id="activeVideoA">60,886</strong></div>
+            <div class="math-row"><span>Videos vistos por usuario activo</span><strong>0.7</strong></div>
+            <div class="math-row"><span>Reproducciones totales del dia</span><strong id="viewsOut">42,620</strong></div>
+            <div class="math-row"><span>Pago estimado por 1,000 reproducciones</span><strong>$1.80</strong></div>
+            <div class="math-row"><span>Total diario por todos los videos</span><strong id="videoDayC">$77</strong></div>
+            <div class="math-row"><span>Total mensual por videos</span><strong id="videoMonthOut">$2,301</strong></div>
+          </div>
+          <div class="answer">Videos: <span id="videoDayA">$77</span> al dia x 30 dias = <span id="videoMonthSum">$2,301</span> al mes.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="logo-hero youtube-official" aria-label="Icono de YouTube"><span class="youtube-play"></span></div>
+          <div class="visual-label">Lectura correcta: $77 al dia por todas las reproducciones, no por cada video.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-9" style="--accent:var(--green)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>9</b> CPA</span>
+          <h2>CPA: aqui esta la mayor parte del ingreso.</h2>
+          <p class="plain">CPA significa que el usuario completa una accion pagada: registrarse, instalar una app, llenar un formulario, probar una oferta o completar una encuesta.</p>
+          <div class="math">
+            <div class="math-row"><span>Usuarios activos en el dia</span><strong id="activeCpaA">60,886</strong></div>
+            <div class="math-row"><span>Porcentaje que hace una tarea CPA</span><strong>8%</strong></div>
+            <div class="math-row"><span>Acciones CPA completadas</span><strong id="cpaActionsOut">4,871</strong></div>
+            <div class="math-row"><span>Pago promedio por accion</span><strong>$1.20</strong></div>
+          </div>
+          <div class="answer">Resultado: las tareas CPA del dia generan <span id="cpaDayA">$5,845</span>.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="cpa-graphic" aria-label="Grafico visual de CPA">
+            <div class="task-card">
+              <span class="task-line"></span>
+              <span class="task-line"></span>
+              <span class="task-line"></span>
+            </div>
+            <span class="cpa-arrow"></span>
+            <span class="coin-dot c1"></span>
+            <span class="coin-dot c2"></span>
+            <span class="coin-dot c3"></span>
+            <div class="money-stack">
+              <span class="bill"></span>
+              <span class="bill"></span>
+              <span class="bill"></span>
+            </div>
+          </div>
+          <div class="visual-label">CPA paga por accion completada, por eso puede generar mas que videos.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" style="--accent:var(--amber)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>10</b> Total</span>
+          <h2>El total diario sale de sumar videos + CPA.</h2>
+          <p class="plain">No hay un tercer numero oculto. El total diario es simplemente la suma de las dos fuentes anteriores.</p>
+          <div class="cards">
+            <div class="card" style="--accent:var(--blue)">
+              <span class="youtube-play small" aria-label="Icono de YouTube"></span>
+              <strong id="videoDayB">$77</strong>
+              <span>videos en todo el dia</span>
+            </div>
+            <div class="card" style="--accent:var(--green)">
+              <span class="mini-cpa-logo" aria-label="Icono de tarea CPA"></span>
+              <strong id="cpaDayB">$5,845</strong>
+              <span>CPA en todo el dia</span>
+            </div>
+            <div class="card" style="--accent:var(--amber)">
+              <span class="mini-money-logo" aria-label="Icono de dinero"></span>
+              <strong id="dailyOut">$5,922</strong>
+              <span>total diario</span>
+            </div>
+          </div>
+          <div class="answer"><span id="videoSum">$77</span> + <span id="cpaSum">$5,845</span> = <span id="dailySum">$5,922</span> al dia.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="money-graphic" aria-label="Grafico visual de dinero">
+            <span class="cash-card c1"></span>
+            <span class="cash-card c2"></span>
+            <span class="cash-card c3"></span>
+            <span class="vault-circle"></span>
+          </div>
+          <div class="visual-label">Total diario = videos del dia + CPA del dia.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-11" style="--accent:var(--pink)">
+      <div class="slide-inner">
+        <article class="copy">
+          <span class="step"><b>11</b> Mes</span>
+          <h2>El mensual sale de multiplicar el total diario por 30.</h2>
+          <p class="plain">Si el comportamiento se repite durante 30 dias, se multiplica. Si los usuarios hacen menos tareas, baja. Si hacen mas tareas, sube.</p>
+          <div class="math">
+            <div class="math-row"><span>Total diario estimado</span><strong id="dailyMonthA">$5,922</strong></div>
+            <div class="math-row"><span>Dias del mes usados en la simulacion</span><strong>30</strong></div>
+            <div class="math-row"><span>Total mensual estimado</span><strong id="monthOut">$177,657</strong></div>
+            <div class="math-row"><span>33% para socio Colorize</span><strong id="partnerOut">$58,627</strong></div>
+          </div>
+          <div class="answer"><span id="dailyMonthB">$5,922</span> x 30 dias = <span id="monthSum">$177,657</span>.</div>
+        </article>
+        <aside class="visual logo-visual">
+          <div class="calendar-graphic" aria-label="Calendario visual de 30 dias">
+            <div class="calendar-top"></div>
+            <div class="calendar-grid">
+              <span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span>
+              <span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span>
+              <span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span>
+              <span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span>
+              <span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span><span class="day-cell"></span>
+            </div>
+            <div class="calendar-total">30</div>
+          </div>
+          <div class="visual-label">Mensual = repetir el total diario durante 30 dias.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-12" style="--accent:var(--cyan)">
+      <div class="slide-inner">
+        <article class="chart-card">
+          <h3>Crecimiento de usuarios</h3>
+          <div class="chart" id="growthChart"></div>
+        </article>
+        <article class="chart-card">
+          <h3>Ingreso diario por fuente</h3>
+          <div class="chart" id="revenueChart"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    lucide.createIcons();
+
+    const model = {
+      youtube: 80000,
+      facebook: 201000,
+      tiktok: 270000,
+      initialConversion: 0.10,
+      referralsPerUser: 2,
+      referralConversion: 0.35,
+      dailyActiveRate: 0.65,
+      videosPerActive: 0.7,
+      rpm: 1.8,
+      cpaConversion: 0.08,
+      cpaPayout: 1.2,
+      partnerShare: 0.33
+    };
+
+    const fmt = new Intl.NumberFormat("en-US");
+    const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+    const audience = model.youtube + model.facebook + model.tiktok;
+    const firstWave = Math.round(audience * model.initialConversion);
+    const invites = Math.round(firstWave * model.referralsPerUser);
+    const convertedRefs = Math.round(invites * model.referralConversion);
+    const cycleOneUsers = firstWave + convertedRefs;
+    const activeDaily = Math.round(cycleOneUsers * model.dailyActiveRate);
+    const viewsDaily = Math.round(activeDaily * model.videosPerActive);
+    const cpaActions = Math.round(activeDaily * model.cpaConversion);
+    const videoRevenue = activeDaily * model.videosPerActive * model.rpm / 1000;
+    const cpaRevenue = activeDaily * model.cpaConversion * model.cpaPayout;
+    const dailyRevenue = videoRevenue + cpaRevenue;
+    const videoMonthlyRevenue = videoRevenue * 30;
+    const monthlyRevenue = dailyRevenue * 30;
+    const partnerRevenue = monthlyRevenue * model.partnerShare;
+
+    const setText = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    };
+
+    ["activeVideoA", "activeCpaA"].forEach((id) => setText(id, fmt.format(activeDaily)));
+    setText("viewsOut", fmt.format(viewsDaily));
+    setText("cpaActionsOut", fmt.format(cpaActions));
+    ["videoDayA", "videoDayB", "videoDayC", "videoSum"].forEach((id) => setText(id, money.format(videoRevenue)));
+    ["videoMonthOut", "videoMonthSum"].forEach((id) => setText(id, money.format(videoMonthlyRevenue)));
+    ["cpaDayA", "cpaDayB", "cpaSum"].forEach((id) => setText(id, money.format(cpaRevenue)));
+    ["dailyOut", "dailySum", "dailyMonthA", "dailyMonthB"].forEach((id) => setText(id, money.format(dailyRevenue)));
+    ["monthOut", "monthSum"].forEach((id) => setText(id, money.format(monthlyRevenue)));
+    setText("partnerOut", money.format(partnerRevenue));
+
+    const growthChart = echarts.init(document.getElementById("growthChart"));
+    growthChart.setOption({
+      backgroundColor: "transparent",
+      tooltip: { formatter: (p) => `${p.name}<br>${fmt.format(p.value[2])} usuarios` },
+      xAxis3D: { type: "category", data: ["Audiencia", "10%", "Invitados", "Ciclo 1"], axisLabel: { color: "#dbe7f7" } },
+      yAxis3D: { type: "category", data: ["Colorize"], axisLabel: { color: "#dbe7f7" } },
+      zAxis3D: { type: "value", axisLabel: { color: "#dbe7f7" } },
+      grid3D: {
+        boxWidth: 140,
+        boxDepth: 42,
+        viewControl: { autoRotate: true, autoRotateSpeed: 3.4, distance: 188 },
+        light: { main: { intensity: 1.35, shadow: true }, ambient: { intensity: .42 } },
+        axisLine: { lineStyle: { color: "rgba(219,231,247,.32)" } }
+      },
+      series: [{
+        type: "bar3D",
+        data: [
+          { name: "Audiencia", value: [0, 0, audience], itemStyle: { color: "#22d3ee" } },
+          { name: "10%", value: [1, 0, firstWave], itemStyle: { color: "#6dff9c" } },
+          { name: "Invitados", value: [2, 0, invites], itemStyle: { color: "#ff6bd6" } },
+          { name: "Ciclo 1", value: [3, 0, cycleOneUsers], itemStyle: { color: "#ffd166" } }
+        ],
+        shading: "lambert",
+        bevelSize: .35,
+        bevelSmoothness: 3,
+        label: {
+          show: true,
+          formatter: (p) => fmt.format(p.value[2]),
+          textStyle: { color: "#f7faff", fontWeight: 800 }
+        }
+      }]
+    });
+
+    const revenueChart = echarts.init(document.getElementById("revenueChart"));
+    revenueChart.setOption({
+      backgroundColor: "transparent",
+      tooltip: { formatter: (p) => `${p.name}<br>${money.format(p.value[2])} al dia` },
+      xAxis3D: { type: "category", data: ["Videos", "CPA", "Total"], axisLabel: { color: "#dbe7f7" } },
+      yAxis3D: { type: "category", data: ["Dia"], axisLabel: { color: "#dbe7f7" } },
+      zAxis3D: { type: "value", axisLabel: { color: "#dbe7f7" } },
+      grid3D: {
+        boxWidth: 132,
+        boxDepth: 42,
+        viewControl: { autoRotate: true, autoRotateSpeed: 3, distance: 185 },
+        light: { main: { intensity: 1.35, shadow: true }, ambient: { intensity: .42 } },
+        axisLine: { lineStyle: { color: "rgba(219,231,247,.32)" } }
+      },
+      series: [{
+        type: "bar3D",
+        data: [
+          { name: "Videos", value: [0, 0, Math.round(videoRevenue)], itemStyle: { color: "#6b8cff" } },
+          { name: "CPA", value: [1, 0, Math.round(cpaRevenue)], itemStyle: { color: "#6dff9c" } },
+          { name: "Total", value: [2, 0, Math.round(dailyRevenue)], itemStyle: { color: "#ffd166" } }
+        ],
+        shading: "realistic",
+        realisticMaterial: { roughness: .44, metalness: .16 },
+        bevelSize: .3,
+        bevelSmoothness: 4,
+        label: {
+          show: true,
+          formatter: (p) => money.format(p.value[2]),
+          textStyle: { color: "#f7faff", fontWeight: 800 }
+        }
+      }]
+    });
+
+    window.addEventListener("resize", () => {
+      growthChart.resize();
+      revenueChart.resize();
+    });
+
+    const slider = document.getElementById("slider");
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const prevButton = document.querySelector(".slide-arrow.prev");
+    const nextButton = document.querySelector(".slide-arrow.next");
+    let currentSlide = 0;
+
+    const goToSlide = (index) => {
+      currentSlide = Math.max(0, Math.min(slides.length - 1, index));
+      slider.scrollTo({ left: currentSlide * slider.clientWidth, behavior: "smooth" });
+    };
+
+    prevButton.addEventListener("click", () => goToSlide(currentSlide - 1));
+    nextButton.addEventListener("click", () => goToSlide(currentSlide + 1));
+
+    slider.addEventListener("scroll", () => {
+      currentSlide = Math.round(slider.scrollLeft / slider.clientWidth);
+    }, { passive: true });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") goToSlide(currentSlide - 1);
+      if (event.key === "ArrowRight") goToSlide(currentSlide + 1);
+    });
+  </script>
+</body>
+</html>
