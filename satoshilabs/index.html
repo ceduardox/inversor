@@ -1,0 +1,2083 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Startup Tycoon | Presentacion de Sociedad</title>
+  <meta name="description" content="Presentacion vertical para explicar AI Startup Tycoon, sociedad 60/40, entrada estrategica de Juan Ivis y reinversion en importacion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --bg: #070b12;
+      --panel: rgba(12, 18, 30, .86);
+      --panel-2: rgba(17, 27, 44, .88);
+      --line: rgba(219, 232, 255, .16);
+      --ink: #f8fbff;
+      --soft: #d9e6f7;
+      --muted: #99a9bd;
+      --cyan: #23d9ff;
+      --green: #62f08d;
+      --gold: #ffd35a;
+      --blue: #5b86ff;
+      --violet: #9d5cff;
+      --rose: #ff5fa8;
+      --orange: #ff9d42;
+      --max: 1220px;
+      --shadow: 0 30px 90px rgba(0, 0, 0, .46);
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.45;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        radial-gradient(circle at 13% 14%, rgba(35,217,255,.18), transparent 28%),
+        radial-gradient(circle at 87% 16%, rgba(157,92,255,.16), transparent 30%),
+        radial-gradient(circle at 76% 86%, rgba(98,240,141,.14), transparent 32%),
+        #070b12;
+      background-size: 62px 62px, 62px 62px, auto, auto, auto, auto;
+      overflow: hidden;
+    }
+
+    @keyframes floatSoft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(35,217,255,0); }
+      50% { box-shadow: 0 0 24px rgba(35,217,255,.2); }
+    }
+
+    @keyframes shineLine {
+      0% { transform: translateX(-130%); opacity: 0; }
+      28% { opacity: .65; }
+      100% { transform: translateX(130%); opacity: 0; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: Sora, Inter, sans-serif; letter-spacing: 0; }
+    strong { color: var(--ink); }
+
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 11, 18, .82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 66px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid rgba(35,217,255,.4);
+      border-radius: 10px;
+      color: var(--cyan);
+      background: rgba(35,217,255,.1);
+    }
+
+    .brand span {
+      display: block;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--soft);
+      background: rgba(255,255,255,.06);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .deck {
+      height: 100dvh;
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      overflow: hidden;
+    }
+
+    .rail {
+      height: 100dvh;
+      padding: 84px 0 18px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      justify-items: center;
+      align-items: center;
+      border-right: 1px solid var(--line);
+      background: rgba(7, 11, 18, .72);
+      backdrop-filter: blur(18px);
+      z-index: 30;
+    }
+
+    .rail-logo {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #061118;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      font-weight: 1000;
+      box-shadow: 0 0 34px rgba(35,217,255,.22);
+    }
+
+    .vertical {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .counter {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 1000;
+    }
+
+    .slides {
+      width: calc(100vw - 78px);
+      height: 100dvh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: relative;
+      min-width: 100%;
+      height: 100dvh;
+      display: grid;
+      align-items: center;
+      padding: 88px 28px 26px;
+      overflow: hidden;
+      transform: translateX(calc(var(--active-slide, 0) * -100%));
+      transition: transform .72s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .scene {
+      width: min(var(--max), calc(100vw - 126px));
+      height: min(760px, calc(100dvh - 114px));
+      min-height: 0;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .96fr) minmax(360px, .74fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .scene.wide { grid-template-columns: minmax(0, 1fr); }
+    .panel {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.07) 45%, transparent 58%);
+      transform: translateX(-130%);
+      animation: shineLine 9s ease-in-out infinite;
+    }
+
+    .copy {
+      padding: clamp(24px, 4vw, 46px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .visual {
+      display: grid;
+      align-items: stretch;
+      background: var(--panel-2);
+    }
+
+    .visual.photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08) contrast(1.02);
+    }
+
+    .visual.photo::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 52%;
+      background: linear-gradient(0deg, rgba(6,10,18,.84), transparent);
+    }
+
+    .caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+    }
+
+    .caption b {
+      display: block;
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.04;
+    }
+
+    .caption span {
+      color: var(--soft);
+      font-weight: 700;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      min-height: 34px;
+      margin-bottom: 16px;
+      padding: 0 12px;
+      border: 1px solid color-mix(in srgb, var(--accent, var(--cyan)) 42%, transparent);
+      border-radius: 999px;
+      color: var(--accent, var(--cyan));
+      background: color-mix(in srgb, var(--accent, var(--cyan)) 12%, transparent);
+      font-size: 12px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(44px, 6vw, 86px);
+      line-height: .96;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: clamp(32px, 4.1vw, 56px);
+      line-height: 1;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: var(--soft);
+      font-size: clamp(16px, 1.45vw, 21px);
+      max-width: 780px;
+    }
+
+    .lead { font-size: clamp(18px, 1.8vw, 25px); font-weight: 700; }
+    .muted { color: var(--muted); }
+    .small { font-size: 14px; color: var(--muted); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--soft);
+      background: rgba(255,255,255,.055);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      min-height: 116px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .metric b {
+      display: block;
+      color: var(--accent, var(--green));
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(25px, 3vw, 42px);
+      line-height: 1;
+      overflow-wrap: anywhere;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .card {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .card:hover,
+    .business:hover,
+    .demo-card:hover,
+    .metric:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent, var(--cyan)) 42%, transparent);
+      background: rgba(255,255,255,.075);
+    }
+
+    .card i, .iconbox i { color: var(--accent, var(--cyan)); }
+    .card b {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    .card span { color: var(--muted); font-weight: 700; font-size: 13px; }
+
+    .game-ui {
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto auto;
+      gap: 12px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(35,217,255,.12), transparent 34%),
+        #07101a;
+    }
+
+    .game-top, .game-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .game-stat, .business, .employee, .research {
+      border: 1px solid rgba(219,232,255,.13);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+      padding: 12px;
+      min-width: 0;
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+
+    .game-stat span, .business span, .employee span, .research span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .game-stat b {
+      display: block;
+      color: var(--green);
+      font-family: Sora, Inter, sans-serif;
+      font-size: 23px;
+    }
+
+    .game-stat button {
+      width: 100%;
+      min-height: 44px;
+      border: 0;
+      border-radius: 8px;
+      color: #06140a;
+      background: linear-gradient(135deg, #77f69c, #2ebc52);
+      font-weight: 1000;
+      cursor: pointer;
+    }
+
+    .game-stat button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .office {
+      position: relative;
+      min-height: 350px;
+      border: 1px solid rgba(219,232,255,.12);
+      border-radius: 12px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.13) 25%, transparent 25%) 0 0 / 72px 72px,
+        linear-gradient(225deg, rgba(255,255,255,.07) 25%, transparent 25%) 0 0 / 72px 72px,
+        linear-gradient(145deg, #17202c, #0a121d 72%);
+    }
+
+    .office.three-lab {
+      background:
+        radial-gradient(circle at 50% 18%, rgba(35,217,255,.2), transparent 34%),
+        linear-gradient(145deg, #08111d, #02060c 74%);
+    }
+
+    .server-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .server-canvas canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .three-badge {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 32px;
+      padding: 0 10px;
+      border: 1px solid rgba(35,217,255,.32);
+      border-radius: 999px;
+      color: var(--cyan);
+      background: rgba(2,6,12,.58);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .server-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .server-showcase {
+      min-height: 560px;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(35,217,255,.2), transparent 34%),
+        linear-gradient(145deg, #08111d, #02060c 74%);
+    }
+
+    .server-showcase,
+    .office.three-lab {
+      animation: floatSoft 7s ease-in-out infinite;
+    }
+
+    .office::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 36px;
+      bottom: 30px;
+      z-index: 3;
+      transform: rotate(-16deg);
+      color: rgba(255,255,255,.9);
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(24px, 4vw, 46px);
+      font-weight: 900;
+      text-shadow: 0 10px 22px rgba(0,0,0,.5);
+    }
+
+    .room {
+      position: absolute;
+      z-index: 2;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 0 40px rgba(35,217,255,.05);
+    }
+
+    .room.one { left: 8%; top: 18%; width: 34%; height: 34%; }
+    .room.two { left: 42%; top: 12%; width: 42%; height: 38%; }
+    .room.three { left: 18%; top: 52%; width: 35%; height: 30%; }
+    .room.four { left: 54%; top: 50%; width: 34%; height: 32%; }
+
+    .desk, .server, .screen {
+      position: absolute;
+      z-index: 2;
+      border-radius: 6px;
+      background: #222c38;
+      box-shadow: 0 8px 22px rgba(0,0,0,.35);
+    }
+
+    .three-lab .room,
+    .three-lab .desk,
+    .three-lab .server,
+    .three-lab .screen {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .desk { width: 52px; height: 24px; border-top: 3px solid #d5a66b; }
+    .server { width: 28px; height: 62px; background: #102338; border: 1px solid rgba(35,217,255,.36); }
+    .server::after { content: ""; position: absolute; inset: 8px 6px; background: repeating-linear-gradient(0deg, var(--cyan) 0 3px, transparent 3px 12px); opacity: .7; }
+    .screen { width: 34px; height: 22px; background: linear-gradient(135deg, #143d70, #23d9ff); }
+
+    .d1 { left: 13%; top: 30%; } .d2 { left: 25%; top: 39%; } .d3 { left: 36%; top: 66%; }
+    .s1 { left: 62%; top: 18%; } .s2 { left: 69%; top: 18%; } .s3 { left: 76%; top: 20%; }
+    .m1 { left: 18%; top: 24%; } .m2 { left: 48%; top: 24%; } .m3 { left: 63%; top: 60%; }
+
+    .office[data-stage="1"] .room.three,
+    .office[data-stage="1"] .room.four,
+    .office[data-stage="1"] .s2,
+    .office[data-stage="1"] .s3,
+    .office[data-stage="1"] .d3,
+    .office[data-stage="1"] .m3 {
+      opacity: .16;
+      filter: grayscale(1);
+    }
+
+    .office[data-stage="2"] .room.four,
+    .office[data-stage="2"] .s3,
+    .office[data-stage="2"] .m3 {
+      opacity: .34;
+      filter: grayscale(.6);
+    }
+
+    .demo-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .demo-card {
+      min-width: 0;
+      border: 1px solid rgba(219,232,255,.13);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+      padding: 11px;
+    }
+
+    .demo-card b {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .demo-card span {
+      display: block;
+      min-height: 32px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .demo-card button {
+      width: 100%;
+      min-height: 34px;
+      margin-top: 8px;
+      border: 0;
+      border-radius: 8px;
+      color: white;
+      background: linear-gradient(135deg, #77a0ff, #2c62ef);
+      font-size: 12px;
+      font-weight: 1000;
+      cursor: pointer;
+    }
+
+    .demo-card button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .demo-log {
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(219,232,255,.11);
+      border-radius: 8px;
+      padding: 0 10px;
+      color: var(--gold);
+      background: rgba(255,211,90,.08);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .reference-shot {
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr) 190px;
+      grid-template-rows: 58px minmax(250px, 1fr) 150px;
+      gap: 10px;
+      background:
+        radial-gradient(circle at 52% 25%, rgba(35,217,255,.14), transparent 36%),
+        linear-gradient(145deg, #07111b, #03070d 78%);
+    }
+
+    .game-image-shot {
+      min-height: 620px;
+      background: #07111b;
+    }
+
+    .game-image-shot img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(1.05) contrast(1.03);
+    }
+
+    .game-image-shot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      border: 1px solid rgba(35,217,255,.18);
+      box-shadow: inset 0 0 60px rgba(35,217,255,.08);
+    }
+
+    .ref-top {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .ref-sidebar,
+    .ref-main,
+    .ref-business,
+    .ref-bottom {
+      border: 1px solid rgba(219,232,255,.14);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+      overflow: hidden;
+    }
+
+    .ref-player,
+    .ref-stat {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      border: 1px solid rgba(219,232,255,.13);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+      padding: 9px;
+    }
+
+    .ref-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ffd35a, #5b86ff);
+      box-shadow: inset 0 -8px 20px rgba(0,0,0,.25);
+    }
+
+    .ref-player b,
+    .ref-stat b,
+    .ref-title b,
+    .ref-item b {
+      display: block;
+      color: var(--ink);
+      font-size: 12px;
+    }
+
+    .ref-player span,
+    .ref-stat span,
+    .ref-title span,
+    .ref-item span {
+      display: block;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .ref-sidebar {
+      grid-row: 2 / 4;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      padding: 10px;
+    }
+
+    .ref-nav {
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
+    }
+
+    .ref-nav.active {
+      color: white;
+      background: linear-gradient(135deg, rgba(91,134,255,.72), rgba(35,217,255,.18));
+    }
+
+    .ref-main {
+      position: relative;
+      padding: 14px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.09) 25%, transparent 25%) 0 0 / 58px 58px,
+        linear-gradient(225deg, rgba(255,255,255,.06) 25%, transparent 25%) 0 0 / 58px 58px,
+        linear-gradient(145deg, #18222e, #09111c 72%);
+    }
+
+    .ref-title {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .ref-office {
+      position: absolute;
+      inset: 72px 18px 20px;
+      transform: perspective(740px) rotateX(54deg) rotateZ(-36deg);
+      transform-origin: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .ref-room {
+      border: 2px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 0 35px rgba(35,217,255,.08);
+    }
+
+    .ref-room:nth-child(3),
+    .ref-room:nth-child(6) {
+      background: rgba(35,217,255,.12);
+    }
+
+    .ref-main::after {
+      content: "TYCOON LABS";
+      position: absolute;
+      left: 32px;
+      bottom: 28px;
+      z-index: 4;
+      transform: rotate(-15deg);
+      color: white;
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(18px, 2.4vw, 34px);
+      font-weight: 900;
+      text-shadow: 0 12px 22px rgba(0,0,0,.6);
+    }
+
+    .ref-business {
+      display: grid;
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .ref-item {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      padding: 7px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .ref-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--cyan);
+      background: rgba(91,134,255,.16);
+    }
+
+    .ref-price {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 1000;
+    }
+
+    .ref-bottom {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+    }
+
+    .ref-card {
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      padding: 9px;
+    }
+
+    .ref-card b {
+      display: block;
+      font-size: 12px;
+    }
+
+    .ref-card span {
+      display: block;
+      margin-top: 5px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .business-list {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      align-content: center;
+    }
+
+    .business {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .iconbox {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(91,134,255,.15);
+    }
+
+    .business b { display: block; }
+    .business em {
+      color: var(--green);
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .btn {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 8px;
+      padding: 0 14px;
+      color: #071018;
+      background: linear-gradient(135deg, var(--gold), #ffb736);
+      font-weight: 1000;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .btn.green { background: linear-gradient(135deg, #77f69c, #2ebc52); color: #06140a; }
+    .btn.blue { background: linear-gradient(135deg, #77a0ff, #2c62ef); color: white; }
+    .btn.ghost { border: 1px solid var(--line); background: rgba(255,255,255,.06); color: var(--soft); }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .share {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .bar {
+      height: 18px;
+      margin-top: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,.1);
+      display: flex;
+    }
+    .bar span { display: block; }
+    .bar .taiwan { width: 60%; background: var(--violet); }
+    .bar .ale { width: 20%; background: var(--cyan); }
+    .bar .juan { width: 20%; background: var(--green); }
+
+    .table {
+      display: grid;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .row span { color: var(--muted); font-weight: 800; }
+    .row b { color: var(--accent, var(--green)); font-size: 18px; text-align: right; }
+
+    .calc {
+      padding: 22px;
+      display: grid;
+      align-content: center;
+      gap: 14px;
+    }
+
+    .range {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .range label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--soft);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--green);
+    }
+
+    .big-number {
+      color: var(--accent, var(--green));
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: .95;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .vehicle-card {
+      display: grid;
+      grid-template-rows: minmax(220px, 1fr) auto;
+      min-height: 0;
+    }
+
+    .vehicle-card .caption { position: static; padding: 20px; }
+    .vehicle-card img { height: 100%; min-height: 0; }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .step-card {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #061018;
+      background: var(--accent, var(--cyan));
+      font-weight: 1000;
+    }
+
+    .step-card b { display: block; margin-bottom: 4px; }
+    .step-card span { color: var(--muted); font-weight: 700; font-size: 14px; }
+
+    .arrows {
+      position: fixed;
+      inset: 50% 18px auto 18px;
+      top: 50%;
+      z-index: 45;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .arrow {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(7, 11, 18, .78);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .arrow:hover { color: var(--cyan); border-color: rgba(35,217,255,.48); }
+    .arrow:disabled { opacity: .35; cursor: not-allowed; }
+
+    .progress {
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      z-index: 45;
+      display: flex;
+      gap: 8px;
+      padding: 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 11, 18, .72);
+      backdrop-filter: blur(14px);
+      transform: translateX(-50%);
+    }
+
+    .progress button {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      cursor: pointer;
+    }
+
+    .progress button.active {
+      width: 28px;
+      border-color: var(--accent, var(--cyan));
+      background: var(--accent, var(--cyan));
+    }
+
+    @media (max-width: 980px) {
+      body { overflow: hidden; }
+      .deck { grid-template-columns: 1fr; height: 100dvh; }
+      .rail { display: none; }
+      .arrows, .progress { display: flex; }
+      .slides {
+        width: 100vw;
+        height: 100dvh;
+        display: flex;
+        overflow: hidden;
+      }
+      .slide {
+        min-width: 100vw;
+        height: 100dvh;
+        min-height: 100dvh;
+        align-items: flex-start;
+        padding: 78px 14px 96px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        transform: translateX(calc(var(--active-slide, 0) * -100%));
+      }
+      .scene, .scene.wide {
+        width: min(100%, 720px);
+        height: auto;
+        min-height: auto;
+        grid-template-columns: 1fr;
+        overflow: visible;
+      }
+      .panel { min-height: auto; }
+      .copy {
+        padding: 18px;
+        justify-content: flex-start;
+        overflow: visible;
+      }
+      .visual { min-height: 320px; }
+      .game-ui {
+        padding: 10px;
+        gap: 8px;
+        grid-template-rows: auto minmax(300px, auto) auto auto;
+      }
+      .metrics, .game-top, .game-bottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .grid, .split { grid-template-columns: 1fr; gap: 8px; }
+      .demo-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .reference-shot {
+        min-height: 520px;
+        grid-template-columns: 52px minmax(0, 1fr);
+        grid-template-rows: auto 1fr auto auto;
+        gap: 7px;
+        padding: 8px;
+      }
+      .ref-top { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+      .ref-sidebar { grid-row: 2 / 4; padding: 7px; gap: 6px; }
+      .ref-main { min-height: 250px; padding: 10px; }
+      .ref-business { grid-column: 2; grid-row: 3; grid-template-columns: 1fr; padding: 7px; }
+      .ref-bottom { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 7px; }
+      .ref-item { grid-template-columns: 30px 1fr; }
+      .ref-price { display: none; }
+      .ref-title .btn { display: none; }
+      .ref-player, .ref-stat { padding: 7px; }
+      .game-image-shot {
+        min-height: 430px;
+      }
+      .game-image-shot img {
+        object-fit: contain;
+        object-position: center;
+      }
+      .nav { width: min(100% - 20px, 720px); }
+      .nav-actions .pill:not(:first-child) { display: none; }
+      h1 { font-size: clamp(31px, 10vw, 48px); margin-bottom: 10px; }
+      h2 { font-size: clamp(27px, 8vw, 38px); margin-bottom: 10px; }
+      p { font-size: 15px; margin-bottom: 10px; }
+      .lead { font-size: 16px; }
+      .kicker { min-height: 28px; margin-bottom: 10px; font-size: 10px; }
+      .metric { min-height: 74px; padding: 11px; }
+      .metric b { font-size: clamp(22px, 8vw, 34px); }
+      .metric span { font-size: 11px; }
+      .card { padding: 11px; }
+      .card b { font-size: 14px; }
+      .card span { font-size: 12px; }
+      .game-stat { padding: 10px; min-height: 74px; }
+      .game-stat b { font-size: 20px; }
+      .demo-card { padding: 9px; }
+      .demo-card span { min-height: 26px; font-size: 10px; }
+      .demo-card button { min-height: 30px; font-size: 11px; }
+      .arrows {
+        inset: auto 14px 18px 14px;
+        top: auto;
+        transform: none;
+      }
+      .arrow {
+        width: 44px;
+        height: 44px;
+      }
+      .progress {
+        bottom: 22px;
+        max-width: calc(100vw - 120px);
+        overflow-x: auto;
+      }
+    }
+
+    @media (min-width: 981px) and (max-height: 780px) {
+      .slide { padding-top: 78px; padding-bottom: 18px; }
+      .scene { height: calc(100dvh - 98px); }
+      .copy { padding: 24px 30px; justify-content: flex-start; }
+      h1 { font-size: clamp(40px, 5vw, 68px); }
+      h2 { font-size: clamp(30px, 3.4vw, 48px); margin-bottom: 12px; }
+      p { font-size: 16px; margin-bottom: 12px; }
+      .lead { font-size: 18px; }
+      .grid { gap: 9px; }
+      .card { padding: 12px; }
+      .card b { font-size: 15px; }
+      .card span { font-size: 12px; }
+      .metrics { gap: 9px; }
+      .metric { min-height: 94px; padding: 13px; }
+      .metric b { font-size: clamp(23px, 2.5vw, 34px); }
+      .kicker { margin-bottom: 10px; }
+    }
+
+    @media (max-width: 560px) {
+      .topbar .pill { display: none; }
+      .brand span { max-width: 220px; }
+      .copy { padding: 22px; }
+      .slide { padding-inline: 10px; }
+      .metrics, .game-top, .game-bottom { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metrics .metric:last-child,
+      .game-top .game-stat:last-child,
+      .game-bottom .game-stat:last-child { grid-column: 1 / -1; }
+      .business { grid-template-columns: 44px 1fr; }
+      .business .btn { grid-column: 1 / -1; }
+      .office { min-height: 300px; }
+      .server-showcase { min-height: 330px; }
+      .reference-shot { min-height: 500px; }
+      .game-image-shot { min-height: 360px; }
+      .ref-player small,
+      .ref-stat b,
+      .ref-player b,
+      .ref-item b,
+      .ref-card b { font-size: 10px; }
+      .ref-stat span,
+      .ref-item span,
+      .ref-card span { font-size: 10px; }
+      .ref-icon { width: 28px; height: 28px; }
+      .ref-nav { height: 30px; }
+      .ref-main::after { font-size: 20px; left: 18px; bottom: 18px; }
+      .row { grid-template-columns: 1fr; }
+      .row b { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#slide-1" aria-label="AI Startup Tycoon">
+        <span class="brand-icon"><i data-lucide="rocket"></i></span>
+        <span>AI Startup Tycoon</span>
+      </a>
+      <div class="nav-actions">
+        <a class="pill" href="#slide-6"><i data-lucide="pie-chart"></i>Participacion</a>
+        <a class="pill" href="#slide-12"><i data-lucide="calculator"></i>Ganancias Juan</a>
+        <a class="pill" href="#slide-10"><i data-lucide="bike"></i>Importacion</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="deck">
+    <aside class="rail" aria-label="Navegacion de presentacion">
+      <div class="rail-logo">AI</div>
+      <div class="vertical">Grupo Chen Wei x Grupo Neraverse+SGI</div>
+      <div class="counter" id="counter">01/12</div>
+    </aside>
+
+    <main class="slides" id="slides">
+      <section class="slide" id="slide-1" style="--accent:var(--cyan)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="presentation"></i> Presentacion de sociedad</span>
+            <h1>AI Startup Tycoon</h1>
+            <p class="lead">Un juego idle tycoon de empresa tecnologica: el jugador no toca una moneda, construye una compania que produce dinero automaticamente.</p>
+            <div class="metrics">
+              <div class="metric"><b>60/40</b><span>Sociedad base con el grupo taiwanes</span></div>
+              <div class="metric"><b>$60K</b><span>Desarrollo estimado inicial</span></div>
+              <div class="metric"><b>3 meses</b><span>Corte de utilidades por trimestre</span></div>
+            </div>
+          </article>
+          <article class="panel visual game-ui" aria-label="Vista del juego AI Startup Tycoon">
+            <div class="game-top">
+              <div class="game-stat"><span>Dinero</span><b id="demoMoney">$1.20K</b></div>
+              <div class="game-stat"><span>Ingresos</span><b id="demoIncome">+$140/s</b></div>
+              <div class="game-stat"><span>Valor empresa</span><b id="demoValue">$12.8K</b></div>
+            </div>
+            <div class="office three-lab" id="demoOffice" data-stage="1" data-label="TYCOON LABS">
+              <div class="server-canvas server3d-mount" aria-label="Servidor 3D animado"></div>
+              <div class="three-badge"><i data-lucide="server"></i> Datacenter 3D demo</div>
+              <div class="server-fallback">Cargando servidor 3D...</div>
+              <span class="room one"></span><span class="room two"></span><span class="room three"></span><span class="room four"></span>
+              <span class="desk d1"></span><span class="desk d2"></span><span class="desk d3"></span>
+              <span class="server s1"></span><span class="server s2"></span><span class="server s3"></span>
+              <span class="screen m1"></span><span class="screen m2"></span><span class="screen m3"></span>
+            </div>
+            <div class="game-bottom">
+              <div class="game-stat"><span>Objetivo</span><b id="demoGoal">Oficina avanzada</b></div>
+              <div class="game-stat"><span>Caja offline</span><b id="demoClaim">$0</b></div>
+              <div class="game-stat"><button id="claimDemo" type="button">Reclamar</button></div>
+            </div>
+            <div class="demo-actions">
+              <div class="demo-card"><b>Tienda Online</b><span id="shopInfo">Nivel 1 · +$80/s</span><button id="buyShop" type="button">Mejorar $900</button></div>
+              <div class="demo-card"><b>Startup Tech</b><span id="startupInfo">Bloqueada · +$420/s</span><button id="buyStartup" type="button">Comprar $2.5K</button></div>
+              <div class="demo-card"><b>Centro de Datos</b><span id="dataInfo">Bloqueado · +$1.8K/s</span><button id="buyData" type="button">Comprar $12K</button></div>
+            </div>
+            <div class="demo-log" id="demoLog">Demo activo: reclama, mejora y desbloquea negocios.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-preview" style="--accent:var(--cyan)">
+        <div class="scene">
+          <article class="panel visual game-image-shot" aria-label="UI del juego AI Startup Tycoon">
+            <img src="game.png" alt="UI propuesta del juego AI Startup Tycoon">
+          </article>
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="image"></i> Vista visual del juego</span>
+            <h2>Asi se veria la experiencia principal</h2>
+            <p>Esta lamina muestra una parte de la idea visual: empresa isometrica, negocios a la derecha, recursos arriba, mejoras, empleados e investigacion abajo. Sirve para que el socio entienda rapido que no es un tap game, sino un tycoon con progreso.</p>
+            <div class="grid">
+              <div class="card"><i data-lucide="layout-dashboard"></i><b>Dashboard claro</b><span>Todo lo importante se ve en una sola pantalla.</span></div>
+              <div class="card"><i data-lucide="building"></i><b>Empresa viva</b><span>La oficina evoluciona visualmente con cada avance.</span></div>
+              <div class="card"><i data-lucide="trending-up"></i><b>Ingresos por segundo</b><span>El dinero se produce automaticamente.</span></div>
+              <div class="card"><i data-lucide="mouse-pointer-click"></i><b>Decision, no tap</b><span>El jugador invierte, mejora y desbloquea.</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-server" style="--accent:var(--cyan)">
+        <div class="scene">
+          <article class="panel visual server-showcase">
+            <div class="server-canvas server3d-mount" aria-label="Datacenter 3D del juego"></div>
+            <div class="three-badge"><i data-lucide="server"></i> Datacenter 3D del juego</div>
+            <div class="server-fallback">Cargando servidor 3D...</div>
+          </article>
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="server-cog"></i> Servidor / Centro de datos</span>
+            <h2>El juego debe sentirse tecnologico desde el primer vistazo</h2>
+            <p>Esta escena representa el salto visual del tycoon: servidores, luces, racks, IA central y crecimiento de infraestructura. La idea es que el jugador vea que su empresa esta evolucionando hacia cloud, datos e inteligencia artificial.</p>
+            <div class="grid">
+              <div class="card"><i data-lucide="database"></i><b>Racks 3D</b><span>Infraestructura visible para negocios como cloud y centro de datos.</span></div>
+              <div class="card"><i data-lucide="sparkles"></i><b>Luces vivas</b><span>LEDs y nucleo animado para que no parezca una imagen estatica.</span></div>
+              <div class="card"><i data-lucide="cpu"></i><b>IA central</b><span>Representa investigacion, algoritmos y automatizacion.</span></div>
+              <div class="card"><i data-lucide="trending-up"></i><b>Progreso visual</b><span>La oficina puede evolucionar a datacenter cuando el jugador invierte.</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-2" style="--accent:var(--green)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="gamepad-2"></i> El juego</span>
+            <h2>El jugador construye una empresa, no solo acumula puntos</h2>
+            <p>Empieza con una oficina basica y escala hacia tiendas online, startups tech, cripto mineria, redes sociales, centros de datos, laboratorios de IA, cloud, videojuegos y robotica.</p>
+            <div class="grid">
+              <div class="card"><i data-lucide="building-2"></i><b>Negocios</b><span>Cada unidad produce dinero por segundo y sube de nivel.</span></div>
+              <div class="card"><i data-lucide="users"></i><b>Empleados</b><span>CEO, marketing, developers, analistas y soporte con efectos reales.</span></div>
+              <div class="card"><i data-lucide="flask-conical"></i><b>Investigacion</b><span>IA, blockchain, cloud y energia desbloquean multiplicadores.</span></div>
+              <div class="card"><i data-lucide="trophy"></i><b>Ranking</b><span>Competencia global por valor de empresa y produccion.</span></div>
+            </div>
+          </article>
+          <article class="panel business-list">
+            <div class="business"><span class="iconbox"><i data-lucide="shopping-cart"></i></span><div><b>Tienda Online</b><span>Nivel 25</span><br><em>+5.2K/s</em></div><button class="btn green">Mejorar</button></div>
+            <div class="business"><span class="iconbox"><i data-lucide="laptop"></i></span><div><b>Startup Tech</b><span>Nivel 18</span><br><em>+12.4K/s</em></div><button class="btn green">Mejorar</button></div>
+            <div class="business"><span class="iconbox"><i data-lucide="bitcoin"></i></span><div><b>Cripto Mineria</b><span>Nivel 22</span><br><em>+35.6K/s</em></div><button class="btn green">Mejorar</button></div>
+            <div class="business"><span class="iconbox"><i data-lucide="server"></i></span><div><b>Centro de Datos</b><span>Nivel 10</span><br><em>+22.1K/s</em></div><button class="btn green">Mejorar</button></div>
+            <button class="btn blue"><i data-lucide="plus"></i>Comprar nuevo negocio</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-3" style="--accent:var(--gold)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="repeat"></i> Loop de retencion</span>
+            <h2>Siempre hay una meta cerca</h2>
+            <p>El jugador vuelve porque ve progreso pendiente: reclamar ingresos, comprar el siguiente negocio, mejorar empleados, desbloquear investigacion, entrar a eventos y subir en ranking.</p>
+            <div class="timeline">
+              <div class="step-card"><span class="num">1</span><div><b>Construir</b><span>Compra unidades de negocio y expande la oficina.</span></div></div>
+              <div class="step-card"><span class="num">2</span><div><b>Producir</b><span>Los negocios generan ingresos automaticos por segundo.</span></div></div>
+              <div class="step-card"><span class="num">3</span><div><b>Reinvertir</b><span>Mejoras, empleados e investigacion elevan la produccion.</span></div></div>
+              <div class="step-card"><span class="num">4</span><div><b>Competir</b><span>Ranking, eventos y misiones dan urgencia diaria.</span></div></div>
+            </div>
+          </article>
+          <article class="panel visual photo">
+            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=82" alt="Equipo tecnologico trabajando en una startup">
+            <div class="caption"><b>Familiar para el usuario</b><span>La fantasia es convertirse en fundador de una empresa tecnologica global.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-4" style="--accent:var(--violet)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="megaphone"></i> Traccion</span>
+            <h2>El grupo taiwanes empuja la distribucion</h2>
+            <p>Para esta presentacion usamos un nombre referencial comun: <strong>Grupo Chen Wei</strong>. Ellos toman el frente de gasto comercial: influencers, publicidad, lideres de comunidad y expansion de la app.</p>
+            <div class="grid">
+              <div class="card"><i data-lucide="badge-dollar-sign"></i><b>Sin limite de gasto operativo</b><span>La inversion comercial se abre segun campana y crecimiento.</span></div>
+              <div class="card"><i data-lucide="radio-tower"></i><b>Influencers y publicidad</b><span>Activacion masiva para descargar, jugar y retener usuarios.</span></div>
+              <div class="card"><i data-lucide="network"></i><b>Grupos de lideres</b><span>Comunidades que hacen correr la app en mercados clave.</span></div>
+              <div class="card"><i data-lucide="wallet-cards"></i><b>Pagos externos</b><span>Administran pagos de redes sociales y promocion.</span></div>
+            </div>
+          </article>
+          <article class="panel visual photo">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=82" alt="Marketing digital y crecimiento de aplicacion">
+            <div class="caption"><b>Distribucion primero</b><span>Una app de juego necesita adquisicion, comunidad y repeticion diaria.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-5" style="--accent:var(--cyan)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="code-2"></i> Nuestra inversion</span>
+            <h2>Grupo Neraverse+SGI aporta el desarrollo completo</h2>
+            <p>La inversion de desarrollo estimada ronda los <strong>$60,000</strong>, con posibilidad de subir o bajar segun alcance. Incluye web, apps, afiliacion a exchange, contenido 3D, canales y administracion de pagos internos.</p>
+            <div class="table">
+              <div class="row"><span>Web, landing, paneles y administracion</span><b>Grupo Neraverse+SGI</b></div>
+              <div class="row"><span>Apps, juego idle, economia y marketplace</span><b>Grupo Neraverse+SGI</b></div>
+              <div class="row"><span>Contenido 3D, canales y material visual</span><b>Grupo Neraverse+SGI</b></div>
+              <div class="row"><span>Pagos de upgrades, skins, recompensas y reportes</span><b>Grupo Neraverse+SGI</b></div>
+            </div>
+          </article>
+          <article class="panel visual photo">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1400&q=82" alt="Desarrollo de software y aplicacion">
+            <div class="caption"><b>La tecnologia es el activo</b><span>El desarrollo queda como motor propio del negocio y de futuras versiones.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-6" style="--accent:var(--green)">
+        <div class="scene wide">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="pie-chart"></i> Estructura de sociedad</span>
+            <h2>60% Grupo Chen Wei, 40% Grupo Neraverse+SGI</h2>
+            <p>Dentro del 40% de Grupo Neraverse+SGI, Juan Ivis entra como socio estrategico con el 50% de esa participacion. Resultado final: 60% Taiwan, 20% Jose Eduardo, 20% Juan Ivis.</p>
+            <div class="split">
+              <div class="share">
+                <h3>Sociedad base</h3>
+                <div class="bar"><span class="taiwan"></span><span style="width:40%;background:var(--cyan)"></span></div>
+                <div class="table">
+                  <div class="row"><span>Grupo Chen Wei</span><b>60%</b></div>
+                  <div class="row"><span>Grupo Neraverse+SGI</span><b>40%</b></div>
+                </div>
+              </div>
+              <div class="share">
+                <h3>Distribucion real con Juan Ivis</h3>
+                <div class="bar"><span class="taiwan"></span><span class="ale"></span><span class="juan"></span></div>
+                <div class="table">
+                  <div class="row"><span>Grupo Chen Wei</span><b>60%</b></div>
+                  <div class="row"><span>Jose Eduardo</span><b>20%</b></div>
+                  <div class="row"><span>Juan Ivis</span><b>20%</b></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-7" style="--accent:var(--orange)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="user-check"></i> Juan Ivis</span>
+            <h2>Juan ingresa porque convertira las utilidades en activos reales</h2>
+            <p>El dinero generado por el juego no se queda solo en la app: Juan Ivis ayuda a convertir esas utilidades en importacion, infraestructura, contactos, tiendas, vehiculos electricos, motos electricas u otras lineas comerciales en Bolivia.</p>
+            <div class="grid">
+              <div class="card"><i data-lucide="handshake"></i><b>Socio estrategico</b><span>Participa en decisiones de reinversion y expansion comercial.</span></div>
+              <div class="card"><i data-lucide="ship"></i><b>Importacion</b><span>Apoya proveedores, logistica, costos, nacionalizacion y venta.</span></div>
+              <div class="card"><i data-lucide="warehouse"></i><b>Infraestructura</b><span>Tiendas, inventario, exhibicion, operacion y puntos fisicos.</span></div>
+              <div class="card"><i data-lucide="landmark"></i><b>Capital productivo</b><span>El dinero del juego no se queda quieto: se mueve a activos reales.</span></div>
+            </div>
+          </article>
+          <article class="panel visual photo">
+            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=82" alt="Socios cerrando una alianza estrategica">
+            <div class="caption"><b>Sociedad con segundo motor</b><span>Juego digital para generar capital; importacion para multiplicarlo.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-8" style="--accent:var(--gold)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="circle-dollar-sign"></i> Ingresos de la empresa</span>
+            <h2>Primero generamos capital con el juego</h2>
+            <p>El objetivo es que AI Startup Tycoon produzca utilidades digitales fuertes. Con un escenario de <strong>$1M</strong> en 5 meses o <strong>$10M</strong> en 12 meses, ese dinero puede convertirse en inventario real.</p>
+            <div class="metrics">
+              <div class="metric"><b>$1M</b><span>Utilidad objetivo para los primeros 5 meses</span></div>
+              <div class="metric"><b>$10M</b><span>Escenario objetivo a 12 meses</span></div>
+              <div class="metric"><b>Activos</b><span>Motos, autos, tiendas e importadora</span></div>
+            </div>
+            <p class="small">La idea central: el juego genera flujo global y luego ese flujo se transforma en negocios fisicos con margen en Bolivia.</p>
+          </article>
+          <article class="panel calc">
+            <div class="split">
+              <div class="panel visual photo vehicle-card">
+                <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=82" alt="Moto electrica para importacion">
+                <div class="caption"><b>Motos electricas</b><span>Inventario rapido, ticket accesible y margen alto por unidad.</span></div>
+              </div>
+              <div class="panel visual photo vehicle-card">
+                <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=900&q=82" alt="Auto electrico para importacion">
+                <div class="caption"><b>Autos electricos</b><span>Mayor ticket, posicionamiento moderno y expansion por tiendas.</span></div>
+              </div>
+            </div>
+            <div class="table">
+              <div class="row"><span>Capital digital del juego</span><b>$1M a $10M</b></div>
+              <div class="row"><span>Destino estrategico</span><b>Importacion</b></div>
+              <div class="row"><span>Socio que ejecuta esta conversion</span><b>Juan Ivis</b></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-9" style="--accent:var(--violet)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="receipt-text"></i> Administracion y reportes</span>
+            <h2>Control mensual, reparto trimestral</h2>
+            <p>La operacion debe ser clara: cada mes se emite reporte de ingresos, pagos, recompensas, upgrades, skins, marketplace, publicidad y costos. Las utilidades se distribuyen cada 3 meses.</p>
+            <div class="table">
+              <div class="row"><span>Reporte operativo</span><b>Mensual</b></div>
+              <div class="row"><span>Corte de utilidades</span><b>Trimestral</b></div>
+              <div class="row"><span>Pagos de redes, influencers y lideres</span><b>Grupo Chen Wei</b></div>
+              <div class="row"><span>Pagos app, upgrades, skins, recompensas</span><b>Grupo Neraverse+SGI</b></div>
+              <div class="row"><span>Reinversion fisica</span><b>Jose Eduardo + Juan</b></div>
+            </div>
+          </article>
+          <article class="panel visual photo">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=82" alt="Reporte financiero y administracion de pagos">
+            <div class="caption"><b>Orden desde el primer mes</b><span>La confianza se sostiene con numeros, reportes y reglas de reparto.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-10" style="--accent:var(--gold)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="bike"></i> Segundo negocio</span>
+            <h2>Reinvertir el capital en motos electricas</h2>
+            <p>Ejemplo simple para explicar la oportunidad: una moto electrica se compra en China a <strong>$150</strong>, traerla cuesta otros <strong>$150</strong>, costo total <strong>$300</strong>. Venta estimada: <strong>$1,000</strong>.</p>
+            <div class="metrics">
+              <div class="metric"><b>$300</b><span>Costo total estimado por unidad</span></div>
+              <div class="metric"><b>$1,000</b><span>Precio de venta referencial</span></div>
+              <div class="metric"><b>$700</b><span>Ganancia bruta referencial por moto</span></div>
+            </div>
+          </article>
+          <article class="panel visual photo vehicle-card">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1400&q=82" alt="Moto electrica urbana">
+            <div class="caption"><b>Moto electrica</b><span>Producto visual, facil de demostrar, vender y financiar por lote.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-11" style="--accent:var(--cyan)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="car"></i> Vehiculos electricos</span>
+            <h2>Escalar a autos electricos y tiendas</h2>
+            <p>En vehiculos electricos se plantea una utilidad referencial de hasta <strong>65%</strong>. La estrategia es usar parte de las utilidades del juego para abrir importadora, tiendas, exhibicion y ventas por financiamiento.</p>
+            <div class="grid">
+              <div class="card"><i data-lucide="car-front"></i><b>Autos electricos</b><span>Mayor ticket, margen atractivo y posicionamiento moderno.</span></div>
+              <div class="card"><i data-lucide="store"></i><b>Tiendas en Bolivia</b><span>Puntos fisicos para motos, autos, accesorios y servicio.</span></div>
+              <div class="card"><i data-lucide="truck"></i><b>Importadora</b><span>Compras por lote, mejores costos y control logistico.</span></div>
+              <div class="card"><i data-lucide="shopping-basket"></i><b>Supermercados u otras lineas</b><span>Capital digital convertido en flujo comercial real.</span></div>
+            </div>
+          </article>
+          <article class="panel visual photo vehicle-card">
+            <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1400&q=82" alt="Auto electrico moderno">
+            <div class="caption"><b>De app a infraestructura</b><span>El objetivo es transformar utilidad digital en negocios tangibles.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-12" style="--accent:var(--green)">
+        <div class="scene">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="calculator"></i> Ganancia de Juan</span>
+            <h2>Juan gana de esta manera</h2>
+            <p>Juan participa con el <strong>20% final del proyecto</strong>. Si la utilidad estimada supera <strong>$1M</strong> en 5 meses, su parte seria <strong>$200K</strong>. Si en 12 meses llega a <strong>$10M</strong>, su parte seria <strong>$2M</strong>.</p>
+            <div class="metrics">
+              <div class="metric"><b id="juanFive">$200K</b><span>20% de utilidad estimada a 5 meses</span></div>
+              <div class="metric"><b id="juanYear">$2M</b><span>20% de utilidad estimada a 12 meses</span></div>
+              <div class="metric"><b id="devEach">$30K</b><span>Aporte estimado de desarrollo por socio interno</span></div>
+            </div>
+            <p class="small">Los montos son modelo de presentacion. Deben validarse con traccion real, costos de adquisicion, retencion, comisiones, impuestos y liquidez.</p>
+          </article>
+          <article class="panel calc">
+            <div class="range">
+              <label><span>Utilidad estimada 5 meses</span><b id="fiveLabel">$1,000,000</b></label>
+              <input id="fiveRange" type="range" min="500000" max="5000000" step="50000" value="1000000">
+            </div>
+            <div class="range">
+              <label><span>Utilidad estimada 12 meses</span><b id="yearLabel">$10,000,000</b></label>
+              <input id="yearRange" type="range" min="2000000" max="20000000" step="100000" value="10000000">
+            </div>
+            <div class="range">
+              <label><span>Inversion desarrollo total</span><b id="devLabel">$60,000</b></label>
+              <input id="devRange" type="range" min="30000" max="120000" step="5000" value="60000">
+            </div>
+            <div class="share">
+              <span class="muted">Ganancia neta potencial de Juan despues de su aporte estimado</span>
+              <div class="big-number" id="juanNet">$1.97M</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-13" style="--accent:var(--green)">
+        <div class="scene wide">
+          <article class="panel copy">
+            <span class="kicker"><i data-lucide="check-circle-2"></i> Tesis final</span>
+            <h2>Una sociedad con dos motores de crecimiento</h2>
+            <p class="lead">Motor 1: AI Startup Tycoon genera usuarios, ingresos digitales, upgrades, marketplace y flujo global. Motor 2: Jose Eduardo y Juan reinvierten su participacion en importacion, tiendas e infraestructura en Bolivia.</p>
+            <div class="split">
+              <div class="share">
+                <h3>Por que entra Juan Ivis</h3>
+                <div class="table">
+                  <div class="row"><span>No entra por necesidad de dinero</span><b>Estrategia</b></div>
+                  <div class="row"><span>Recibe 50% del 40% interno</span><b>20% final</b></div>
+                  <div class="row"><span>Aporta importacion, contactos e infraestructura</span><b>Activo real</b></div>
+                </div>
+              </div>
+              <div class="share">
+                <h3>Por que es atractivo</h3>
+                <div class="table">
+                  <div class="row"><span>Desarrollo compartido con Jose Eduardo</span><b>Riesgo dividido</b></div>
+                  <div class="row"><span>Ganancia digital proyectada</span><b>$200K a $2M</b></div>
+                  <div class="row"><span>Reinversion en motos/autos/tiendas</span><b>Segundo retorno</b></div>
+                </div>
+              </div>
+            </div>
+            <p class="small">Siguiente paso recomendado: convertir esta presentacion en propuesta formal con contrato, definicion de gastos aprobados, auditoria, propiedad intelectual, impuestos y reglas de salida.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="arrows">
+    <button class="arrow" id="prevSlide" type="button" aria-label="Slide anterior"><i data-lucide="chevron-left"></i></button>
+    <button class="arrow" id="nextSlide" type="button" aria-label="Slide siguiente"><i data-lucide="chevron-right"></i></button>
+  </div>
+
+  <nav class="progress" id="progress" aria-label="Slides"></nav>
+
+  <script>
+    const slidesWrap = document.getElementById("slides");
+    const slideItems = Array.from(document.querySelectorAll(".slide"));
+    const prevButton = document.getElementById("prevSlide");
+    const nextButton = document.getElementById("nextSlide");
+    const progress = document.getElementById("progress");
+    const counter = document.getElementById("counter");
+    let active = 0;
+
+    const money = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0
+    });
+
+    const compactMoney = (value) => {
+      if (value >= 1000000) return `$${(value / 1000000).toFixed(value >= 10000000 ? 0 : 2).replace(/\.00$/, "")}M`;
+      if (value >= 1000) return `$${Math.round(value / 1000)}K`;
+      return money.format(value);
+    };
+
+    const pad = (n) => String(n).padStart(2, "0");
+
+    slideItems.forEach((_, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", `Ir al slide ${index + 1}`);
+      button.addEventListener("click", () => goTo(index));
+      progress.appendChild(button);
+    });
+
+    const dots = Array.from(progress.children);
+
+    function goTo(index) {
+      active = Math.max(0, Math.min(slideItems.length - 1, index));
+      document.documentElement.style.setProperty("--active-slide", active);
+      counter.textContent = `${pad(active + 1)}/${pad(slideItems.length)}`;
+      prevButton.disabled = active === 0;
+      nextButton.disabled = active === slideItems.length - 1;
+      dots.forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === active));
+      const accent = getComputedStyle(slideItems[active]).getPropertyValue("--accent").trim();
+      progress.style.setProperty("--accent", accent || "var(--cyan)");
+    }
+
+    prevButton.addEventListener("click", () => goTo(active - 1));
+    nextButton.addEventListener("click", () => goTo(active + 1));
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown" || event.key === "ArrowRight" || event.key === "PageDown") goTo(active + 1);
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft" || event.key === "PageUp") goTo(active - 1);
+      if (event.key === "Home") goTo(0);
+      if (event.key === "End") goTo(slideItems.length - 1);
+    });
+
+    function findScrollableParent(target) {
+      let node = target;
+      while (node && node !== slidesWrap && node !== document.body) {
+        if (node.scrollHeight > node.clientHeight + 4) return node;
+        node = node.parentElement;
+      }
+      return null;
+    }
+
+    slidesWrap.addEventListener("wheel", (event) => {
+      const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+      const scroller = findScrollableParent(event.target);
+
+      if (!horizontalIntent && scroller) {
+        const goingDown = event.deltaY > 0;
+        const atTop = scroller.scrollTop <= 0;
+        const atBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2;
+        if ((goingDown && !atBottom) || (!goingDown && !atTop)) return;
+      }
+
+      const movement = horizontalIntent ? event.deltaX : event.deltaY;
+      if (Math.abs(movement) < 18) return;
+      event.preventDefault();
+      goTo(active + (movement > 0 ? 1 : -1));
+    }, { passive: false });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    slidesWrap.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].clientX;
+      touchStartY = event.changedTouches[0].clientY;
+    }, { passive: true });
+
+    slidesWrap.addEventListener("touchend", (event) => {
+      const deltaX = touchStartX - event.changedTouches[0].clientX;
+      const deltaY = touchStartY - event.changedTouches[0].clientY;
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 45) {
+        goTo(active + (deltaX > 0 ? 1 : -1));
+      }
+    }, { passive: true });
+
+    function updateCalc() {
+      const five = Number(document.getElementById("fiveRange").value);
+      const year = Number(document.getElementById("yearRange").value);
+      const dev = Number(document.getElementById("devRange").value);
+      const juanFive = five * 0.2;
+      const juanYear = year * 0.2;
+      const devEach = dev / 2;
+      const juanNet = juanYear - devEach;
+      document.getElementById("fiveLabel").textContent = money.format(five);
+      document.getElementById("yearLabel").textContent = money.format(year);
+      document.getElementById("devLabel").textContent = money.format(dev);
+      document.getElementById("juanFive").textContent = compactMoney(juanFive);
+      document.getElementById("juanYear").textContent = compactMoney(juanYear);
+      document.getElementById("devEach").textContent = compactMoney(devEach);
+      document.getElementById("juanNet").textContent = compactMoney(juanNet);
+    }
+
+    ["fiveRange", "yearRange", "devRange"].forEach((id) => {
+      document.getElementById(id).addEventListener("input", updateCalc);
+    });
+
+    const demo = {
+      money: 1200,
+      vault: 0,
+      shopLevel: 1,
+      startupLevel: 0,
+      dataLevel: 0,
+      shopCost: 900,
+      startupCost: 2500,
+      dataCost: 12000,
+      eventUntil: Date.now() + 90000
+    };
+
+    const demoEls = {
+      money: document.getElementById("demoMoney"),
+      income: document.getElementById("demoIncome"),
+      value: document.getElementById("demoValue"),
+      claim: document.getElementById("demoClaim"),
+      goal: document.getElementById("demoGoal"),
+      office: document.getElementById("demoOffice"),
+      log: document.getElementById("demoLog"),
+      buyShop: document.getElementById("buyShop"),
+      buyStartup: document.getElementById("buyStartup"),
+      buyData: document.getElementById("buyData"),
+      shopInfo: document.getElementById("shopInfo"),
+      startupInfo: document.getElementById("startupInfo"),
+      dataInfo: document.getElementById("dataInfo"),
+      claimButton: document.getElementById("claimDemo")
+    };
+
+    function demoIncomePerSecond() {
+      const base = 60 + (demo.shopLevel * 80) + (demo.startupLevel * 420) + (demo.dataLevel * 1800);
+      const eventMultiplier = Date.now() < demo.eventUntil ? 2 : 1;
+      return base * eventMultiplier;
+    }
+
+    function demoStage() {
+      if (demo.dataLevel > 0) return 3;
+      if (demo.startupLevel > 0 || demo.shopLevel >= 4) return 2;
+      return 1;
+    }
+
+    function demoGoalText() {
+      if (demo.dataLevel > 0) return "Centro de datos";
+      if (demo.startupLevel > 0 || demo.shopLevel >= 4) return "Oficina avanzada";
+      return "Primera startup";
+    }
+
+    function setDemoLog(message) {
+      demoEls.log.textContent = message;
+    }
+
+    function updateDemo() {
+      const income = demoIncomePerSecond();
+      const value = (demo.shopLevel * 3200) + (demo.startupLevel * 18000) + (demo.dataLevel * 90000) + demo.money + demo.vault;
+      demoEls.money.textContent = compactMoney(demo.money);
+      demoEls.income.textContent = `+${compactMoney(income)}/s`;
+      demoEls.value.textContent = compactMoney(value);
+      demoEls.claim.textContent = compactMoney(demo.vault);
+      demoEls.goal.textContent = demoGoalText();
+      demoEls.office.dataset.stage = String(demoStage());
+      demoEls.office.dataset.label = demo.dataLevel > 0 ? "DATA LABS" : demo.startupLevel > 0 ? "AI STARTUP" : "TYCOON LABS";
+
+      demoEls.shopInfo.textContent = `Nivel ${demo.shopLevel} · +${compactMoney(demo.shopLevel * 80)}/s`;
+      demoEls.startupInfo.textContent = demo.startupLevel ? `Nivel ${demo.startupLevel} · +${compactMoney(demo.startupLevel * 420)}/s` : "Bloqueada · +$420/s";
+      demoEls.dataInfo.textContent = demo.dataLevel ? `Nivel ${demo.dataLevel} · +${compactMoney(demo.dataLevel * 1800)}/s` : "Bloqueado · +$1.8K/s";
+
+      demoEls.buyShop.textContent = `Mejorar ${compactMoney(demo.shopCost)}`;
+      demoEls.buyStartup.textContent = demo.startupLevel ? `Mejorar ${compactMoney(demo.startupCost)}` : `Comprar ${compactMoney(demo.startupCost)}`;
+      demoEls.buyData.textContent = demo.dataLevel ? `Mejorar ${compactMoney(demo.dataCost)}` : `Comprar ${compactMoney(demo.dataCost)}`;
+
+      demoEls.buyShop.disabled = demo.money < demo.shopCost;
+      demoEls.buyStartup.disabled = demo.money < demo.startupCost;
+      demoEls.buyData.disabled = demo.money < demo.dataCost;
+      demoEls.claimButton.disabled = demo.vault < 1;
+    }
+
+    function buyDemo(kind) {
+      const config = {
+        shop: ["shopCost", "shopLevel", 1.42, "Tienda online mejorada: mas ventas por segundo."],
+        startup: ["startupCost", "startupLevel", 1.55, "Startup tech desbloqueada: la oficina crece."],
+        data: ["dataCost", "dataLevel", 1.75, "Centro de datos activo: salto fuerte de ingresos."]
+      }[kind];
+      const [costKey, levelKey, multiplier, message] = config;
+      if (demo.money < demo[costKey]) return;
+      demo.money -= demo[costKey];
+      demo[levelKey] += 1;
+      demo[costKey] = Math.round(demo[costKey] * multiplier);
+      setDemoLog(message);
+      updateDemo();
+    }
+
+    demoEls.buyShop.addEventListener("click", () => buyDemo("shop"));
+    demoEls.buyStartup.addEventListener("click", () => buyDemo("startup"));
+    demoEls.buyData.addEventListener("click", () => buyDemo("data"));
+    demoEls.claimButton.addEventListener("click", () => {
+      demo.money += demo.vault;
+      setDemoLog(`Reclamaste ${compactMoney(demo.vault)} para reinvertir.`);
+      demo.vault = 0;
+      updateDemo();
+    });
+
+    setInterval(() => {
+      demo.vault += demoIncomePerSecond();
+      updateDemo();
+    }, 1000);
+
+    if (window.lucide) lucide.createIcons();
+    updateCalc();
+    updateDemo();
+    goTo(0);
+  </script>
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js";
+
+    function createServerScene(mount) {
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.Fog(0x050912, 9, 24);
+
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      camera.position.set(5.6, 4.2, 8.4);
+      camera.lookAt(0, 1.2, 0);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      mount.appendChild(renderer.domElement);
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      const ambient = new THREE.AmbientLight(0x7aa7ff, 0.8);
+      scene.add(ambient);
+
+      const key = new THREE.DirectionalLight(0x66eaff, 2.2);
+      key.position.set(3, 6, 4);
+      scene.add(key);
+
+      const pulseLight = new THREE.PointLight(0x23d9ff, 3.8, 12);
+      pulseLight.position.set(0, 2.2, 2.8);
+      scene.add(pulseLight);
+
+      const floorMat = new THREE.MeshStandardMaterial({
+        color: 0x0b1320,
+        metalness: 0.4,
+        roughness: 0.42
+      });
+      const floor = new THREE.Mesh(new THREE.BoxGeometry(8.6, 0.12, 6.2), floorMat);
+      floor.position.y = -0.08;
+      group.add(floor);
+
+      const grid = new THREE.GridHelper(8.5, 12, 0x23d9ff, 0x20324a);
+      grid.position.y = 0.01;
+      grid.material.opacity = 0.38;
+      grid.material.transparent = true;
+      group.add(grid);
+
+      const rackMat = new THREE.MeshStandardMaterial({
+        color: 0x111b2b,
+        metalness: 0.72,
+        roughness: 0.28
+      });
+      const sideMat = new THREE.MeshStandardMaterial({
+        color: 0x24344a,
+        metalness: 0.55,
+        roughness: 0.35
+      });
+      const glassMat = new THREE.MeshStandardMaterial({
+        color: 0x07111d,
+        emissive: 0x061b2c,
+        metalness: 0.35,
+        roughness: 0.2
+      });
+      const ledMat = new THREE.MeshStandardMaterial({
+        color: 0x64f58d,
+        emissive: 0x44ff88,
+        emissiveIntensity: 1.5
+      });
+      const cyanMat = new THREE.MeshStandardMaterial({
+        color: 0x23d9ff,
+        emissive: 0x23d9ff,
+        emissiveIntensity: 1.2
+      });
+
+      const leds = [];
+
+      function makeRack(x, z, height, rows) {
+        const rack = new THREE.Group();
+        const body = new THREE.Mesh(new THREE.BoxGeometry(0.86, height, 0.72), rackMat);
+        body.position.y = height / 2;
+        rack.add(body);
+
+        const front = new THREE.Mesh(new THREE.BoxGeometry(0.74, height - 0.22, 0.035), glassMat);
+        front.position.set(0, height / 2, 0.378);
+        rack.add(front);
+
+        for (let i = 0; i < rows; i += 1) {
+          const y = 0.28 + i * ((height - 0.55) / rows);
+          const slot = new THREE.Mesh(new THREE.BoxGeometry(0.54, 0.045, 0.05), sideMat);
+          slot.position.set(-0.05, y, 0.41);
+          rack.add(slot);
+
+          const led = new THREE.Mesh(new THREE.SphereGeometry(0.038, 12, 12), i % 3 === 0 ? cyanMat : ledMat);
+          led.position.set(0.32, y, 0.435);
+          led.userData.phase = Math.random() * Math.PI * 2;
+          leds.push(led);
+          rack.add(led);
+        }
+
+        rack.position.set(x, 0, z);
+        return rack;
+      }
+
+      [
+        [-2.6, -1.1, 2.6, 9],
+        [-1.45, -1.1, 3.1, 10],
+        [-0.3, -1.1, 2.85, 9],
+        [1.15, -1.15, 3.3, 11],
+        [2.35, -1.15, 2.75, 9],
+        [-1.9, 1.35, 2.25, 7],
+        [-0.7, 1.35, 2.7, 9],
+        [0.55, 1.35, 2.55, 8],
+        [1.8, 1.35, 2.95, 10]
+      ].forEach((rack) => group.add(makeRack(...rack)));
+
+      const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.48, 1), new THREE.MeshStandardMaterial({
+        color: 0x5b86ff,
+        emissive: 0x274cff,
+        emissiveIntensity: 1.2,
+        metalness: 0.35,
+        roughness: 0.18
+      }));
+      core.position.set(0, 2.35, 0.1);
+      group.add(core);
+
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(1.05, 0.018, 12, 96),
+        new THREE.MeshStandardMaterial({ color: 0x23d9ff, emissive: 0x23d9ff, emissiveIntensity: 1.4 })
+      );
+      ring.position.copy(core.position);
+      ring.rotation.x = Math.PI / 2;
+      group.add(ring);
+
+      function resize() {
+        const rect = mount.getBoundingClientRect();
+        const width = Math.max(260, rect.width);
+        const height = Math.max(260, rect.height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height, false);
+      }
+
+      const observer = new ResizeObserver(resize);
+      observer.observe(mount);
+      resize();
+
+      const clock = new THREE.Clock();
+      function animate() {
+        const t = clock.getElapsedTime();
+        group.rotation.y = Math.sin(t * 0.28) * 0.16;
+        core.rotation.x = t * 0.8;
+        core.rotation.y = t * 1.1;
+        ring.rotation.z = t * 0.7;
+        pulseLight.intensity = 2.6 + Math.sin(t * 2.8) * 1.3;
+        leds.forEach((led) => {
+          const glow = 0.8 + Math.sin(t * 4 + led.userData.phase) * 0.55;
+          led.scale.setScalar(0.8 + Math.max(0, glow) * 0.5);
+          led.material.emissiveIntensity = 0.8 + Math.max(0, glow) * 1.6;
+        });
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    document.querySelectorAll(".server3d-mount").forEach(createServerScene);
+  </script>
+</body>
+</html>
